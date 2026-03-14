@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  // Core tab function - loaded early so onclick attributes work immediately
+  function showTab(id) {
+    var sections = document.querySelectorAll('section');
+    sections.forEach(function(s) {
+      s.style.display = (s.id === id) ? '' : 'none';
+    });
+    document.querySelectorAll('.nav-tab').forEach(function(t) {
+      if (t.getAttribute('data-tab') === id) {
+        t.classList.add('active');
+      } else {
+        t.classList.remove('active');
+      }
+    });
+    window.scrollTo(0, 0);
+    if (id === 'skills') {
+      setTimeout(function() {
+        document.querySelectorAll('.skill-fill').forEach(function(b) {
+          b.style.width = b.getAttribute('data-width') + '%';
+        });
+      }, 300);
+    } else {
+      document.querySelectorAll('.skill-fill').forEach(function(b) {
+        b.style.width = '0';
+      });
+    }
+  }
+</script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Vincent Owino — Finance Analyst</title>
@@ -635,13 +663,13 @@
   </div>
   <div class="nav-row2">
     <div class="nav-links">
-      <a href="#" class="nav-tab" data-tab="hero">Home</a>
-      <a href="#" class="nav-tab" data-tab="about">Profile</a>
-      <a href="#" class="nav-tab" data-tab="services">Services</a>
-      <a href="#" class="nav-tab" data-tab="experience">Experience</a>
-      <a href="#" class="nav-tab" data-tab="skills">Skills</a>
-      <a href="#" class="nav-tab" data-tab="education">Education</a>
-      <a href="#" class="nav-tab" data-tab="contact">Contact</a>
+      <a href="#" onclick="showTab('hero');return false;" class="nav-tab" data-tab="hero">Home</a>
+      <a href="#" onclick="showTab('about');return false;" class="nav-tab" data-tab="about">Profile</a>
+      <a href="#" onclick="showTab('services');return false;" class="nav-tab" data-tab="services">Services</a>
+      <a href="#" onclick="showTab('experience');return false;" class="nav-tab" data-tab="experience">Experience</a>
+      <a href="#" onclick="showTab('skills');return false;" class="nav-tab" data-tab="skills">Skills</a>
+      <a href="#" onclick="showTab('education');return false;" class="nav-tab" data-tab="education">Education</a>
+      <a href="#" onclick="showTab('contact');return false;" class="nav-tab" data-tab="contact">Contact</a>
     </div>
   </div>
 </nav>
@@ -1012,52 +1040,20 @@
   <div class="footer-brand">Vincent Owino</div>
   <div class="footer-copy">© 2026 · Finance Analyst · Nairobi, Kenya</div>
   <div class="footer-links">
-    <a href="#" class="nav-tab" data-tab="about">Profile</a>
-    <a href="#" class="nav-tab" data-tab="services">Services</a>
-    <a href="#" class="nav-tab" data-tab="contact">Contact</a>
+    <a href="#" onclick="showTab('about');return false;" class="nav-tab" data-tab="about">Profile</a>
+    <a href="#" onclick="showTab('services');return false;" class="nav-tab" data-tab="services">Services</a>
+    <a href="#" onclick="showTab('contact');return false;" class="nav-tab" data-tab="contact">Contact</a>
   </div>
 </footer>
 
 <script>
-  // ── TAB SYSTEM ──
-  function showTab(id) {
+  // Init on page load
+  window.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('section').forEach(function(s) {
-      if (s.id === id) {
-        s.removeAttribute('data-hidden');
-        s.style.display = '';
-      } else {
-        s.setAttribute('data-hidden', 'true');
-        s.style.display = 'none';
-      }
+      s.style.display = 'none';
     });
-    document.querySelectorAll('.nav-tab').forEach(function(t) {
-      t.classList.toggle('active', t.getAttribute('data-tab') === id);
-    });
-    window.scrollTo(0, 0);
-    if (id === 'skills') {
-      setTimeout(function() {
-        document.querySelectorAll('.skill-fill').forEach(function(b) {
-          b.style.width = b.getAttribute('data-width') + '%';
-        });
-      }, 300);
-    } else {
-      document.querySelectorAll('.skill-fill').forEach(function(b) { b.style.width = '0'; });
-    }
-  }
-
-  // Attach tab clicks
-  document.querySelectorAll('.nav-tab').forEach(function(t) {
-    t.addEventListener('click', function(e) {
-      e.preventDefault();
-      showTab(this.getAttribute('data-tab'));
-    });
+    showTab('hero');
   });
-
-  // Init: hide all, show hero
-  document.querySelectorAll('section').forEach(function(s) {
-    s.style.display = 'none';
-  });
-  showTab('hero');
 
   // ── DYNAMIC CV FILENAME ──
   var cvBtn = document.getElementById('cv-download-btn');
