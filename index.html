@@ -16,28 +16,25 @@
 
   // Core tab function - loaded early so onclick attributes work immediately
   function showTab(id) {
-    var sections = document.querySelectorAll('section');
-    sections.forEach(function(s) {
-      s.style.display = (s.id === id) ? '' : 'none';
-    });
-    document.querySelectorAll('.nav-tab').forEach(function(t) {
-      if (t.getAttribute('data-tab') === id) {
-        t.classList.add('active');
-      } else {
-        t.classList.remove('active');
+    var sections = document.getElementsByTagName('section');
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.display = (sections[i].id === id) ? 'block' : 'none';
+    }
+    var tabs = document.querySelectorAll('.nav-tab');
+    for (var j = 0; j < tabs.length; j++) {
+      tabs[j].className = tabs[j].className.replace(' active', '');
+      if (tabs[j].getAttribute('data-tab') === id) {
+        tabs[j].className += ' active';
       }
-    });
+    }
     window.scrollTo(0, 0);
     if (id === 'skills') {
       setTimeout(function() {
-        document.querySelectorAll('.skill-fill').forEach(function(b) {
-          b.style.width = b.getAttribute('data-width') + '%';
-        });
+        var bars = document.querySelectorAll('.skill-fill');
+        for (var k = 0; k < bars.length; k++) {
+          bars[k].style.width = bars[k].getAttribute('data-width') + '%';
+        }
       }, 300);
-    } else {
-      document.querySelectorAll('.skill-fill').forEach(function(b) {
-        b.style.width = '0';
-      });
     }
   }
 </script>
@@ -635,8 +632,7 @@
     .footer-links a:hover { color: var(--green-light); }
 
     /* ══ ANIMATIONS ══ */
-    /* Tab system - hide non-active sections */
-    section[data-hidden="true"] { display: none !important; }
+    section { display: block; }
     .reveal { opacity: 1; transform: none; }
     .reveal.animate { animation: fadeUp 0.6s ease both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -731,7 +727,7 @@
 </section>
 
 <!-- ══ ABOUT ══ -->
-<section id="about" data-hidden="true">
+<section id="about">
   <div class="sec-head">
     <span class="sec-eyebrow">01 — Profile</span>
     <h2 class="sec-title">Professional Profile</h2>
@@ -772,7 +768,7 @@
 </section>
 
 <!-- ══ SERVICES ══ -->
-<section id="services" data-hidden="true">
+<section id="services">
   <div class="sec-head">
     <span class="sec-eyebrow">02 — Services</span>
     <h2 class="sec-title">What I Offer</h2>
@@ -789,7 +785,7 @@
 </section>
 
 <!-- ══ EXPERIENCE ══ -->
-<section id="experience" data-hidden="true">
+<section id="experience">
   <div class="sec-head">
     <span class="sec-eyebrow">03 — Experience</span>
     <h2 class="sec-title">Work History</h2>
@@ -926,7 +922,7 @@
 </section>
 
 <!-- ══ SKILLS ══ -->
-<section id="skills" data-hidden="true">
+<section id="skills">
   <div class="sec-head">
     <span class="sec-eyebrow">04 — Skills</span>
     <h2 class="sec-title">Skills &amp; Competencies</h2>
@@ -979,7 +975,7 @@
 </section>
 
 <!-- ══ EDUCATION ══ -->
-<section id="education" data-hidden="true">
+<section id="education">
   <div class="sec-head">
     <span class="sec-eyebrow">05 — Education</span>
     <h2 class="sec-title">Education</h2>
@@ -1008,7 +1004,7 @@
 </section>
 
 <!-- ══ CONTACT ══ -->
-<section id="contact" data-hidden="true">
+<section id="contact">
   <div class="sec-head">
     <span class="sec-eyebrow">06 — Contact</span>
     <h2 class="sec-title">Get in Touch</h2>
@@ -1060,12 +1056,18 @@
 
 <script>
   // Init on page load
-  window.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('section').forEach(function(s) {
-      s.style.display = 'none';
-    });
+  function initTabs() {
+    var sections = document.getElementsByTagName('section');
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.display = 'none';
+    }
     showTab('hero');
-  });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
 
   // ── DYNAMIC CV FILENAME ──
   var cvBtn = document.getElementById('cv-download-btn');
@@ -1076,7 +1078,7 @@
       var yy = String(now.getFullYear()).slice(-2);
       var mm = String(now.getMonth() + 1).padStart(2, '0');
       var version = this.getAttribute('data-cv-version') || '0.1';
-      var filename = yy + '.' + mm + '_CV_Vincent Owino_V.' + version;
+      var filename = yy + '.' + mm + '_CV_Vincent Owino_V.' + version + '.pdf';
       var a = document.createElement('a');
       a.href = this.href;
       a.download = filename;
