@@ -595,8 +595,8 @@
     .footer-links a:hover { color: var(--green-light); }
 
     /* ══ ANIMATIONS ══ */
-    section { display: none; }
-    section#hero { display: block; }
+    /* Tab system - hide non-active sections */
+    section[data-hidden="true"] { display: none !important; }
     .reveal { opacity: 1; transform: none; }
     .reveal.animate { animation: fadeUp 0.6s ease both; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
@@ -691,7 +691,7 @@
 </section>
 
 <!-- ══ ABOUT ══ -->
-<section id="about">
+<section id="about" data-hidden="true">
   <div class="sec-head">
     <span class="sec-eyebrow">01 — Profile</span>
     <h2 class="sec-title">Professional Profile</h2>
@@ -732,7 +732,7 @@
 </section>
 
 <!-- ══ SERVICES ══ -->
-<section id="services">
+<section id="services" data-hidden="true">
   <div class="sec-head">
     <span class="sec-eyebrow">02 — Services</span>
     <h2 class="sec-title">What I Offer</h2>
@@ -749,7 +749,7 @@
 </section>
 
 <!-- ══ EXPERIENCE ══ -->
-<section id="experience">
+<section id="experience" data-hidden="true">
   <div class="sec-head">
     <span class="sec-eyebrow">03 — Experience</span>
     <h2 class="sec-title">Work History</h2>
@@ -886,7 +886,7 @@
 </section>
 
 <!-- ══ SKILLS ══ -->
-<section id="skills">
+<section id="skills" data-hidden="true">
   <div class="sec-head">
     <span class="sec-eyebrow">04 — Skills</span>
     <h2 class="sec-title">Skills &amp; Competencies</h2>
@@ -939,7 +939,7 @@
 </section>
 
 <!-- ══ EDUCATION ══ -->
-<section id="education">
+<section id="education" data-hidden="true">
   <div class="sec-head">
     <span class="sec-eyebrow">05 — Education</span>
     <h2 class="sec-title">Education</h2>
@@ -968,7 +968,7 @@
 </section>
 
 <!-- ══ CONTACT ══ -->
-<section id="contact">
+<section id="contact" data-hidden="true">
   <div class="sec-head">
     <span class="sec-eyebrow">06 — Contact</span>
     <h2 class="sec-title">Get in Touch</h2>
@@ -1018,73 +1018,59 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── TABS ──
-  const allSections = document.querySelectorAll('section');
-  const allTabs = document.querySelectorAll('.nav-tab');
-
+<script>
+  // ── TAB SYSTEM ──
   function showTab(id) {
-    // Hide all, show target using CSS class
-    allSections.forEach(s => {
+    document.querySelectorAll('section').forEach(function(s) {
       if (s.id === id) {
+        s.removeAttribute('data-hidden');
         s.style.display = '';
-        s.removeAttribute('hidden');
       } else {
+        s.setAttribute('data-hidden', 'true');
         s.style.display = 'none';
       }
     });
-    allTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
-    window.scrollTo(0, 0);
-
-    // Trigger subtle entrance animation
-    requestAnimationFrame(() => {
-      document.querySelectorAll('#' + id + ' .reveal').forEach((el, i) => {
-        el.classList.remove('animate');
-        setTimeout(() => el.classList.add('animate'), i * 80);
-      });
+    document.querySelectorAll('.nav-tab').forEach(function(t) {
+      t.classList.toggle('active', t.getAttribute('data-tab') === id);
     });
-
-    // Skill bars
+    window.scrollTo(0, 0);
     if (id === 'skills') {
-      setTimeout(() => {
-        document.querySelectorAll('.skill-fill').forEach(b => b.style.width = b.getAttribute('data-width') + '%');
+      setTimeout(function() {
+        document.querySelectorAll('.skill-fill').forEach(function(b) {
+          b.style.width = b.getAttribute('data-width') + '%';
+        });
       }, 300);
     } else {
-      document.querySelectorAll('.skill-fill').forEach(b => b.style.width = '0');
-    }
-
-    // Hero entrance
-    if (id === 'hero') {
-      const h = document.querySelector('.hero-left');
-      if (h) {
-        h.style.opacity = '0'; h.style.transform = 'translateY(24px)';
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            h.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-            h.style.opacity = '1'; h.style.transform = 'translateY(0)';
-          });
-        });
-      }
+      document.querySelectorAll('.skill-fill').forEach(function(b) { b.style.width = '0'; });
     }
   }
 
-  allTabs.forEach(t => t.addEventListener('click', e => { e.preventDefault(); showTab(t.dataset.tab); }));
+  // Attach tab clicks
+  document.querySelectorAll('.nav-tab').forEach(function(t) {
+    t.addEventListener('click', function(e) {
+      e.preventDefault();
+      showTab(this.getAttribute('data-tab'));
+    });
+  });
 
-  // Hide all sections on load first, then show hero
-  allSections.forEach(s => s.style.display = 'none');
+  // Init: hide all, show hero
+  document.querySelectorAll('section').forEach(function(s) {
+    s.style.display = 'none';
+  });
   showTab('hero');
 
   // ── DYNAMIC CV FILENAME ──
-  const cvBtn = document.getElementById('cv-download-btn');
+  var cvBtn = document.getElementById('cv-download-btn');
   if (cvBtn) {
     cvBtn.addEventListener('click', function(e) {
       e.preventDefault();
-      const now = new Date();
-      const yy = String(now.getFullYear()).slice(-2);
-      const mm = String(now.getMonth() + 1).padStart(2, '0');
-      const version = this.getAttribute('data-cv-version') || '0.1';
-      const filename = yy + '.' + mm + '_CV_Vincent Owino_V.' + version;
-      const a = document.createElement('a');
+      var now = new Date();
+      var yy = String(now.getFullYear()).slice(-2);
+      var mm = String(now.getMonth() + 1);
+      if (mm < 10) mm = '0' + mm;
+      var version = this.getAttribute('data-cv-version') || '0.1';
+      var filename = yy + '.' + mm + '_CV_Vincent Owino_V.' + version;
+      var a = document.createElement('a');
       a.href = this.href;
       a.download = filename;
       document.body.appendChild(a);
@@ -1093,7 +1079,8 @@
     });
   }
 
-  const tdata = [
+  // ── TICKER ──
+  var tdata = [
     { sym:'ACCOUNTS PAYABLE', val:'OPTIMISED', chg:'+IFRS' },
     { sym:'PAYROLL', val:'END-TO-END', chg:'+COMPLIANT' },
     { sym:'VARIANCE ANALYSIS', val:'MONTHLY', chg:'+INSIGHTS' },
@@ -1103,4 +1090,16 @@
     { sym:'RECONCILIATION', val:'ZERO ERRORS', chg:'+CONTROLS' },
     { sym:'BUDGETING', val:'FORECASTING', chg:'+PLANNING' },
     { sym:'MS EXCEL', val:'ADVANCED', chg:'+SKILL' },
-    { sym:'IFRS / GAAP', val:'COMPLIANT',
+    { sym:'IFRS / GAAP', val:'COMPLIANT', chg:'+STANDARDS' },
+    { sym:'NAIROBI', val:'KENYA', chg:'+OPEN' },
+  ];
+  var track = document.getElementById('ticker');
+  if (track) {
+    var tickerHtml = tdata.map(function(t) {
+      return '<div class="ticker-item"><span class="ticker-sym">' + t.sym + '</span><span class="ticker-val">' + t.val + '</span><span class="ticker-chg">' + t.chg + '</span></div>';
+    }).join('');
+    track.innerHTML = tickerHtml + tickerHtml;
+  }
+</script>
+</body>
+</html>
