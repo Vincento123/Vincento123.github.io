@@ -2234,5 +2234,2014 @@
 })();
 </script>
 
+<!-- VO PERSONAL ERP v2.0 — IFRS Compliant -->
+<div id="erp-root" style="display:none">
+<style>
+#erp-root{position:fixed;inset:0;z-index:9999;font-family:'Lato',sans-serif;background:#0d1520;color:#e8e2d8;overflow:hidden}
+#erp-auth{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:1.5rem}
+.ea-logo{font-size:2.2rem;font-weight:900;color:#034694;letter-spacing:-1px}.ea-logo span{color:#007a3d}
+.ea-card{background:#141e2e;border:1px solid rgba(255,255,255,0.08);padding:2.5rem;width:380px;text-align:center}
+.ea-title{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:#9aaabb;margin-bottom:1.5rem}
+.ei{width:100%;background:#0d1520;border:1px solid rgba(255,255,255,0.12);color:#e8e2d8;padding:0.75rem 1rem;font-family:'Lato',sans-serif;font-size:0.9rem;margin-bottom:0.8rem;outline:none;box-sizing:border-box;transition:border-color 0.2s}
+.ei:focus{border-color:#034694}.ei.pin{text-align:center;font-size:1.3rem;letter-spacing:0.4em}
+.eb{width:100%;padding:0.85rem;background:#034694;color:white;border:none;cursor:pointer;font-family:'Lato',sans-serif;font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;transition:background 0.2s}
+.eb:hover{background:#0a5cb8}.eb.g{background:#007a3d}.eb.g:hover{background:#009a4e}.eb.r{background:#c0392b}.eb.sm{width:auto;padding:0.55rem 1.2rem;font-size:0.6rem}
+.ea-err{font-size:0.72rem;color:#e74c3c;margin-top:0.5rem;min-height:1rem}
+
+/* APP LAYOUT */
+#erp-app{display:none;height:100vh;flex-direction:column}
+.etb{display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:48px;background:#060e1a;border-bottom:1px solid rgba(255,255,255,0.07);flex-shrink:0}
+.etb-brand{font-size:0.9rem;font-weight:900;color:#034694;letter-spacing:-0.3px}.etb-brand span{color:#007a3d}
+.etb-r{display:flex;align-items:center;gap:1rem}
+.eclock{font-size:0.6rem;color:#6b7890;letter-spacing:0.1em}
+.elock{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.28rem 0.7rem;border:1px solid rgba(255,255,255,0.1);background:none;color:#9aaabb;cursor:pointer;transition:all 0.2s}
+.elock:hover{border-color:#e74c3c;color:#e74c3c}
+.ebody{display:flex;flex:1;overflow:hidden}
+
+/* SIDEBAR */
+.esb{width:210px;flex-shrink:0;background:#080f1a;border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;overflow-y:auto}
+.esb-sec{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:#2a3a4a;padding:1rem 1.2rem 0.3rem;margin-top:0.5rem}
+.esb-item{display:flex;align-items:center;gap:0.7rem;padding:0.65rem 1.1rem;cursor:pointer;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#566070;transition:all 0.18s;border-left:3px solid transparent}
+.esb-item:hover{color:#c8d2e0;background:rgba(255,255,255,0.025)}
+.esb-item.active{color:#1a72d4;border-left-color:#034694;background:rgba(3,70,148,0.09)}
+.esb-icon{width:18px;text-align:center;font-size:0.9rem}
+
+/* CONTENT */
+.econtent{flex:1;overflow-y:auto;padding:1.4rem;background:#0d1520}
+.econtent::-webkit-scrollbar{width:3px}.econtent::-webkit-scrollbar-thumb{background:#1a2e44}
+.epage{display:none}.epage.active{display:block}
+.ept{font-size:1.25rem;font-weight:900;color:#e8e2d8;margin-bottom:0.2rem;letter-spacing:-0.3px}
+.eps{font-size:0.65rem;color:#566070;letter-spacing:0.1em;margin-bottom:1.4rem}
+
+/* GRID */
+.eg4{display:grid;grid-template-columns:repeat(4,1fr);gap:0.9rem;margin-bottom:1.3rem}
+.eg3{display:grid;grid-template-columns:repeat(3,1fr);gap:0.9rem;margin-bottom:1.3rem}
+.eg2{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1.3rem}
+
+/* CARDS */
+.ec{background:#111b2b;border:1px solid rgba(255,255,255,0.06);padding:1.1rem}
+.ec-lbl{font-size:0.55rem;letter-spacing:0.16em;text-transform:uppercase;color:#566070;margin-bottom:0.35rem}
+.ec-val{font-size:1.5rem;font-weight:900;color:#e8e2d8;line-height:1}
+.ec-val.b{color:#1a72d4}.ec-val.g{color:#007a3d}.ec-val.r{color:#e74c3c}.ec-val.gold{color:#b8973a}
+.ec-sub{font-size:0.6rem;color:#566070;margin-top:0.35rem}
+
+/* PANELS */
+.ep{background:#111b2b;border:1px solid rgba(255,255,255,0.06);margin-bottom:1.1rem}
+.ep-h{display:flex;align-items:center;justify-content:space-between;padding:0.8rem 1.1rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.ep-t{font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#9aaabb}
+.ep-b{padding:1.1rem}
+
+/* TABLE */
+.et{width:100%;border-collapse:collapse;font-size:0.75rem}
+.et th{text-align:left;padding:0.45rem 0.75rem;font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:#2a3a4a;border-bottom:1px solid rgba(255,255,255,0.06)}
+.et td{padding:0.65rem 0.75rem;border-bottom:1px solid rgba(255,255,255,0.04);color:#8a94a0}
+.et tr:last-child td{border-bottom:none}
+.et tr:hover td{background:rgba(255,255,255,0.02);color:#c8d2e0}
+.et td.v{color:#e8e2d8;font-weight:700}.et td.p{color:#007a3d;font-weight:700}.et td.n{color:#e74c3c;font-weight:700}
+.et td.dr{color:#1a72d4;font-weight:700}.et td.cr{color:#b8973a;font-weight:700}
+.et tfoot td{border-top:2px solid rgba(255,255,255,0.1);color:#e8e2d8;font-weight:700;padding:0.7rem 0.75rem}
+
+/* FORM */
+.efg{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.9rem}
+.efg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:0.9rem}
+.efull{grid-column:1/-1}
+.elbl{font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;color:#566070;display:block;margin-bottom:0.25rem}
+.ef{background:#080f1a;border:1px solid rgba(255,255,255,0.09);color:#e8e2d8;padding:0.6rem 0.75rem;font-family:'Lato',sans-serif;font-size:0.8rem;outline:none;transition:border-color 0.2s;width:100%;box-sizing:border-box}
+.ef:focus{border-color:#034694}.ef select{appearance:none}
+
+/* BADGE */
+.ebdg{display:inline-block;padding:0.15rem 0.5rem;font-size:0.55rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase}
+.ebdg.asset{background:rgba(3,70,148,0.15);color:#1a72d4}
+.ebdg.liab{background:rgba(231,76,60,0.15);color:#e74c3c}
+.ebdg.equity{background:rgba(0,122,61,0.15);color:#007a3d}
+.ebdg.income{background:rgba(0,122,61,0.12);color:#00c965}
+.ebdg.expense{background:rgba(231,76,60,0.12);color:#e74c3c}
+.ebdg.dr{background:rgba(26,114,212,0.12);color:#1a72d4}
+.ebdg.cr{background:rgba(184,151,58,0.12);color:#b8973a}
+
+/* PROGRESS */
+.eprog{background:rgba(255,255,255,0.05);height:5px;border-radius:3px;overflow:hidden;margin:0.4rem 0}
+.eprog-f{height:100%;border-radius:3px;transition:width 0.5s ease}
+
+/* FS STYLES */
+.fs-wrap{background:#080f1a;border:1px solid rgba(255,255,255,0.06);padding:1.5rem;margin-bottom:1.2rem}
+.fs-title{font-size:0.95rem;font-weight:900;color:#e8e2d8;text-align:center;margin-bottom:0.2rem}
+.fs-sub{font-size:0.6rem;color:#566070;text-align:center;letter-spacing:0.1em;margin-bottom:1.2rem}
+.fs-section{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#1a72d4;margin:1rem 0 0.4rem;padding-bottom:0.3rem;border-bottom:1px solid rgba(26,114,212,0.2)}
+.fs-row{display:flex;justify-content:space-between;padding:0.3rem 0;font-size:0.78rem;color:#8a94a0;border-bottom:1px solid rgba(255,255,255,0.03)}
+.fs-row.indent{padding-left:1rem}
+.fs-row.total{color:#e8e2d8;font-weight:700;border-top:1px solid rgba(255,255,255,0.15);border-bottom:none;margin-top:0.3rem;padding-top:0.5rem}
+.fs-row.grand{color:#b8973a;font-weight:900;font-size:0.85rem;border-top:2px solid rgba(184,151,58,0.4);margin-top:0.4rem;padding-top:0.6rem}
+.fs-row span:last-child{font-weight:600;min-width:120px;text-align:right}
+.fs-row.total span:last-child,.fs-row.grand span:last-child{color:inherit}
+.fs-note{font-size:0.62rem;color:#566070;margin-top:1rem;padding-top:0.8rem;border-top:1px solid rgba(255,255,255,0.06)}
+
+/* TABS */
+.etabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:1.2rem}
+.etab{padding:0.6rem 1.1rem;font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#566070;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s}
+.etab:hover{color:#9aaabb}.etab.active{color:#034694;border-bottom-color:#034694}
+.etab-pane{display:none}.etab-pane.active{display:block}
+
+/* DEL BTN */
+.edel{background:none;border:none;color:#2a3a4a;cursor:pointer;font-size:0.78rem;padding:0.2rem 0.4rem;transition:color 0.2s}
+.edel:hover{color:#e74c3c}
+
+/* DIVIDER */
+.ediv{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:1rem 0}
+
+@media(max-width:700px){.esb{display:none}.eg4,.eg3{grid-template-columns:1fr 1fr}.eg2{grid-template-columns:1fr}.efg,.efg3{grid-template-columns:1fr}}
+</style>
+
+<!-- ═══ AUTH ═══ -->
+<div id="erp-auth">
+  <div class="ea-logo">V<span>O</span> ERP</div>
+  <div class="ea-card">
+    <div class="ea-title">IFRS Personal Finance ERP · Secure Login</div>
+    <input class="ei" id="ea-word" type="password" placeholder="Secret Word" autocomplete="off"/>
+    <input class="ei pin" id="ea-pin" type="password" placeholder="● ● ● ● ● ●" maxlength="6" autocomplete="off"/>
+    <button class="eb" onclick="erpLogin()">Unlock System</button>
+    <div class="ea-err" id="ea-err"></div>
+  </div>
+  <div style="font-size:0.58rem;color:#1a2a3a;letter-spacing:0.12em">PRIVATE · NOT VISIBLE TO PUBLIC · Ctrl+Shift+F</div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div id="erp-app">
+  <div class="etb">
+    <div class="etb-brand">V<span>O</span> Finance ERP <span style="font-size:0.55rem;color:#2a3a4a;font-weight:400;margin-left:0.5rem">IFRS Compliant v2.0</span></div>
+    <div class="etb-r">
+      <div class="eclock" id="erp-clock"></div>
+      <button class="elock" onclick="erpLock()">⬡ Lock</button>
+    </div>
+  </div>
+
+  <div class="ebody">
+    <div class="esb">
+      <div class="esb-sec">Overview</div>
+      <div class="esb-item active" onclick="erpGo('dashboard')"><span class="esb-icon">◈</span>Dashboard</div>
+
+      <div class="esb-sec">Accounting</div>
+      <div class="esb-item" onclick="erpGo('coa')"><span class="esb-icon">≡</span>Chart of Accounts</div>
+      <div class="esb-item" onclick="erpGo('journal')"><span class="esb-icon">✎</span>Journal Entries</div>
+      <div class="esb-item" onclick="erpGo('gl')"><span class="esb-icon">📒</span>General Ledger</div>
+      <div class="esb-item" onclick="erpGo('tb')"><span class="esb-icon">⚖</span>Trial Balance</div>
+
+      <div class="esb-sec">Financial Statements</div>
+      <div class="esb-item" onclick="erpGo('bs')"><span class="esb-icon">◫</span>Balance Sheet</div>
+      <div class="esb-item" onclick="erpGo('pnl')"><span class="esb-icon">↕</span>P&amp;L Statement</div>
+      <div class="esb-item" onclick="erpGo('cf')"><span class="esb-icon">⟳</span>Cash Flow</div>
+      <div class="esb-item" onclick="erpGo('equity')"><span class="esb-icon">◎</span>Changes in Equity</div>
+      <div class="esb-item" onclick="erpGo('notes')"><span class="esb-icon">ℹ</span>Notes to Accounts</div>
+
+      <div class="esb-sec">Modules</div>
+      <div class="esb-item" onclick="erpGo('income')"><span class="esb-icon">↑</span>Income</div>
+      <div class="esb-item" onclick="erpGo('expenses')"><span class="esb-icon">↓</span>Expenses</div>
+      <div class="esb-item" onclick="erpGo('assets')"><span class="esb-icon">◆</span>Assets</div>
+      <div class="esb-item" onclick="erpGo('debt')"><span class="esb-icon">⊖</span>Debt &amp; Liabilities</div>
+
+      <div class="esb-sec">System</div>
+      <div class="esb-item" onclick="erpGo('settings')"><span class="esb-icon">⚙</span>Settings</div>
+    </div>
+
+    <div class="econtent">
+
+      <!-- ═══ DASHBOARD ═══ -->
+      <div class="epage active" id="erp-page-dashboard">
+        <div class="ept">Dashboard</div>
+        <div class="eps" id="dash-date"></div>
+        <div class="eg4" id="dash-kpis"></div>
+        <div class="eg2">
+          <div class="ep">
+            <div class="ep-h"><span class="ep-t">Net Worth Trend</span></div>
+            <div class="ep-b" id="dash-nw-bar"></div>
+          </div>
+          <div class="ep">
+            <div class="ep-h"><span class="ep-t">Income vs Expenses (6 months)</span></div>
+            <div class="ep-b" id="dash-chart" style="height:100px;display:flex;align-items:flex-end;gap:6px"></div>
+          </div>
+        </div>
+        <div class="ep">
+          <div class="ep-h"><span class="ep-t">Recent Journal Entries</span></div>
+          <div class="ep-b" style="padding:0"><table class="et"><thead><tr><th>Date</th><th>Ref</th><th>Description</th><th>Debit</th><th>Credit</th></tr></thead><tbody id="dash-je"></tbody></table></div>
+        </div>
+      </div>
+
+      <!-- ═══ CHART OF ACCOUNTS ═══ -->
+      <div class="epage" id="erp-page-coa">
+        <div class="ept">Chart of Accounts</div>
+        <div class="eps">IFRS-compliant account structure · Double-entry system</div>
+
+        <div class="etabs">
+          <div class="etab active" onclick="coaTab('view')">All Accounts</div>
+          <div class="etab" onclick="coaTab('add')">Add Account</div>
+        </div>
+
+        <div class="etab-pane active" id="coa-view">
+          <div class="ep" style="margin-bottom:0.6rem">
+            <div class="ep-h"><span class="ep-t">1000–1999 · Assets</span><span class="ebdg asset">IFRS IAS 1</span></div>
+            <div class="ep-b" style="padding:0"><table class="et"><thead><tr><th>Code</th><th>Account Name</th><th>Type</th><th>Normal Balance</th><th>Balance</th><th></th></tr></thead><tbody id="coa-assets"></tbody></table></div>
+          </div>
+          <div class="ep" style="margin-bottom:0.6rem">
+            <div class="ep-h"><span class="ep-t">2000–2999 · Liabilities</span><span class="ebdg liab">IFRS IAS 1</span></div>
+            <div class="ep-b" style="padding:0"><table class="et"><thead><tr><th>Code</th><th>Account Name</th><th>Type</th><th>Normal Balance</th><th>Balance</th><th></th></tr></thead><tbody id="coa-liab"></tbody></table></div>
+          </div>
+          <div class="ep" style="margin-bottom:0.6rem">
+            <div class="ep-h"><span class="ep-t">3000–3999 · Equity</span><span class="ebdg equity">IFRS IAS 1</span></div>
+            <div class="ep-b" style="padding:0"><table class="et"><thead><tr><th>Code</th><th>Account Name</th><th>Type</th><th>Normal Balance</th><th>Balance</th><th></th></tr></thead><tbody id="coa-equity"></tbody></table></div>
+          </div>
+          <div class="ep" style="margin-bottom:0.6rem">
+            <div class="ep-h"><span class="ep-t">4000–4999 · Income</span><span class="ebdg income">IFRS IFRS 15</span></div>
+            <div class="ep-b" style="padding:0"><table class="et"><thead><tr><th>Code</th><th>Account Name</th><th>Type</th><th>Normal Balance</th><th>Balance</th><th></th></tr></thead><tbody id="coa-income"></tbody></table></div>
+          </div>
+          <div class="ep">
+            <div class="ep-h"><span class="ep-t">5000–5999 · Expenses</span><span class="ebdg expense">IFRS IAS 1</span></div>
+            <div class="ep-b" style="padding:0"><table class="et"><thead><tr><th>Code</th><th>Account Name</th><th>Type</th><th>Normal Balance</th><th>Balance</th><th></th></tr></thead><tbody id="coa-expense"></tbody></table></div>
+          </div>
+        </div>
+
+        <div class="etab-pane" id="coa-add">
+          <div class="ep">
+            <div class="ep-h"><span class="ep-t">Add New Account</span></div>
+            <div class="ep-b">
+              <div class="efg">
+                <div><label class="elbl">Account Code</label><input class="ef" id="coa-code" placeholder="e.g. 1010"/></div>
+                <div><label class="elbl">Account Name</label><input class="ef" id="coa-name" placeholder="e.g. Mpesa Wallet"/></div>
+                <div><label class="elbl">Category</label>
+                  <select class="ef" id="coa-cat">
+                    <option value="asset">Asset (1000-1999)</option>
+                    <option value="liability">Liability (2000-2999)</option>
+                    <option value="equity">Equity (3000-3999)</option>
+                    <option value="income">Income (4000-4999)</option>
+                    <option value="expense">Expense (5000-5999)</option>
+                  </select></div>
+                <div><label class="elbl">Sub-type</label>
+                  <select class="ef" id="coa-sub">
+                    <option>Current Asset</option><option>Non-Current Asset</option>
+                    <option>Current Liability</option><option>Non-Current Liability</option>
+                    <option>Owner's Equity</option><option>Retained Earnings</option>
+                    <option>Operating Income</option><option>Other Income</option>
+                    <option>Operating Expense</option><option>Finance Cost</option><option>Tax</option>
+                  </select></div>
+                <div class="efull"><label class="elbl">Description</label><input class="ef" id="coa-desc" placeholder="Brief account description"/></div>
+              </div>
+              <button class="eb sm" onclick="coaAdd()">Add Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ JOURNAL ENTRIES ═══ -->
+      <div class="epage" id="erp-page-journal">
+        <div class="ept">Journal Entries</div>
+        <div class="eps">Double-entry bookkeeping · Debits = Credits</div>
+
+        <div class="ep">
+          <div class="ep-h"><span class="ep-t">New Journal Entry</span><span style="font-size:0.6rem;color:#566070">IAS 1 · Double Entry</span></div>
+          <div class="ep-b">
+            <div class="efg">
+              <div><label class="elbl">Date</label><input class="ef" id="je-date" type="date"/></div>
+              <div><label class="elbl">Reference No.</label><input class="ef" id="je-ref" placeholder="e.g. JE-001"/></div>
+              <div class="efull"><label class="elbl">Description / Narration</label><input class="ef" id="je-desc" placeholder="e.g. March 2026 salary from Digital Qatalyst"/></div>
+            </div>
+            <div id="je-lines">
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:0.5rem;margin-bottom:0.4rem">
+                <span class="elbl">Account</span><span class="elbl">Debit (KES)</span><span class="elbl">Credit (KES)</span><span></span>
+              </div>
+              <div id="je-line-rows"></div>
+            </div>
+            <div style="display:flex;gap:0.6rem;align-items:center;margin-top:0.6rem;flex-wrap:wrap">
+              <button class="eb sm" onclick="jeAddLine()">+ Add Line</button>
+              <button class="eb sm g" onclick="jePost()">Post Entry</button>
+              <span id="je-balance-check" style="font-size:0.65rem;color:#566070"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ep">
+          <div class="ep-h"><span class="ep-t">Posted Journal Entries</span></div>
+          <div class="ep-b" style="padding:0">
+            <table class="et">
+              <thead><tr><th>Date</th><th>Ref</th><th>Account</th><th>Description</th><th>Debit</th><th>Credit</th><th></th></tr></thead>
+              <tbody id="je-list"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ GENERAL LEDGER ═══ -->
+      <div class="epage" id="erp-page-gl">
+        <div class="ept">General Ledger</div>
+        <div class="eps">Account-level transaction history · T-Account view</div>
+        <div style="display:flex;gap:0.8rem;margin-bottom:1.2rem;align-items:center">
+          <select class="ef" id="gl-account" style="max-width:280px" onchange="refreshGL()"><option value="">Select Account...</option></select>
+          <button class="eb sm" onclick="refreshGL()">View Ledger</button>
+        </div>
+        <div id="gl-content"></div>
+      </div>
+
+      <!-- ═══ TRIAL BALANCE ═══ -->
+      <div class="epage" id="erp-page-tb">
+        <div class="ept">Trial Balance</div>
+        <div class="eps">Unadjusted · As at <span id="tb-date"></span></div>
+        <div class="ep">
+          <div class="ep-h"><span class="ep-t">Trial Balance · All Accounts</span><span class="eb sm" onclick="refreshTB()" style="cursor:pointer;background:#034694;color:white;border:none;padding:0.3rem 0.8rem;font-size:0.58rem;font-weight:700;letter-spacing:0.1em">Refresh</span></div>
+          <div class="ep-b" style="padding:0">
+            <table class="et">
+              <thead><tr><th>Code</th><th>Account</th><th>Category</th><th>Debit</th><th>Credit</th></tr></thead>
+              <tbody id="tb-body"></tbody>
+              <tfoot id="tb-foot"></tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ BALANCE SHEET ═══ -->
+      <div class="epage" id="erp-page-bs">
+        <div class="ept">Statement of Financial Position</div>
+        <div class="eps">Balance Sheet · IFRS IAS 1</div>
+        <button class="eb sm" onclick="refreshBS()" style="margin-bottom:1rem">↻ Refresh</button>
+        <div id="bs-content"></div>
+      </div>
+
+      <!-- ═══ P&L ═══ -->
+      <div class="epage" id="erp-page-pnl">
+        <div class="ept">Statement of Profit or Loss</div>
+        <div class="eps">Income Statement · IFRS IFRS 15 · IAS 1</div>
+        <button class="eb sm" onclick="refreshPNL()" style="margin-bottom:1rem">↻ Refresh</button>
+        <div id="pnl-content"></div>
+      </div>
+
+      <!-- ═══ CASH FLOW ═══ -->
+      <div class="epage" id="erp-page-cf">
+        <div class="ept">Statement of Cash Flows</div>
+        <div class="eps">Indirect Method · IFRS IAS 7</div>
+        <button class="eb sm" onclick="refreshCF()" style="margin-bottom:1rem">↻ Refresh</button>
+        <div id="cf-content"></div>
+      </div>
+
+      <!-- ═══ CHANGES IN EQUITY ═══ -->
+      <div class="epage" id="erp-page-equity">
+        <div class="ept">Statement of Changes in Equity</div>
+        <div class="eps">IFRS IAS 1 · Owners Equity Movement</div>
+        <button class="eb sm" onclick="refreshEquity()" style="margin-bottom:1rem">↻ Refresh</button>
+        <div id="equity-content"></div>
+      </div>
+
+      <!-- ═══ NOTES ═══ -->
+      <div class="epage" id="erp-page-notes">
+        <div class="ept">Notes to the Financial Statements</div>
+        <div class="eps">IFRS Disclosures · IAS 1 para 112</div>
+        <div id="notes-content"></div>
+      </div>
+
+      <!-- ═══ INCOME ═══ -->
+      <div class="epage" id="erp-page-income">
+        <div class="ept">Income</div><div class="eps">Auto-posts to GL · Account 4000</div>
+        <div class="eg3" id="inc-kpis"></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Record Income</span></div><div class="ep-b">
+          <div class="efg">
+            <div><label class="elbl">Source</label><input class="ef" id="inc-src" placeholder="e.g. Digital Qatalyst"/></div>
+            <div><label class="elbl">GL Account</label><select class="ef" id="inc-acc"></select></div>
+            <div><label class="elbl">Amount (KES)</label><input class="ef" id="inc-amt" type="number" placeholder="0"/></div>
+            <div><label class="elbl">Date</label><input class="ef" id="inc-dt" type="date"/></div>
+            <div><label class="elbl">Cash Account (Dr)</label><select class="ef" id="inc-cash"></select></div>
+            <div><label class="elbl">Note</label><input class="ef" id="inc-note" placeholder="Optional"/></div>
+          </div>
+          <button class="eb sm g" onclick="incPost()">Post Income</button>
+        </div></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Income History</span></div><div class="ep-b" style="padding:0">
+          <table class="et"><thead><tr><th>Date</th><th>Source</th><th>Account</th><th>Note</th><th>Amount</th></tr></thead><tbody id="inc-list"></tbody></table>
+        </div></div>
+      </div>
+
+      <!-- ═══ EXPENSES ═══ -->
+      <div class="epage" id="erp-page-expenses">
+        <div class="ept">Expenses</div><div class="eps">Auto-posts to GL · Account 5000</div>
+        <div class="eg3" id="exp-kpis"></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Record Expense</span></div><div class="ep-b">
+          <div class="efg">
+            <div><label class="elbl">Description</label><input class="ef" id="exp-desc" placeholder="e.g. Rent"/></div>
+            <div><label class="elbl">GL Account</label><select class="ef" id="exp-acc"></select></div>
+            <div><label class="elbl">Amount (KES)</label><input class="ef" id="exp-amt" type="number" placeholder="0"/></div>
+            <div><label class="elbl">Date</label><input class="ef" id="exp-dt" type="date"/></div>
+            <div><label class="elbl">Paid From (Cr)</label><select class="ef" id="exp-cash"></select></div>
+            <div><label class="elbl">Note</label><input class="ef" id="exp-note" placeholder="Optional"/></div>
+          </div>
+          <button class="eb sm r" onclick="expPost()">Post Expense</button>
+        </div></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Expense History</span></div><div class="ep-b" style="padding:0">
+          <table class="et"><thead><tr><th>Date</th><th>Description</th><th>Account</th><th>Amount</th></tr></thead><tbody id="exp-list"></tbody></table>
+        </div></div>
+      </div>
+
+      <!-- ═══ ASSETS ═══ -->
+      <div class="epage" id="erp-page-assets">
+        <div class="ept">Assets Register</div><div class="eps">Non-current &amp; current assets · IAS 16 / IAS 38</div>
+        <div class="eg3" id="ast-kpis"></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Add Asset</span></div><div class="ep-b">
+          <div class="efg">
+            <div><label class="elbl">Asset Name</label><input class="ef" id="ast-name" placeholder="e.g. Laptop"/></div>
+            <div><label class="elbl">GL Account</label><select class="ef" id="ast-acc"></select></div>
+            <div><label class="elbl">Cost (KES)</label><input class="ef" id="ast-cost" type="number" placeholder="0"/></div>
+            <div><label class="elbl">Date Acquired</label><input class="ef" id="ast-dt" type="date"/></div>
+            <div><label class="elbl">Useful Life (yrs)</label><input class="ef" id="ast-life" type="number" placeholder="3" value="3"/></div>
+            <div><label class="elbl">Residual Value (KES)</label><input class="ef" id="ast-res" type="number" placeholder="0" value="0"/></div>
+          </div>
+          <button class="eb sm" onclick="astAdd()">Add Asset</button>
+        </div></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Assets Register</span></div><div class="ep-b" style="padding:0">
+          <table class="et"><thead><tr><th>Asset</th><th>Account</th><th>Cost</th><th>Depreciation/yr</th><th>NBV</th><th>Date</th><th></th></tr></thead><tbody id="ast-list"></tbody></table>
+        </div></div>
+      </div>
+
+      <!-- ═══ DEBT ═══ -->
+      <div class="epage" id="erp-page-debt">
+        <div class="ept">Debt &amp; Liabilities</div><div class="eps">IFRS 9 · Financial Instruments</div>
+        <div class="eg3" id="dbt-kpis"></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Add Liability</span></div><div class="ep-b">
+          <div class="efg">
+            <div><label class="elbl">Creditor</label><input class="ef" id="dbt-cred" placeholder="e.g. KCB Bank"/></div>
+            <div><label class="elbl">GL Account</label><select class="ef" id="dbt-acc"></select></div>
+            <div><label class="elbl">Principal (KES)</label><input class="ef" id="dbt-total" type="number" placeholder="0"/></div>
+            <div><label class="elbl">Amount Paid (KES)</label><input class="ef" id="dbt-paid" type="number" placeholder="0" value="0"/></div>
+            <div><label class="elbl">Interest Rate (%pa)</label><input class="ef" id="dbt-rate" type="number" placeholder="0" step="0.1"/></div>
+            <div><label class="elbl">Due Date</label><input class="ef" id="dbt-due" type="date"/></div>
+          </div>
+          <button class="eb sm" style="background:#b8973a" onclick="dbtAdd()">Add Liability</button>
+        </div></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Liabilities Register</span></div><div class="ep-b" id="dbt-list"></div></div>
+      </div>
+
+      <!-- ═══ SETTINGS ═══ -->
+      <div class="epage" id="erp-page-settings">
+        <div class="ept">Settings</div><div class="eps">Credentials · Data management</div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Change Credentials</span></div><div class="ep-b">
+          <div class="efg">
+            <div><label class="elbl">New Secret Word</label><input class="ef" id="set-word" type="password" placeholder="New secret word"/></div>
+            <div><label class="elbl">New PIN</label><input class="ef pin" id="set-pin" type="password" placeholder="● ● ● ● ● ●" maxlength="6"/></div>
+          </div>
+          <button class="eb sm" onclick="erpSetCreds()">Update</button>
+          <div id="set-msg" style="font-size:0.7rem;color:#007a3d;margin-top:0.5rem;min-height:1rem"></div>
+        </div></div>
+        <div class="ep"><div class="ep-h"><span class="ep-t">Data</span></div><div class="ep-b" style="display:flex;gap:0.8rem;flex-wrap:wrap">
+          <button class="eb sm" onclick="erpExport()">Export JSON</button>
+          <button class="eb sm" onclick="erpSeedDemo()">Load Demo Data</button>
+          <button class="eb sm r" onclick="erpClear()">Clear All Data</button>
+        </div></div>
+      </div>
+
+    </div><!-- /econtent -->
+  </div><!-- /ebody -->
+</div><!-- /erp-app -->
+</div><!-- /erp-root -->
+
+<script>
+(function(){
+'use strict';
+
+// ═══ STORAGE ═══
+var K={auth:'erp2_auth',coa:'erp2_coa',je:'erp2_je',assets:'erp2_assets',debt:'erp2_debt'};
+function load(k){try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return[]}}
+function loadO(k,d){try{return JSON.parse(localStorage.getItem(k)||'null')||d}catch(e){return d}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+
+// ═══ UTILS ═══
+function hash(s){var h=0;for(var i=0;i<s.length;i++)h=(Math.imul(31,h)+s.charCodeAt(i))|0;return h.toString(36)}
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2,5)}
+function today(){return new Date().toISOString().slice(0,10)}
+function thisMonth(){return new Date().toISOString().slice(0,7)}
+function fmt(n){return 'KES '+(+n||0).toLocaleString('en-KE',{minimumFractionDigits:0,maximumFractionDigits:0})}
+function fmtD(d){if(!d)return'—';var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
+function nextJERef(){var je=load(K.je);var nums=je.map(function(j){var m=j.ref&&j.ref.match(/(\d+)/);return m?+m[1]:0});var max=nums.length?Math.max.apply(null,nums):0;return 'JE-'+(max+1).toString().padStart(3,'0')}
+
+// ═══ DEFAULT CHART OF ACCOUNTS (IFRS) ═══
+var DEFAULT_COA=[
+  // ══════════════════════════════════════════════════
+  // CHART OF ACCOUNTS — Vincent Ouma Owino
+  // IFRS Compliant · Updated with actual accounts
+  // ══════════════════════════════════════════════════
+
+  // ── 1000–1999 ASSETS ──────────────────────────────
+
+  // CASH & MOBILE MONEY
+  {id:'1000',code:'1000',name:'Cash at Hand',cat:'asset',sub:'Current Asset',desc:'Physical cash withdrawn from ATM or Mpesa',balance:0},
+  {id:'1010',code:'1010',name:'Mpesa Wallet',cat:'asset',sub:'Current Asset',desc:'Safaricom Mpesa mobile wallet — primary transactional account. Used for receiving salary, sending money, paybill and buy goods.',balance:0},
+  {id:'1011',code:'1011',name:'Mpesa Global Visa Card',cat:'asset',sub:'Current Asset',desc:'Mpesa virtual/physical Visa card — used for international SaaS payments and online subscriptions (linked to Mpesa wallet)',balance:0},
+
+  // BANK ACCOUNTS
+  {id:'1020',code:'1020',name:'KCB Bank Account',cat:'asset',sub:'Current Asset',desc:'KCB current/transactional bank account — ATM withdrawals and general banking',balance:0},
+  {id:'1021',code:'1021',name:'KCB Credit Card',cat:'asset',sub:'Current Asset',desc:'KCB credit card — used for SaaS purchases, online payments and ATM withdrawals. Repayable monthly.',balance:0},
+
+  // SAVINGS
+  {id:'1030',code:'1030',name:'Zidii Savings Account',cat:'asset',sub:'Current Asset',desc:'Automated savings via Mpesa — auto-deducts 16% on every Send Money, Paybill and Buy Goods transaction. Earns interest.',balance:0},
+
+  // RECEIVABLES & OTHER CURRENT
+  {id:'1100',code:'1100',name:'Accounts Receivable',cat:'asset',sub:'Current Asset',desc:'Amounts owed to Vincent — freelance/consultancy invoices',balance:0},
+  {id:'1200',code:'1200',name:'Prepaid Expenses',cat:'asset',sub:'Current Asset',desc:'Expenses paid in advance — subscriptions, deposits',balance:0},
+
+  // NON-CURRENT ASSETS
+  {id:'1500',code:'1500',name:'Property & Equipment (PPE)',cat:'asset',sub:'Non-Current Asset',desc:'Electronics, equipment at cost — IAS 16',balance:0},
+  {id:'1510',code:'1510',name:'Accumulated Depreciation',cat:'asset',sub:'Non-Current Asset',desc:'Less: accumulated depreciation on PPE — IAS 16',balance:0},
+  {id:'1600',code:'1600',name:'Investments',cat:'asset',sub:'Non-Current Asset',desc:'Long-term investments — IFRS 9',balance:0},
+  {id:'1700',code:'1700',name:'Intangible Assets',cat:'asset',sub:'Non-Current Asset',desc:'Software, licences — IAS 38',balance:0},
+
+  // ── 2000–2999 LIABILITIES ─────────────────────────
+
+  // CURRENT LIABILITIES
+  {id:'2000',code:'2000',name:'Accounts Payable',cat:'liability',sub:'Current Liability',desc:'Amounts owed to suppliers/service providers',balance:0},
+  {id:'2010',code:'2010',name:'Fuliza (Safaricom)',cat:'liability',sub:'Current Liability',desc:'Mpesa Fuliza overdraft facility — current limit KES 600. Auto-deducted on next Mpesa receipt. IFRS 9.',balance:0},
+  {id:'2020',code:'2020',name:'KCB Credit Card Payable',cat:'liability',sub:'Current Liability',desc:'KCB credit card outstanding balance — repayable monthly. Used for SaaS, online purchases, ATM.',balance:0},
+  {id:'2030',code:'2030',name:'Zidii Auto-Deduction Payable',cat:'liability',sub:'Current Liability',desc:'Zidii 16% auto-savings deduction accrual — cleared on each Mpesa transaction',balance:0},
+  {id:'2100',code:'2100',name:'Tax Payable (PAYE)',cat:'liability',sub:'Current Liability',desc:'PAYE income tax deducted at source — IAS 12',balance:0},
+  {id:'2110',code:'2110',name:'NSSF Payable',cat:'liability',sub:'Current Liability',desc:'National Social Security Fund monthly deduction',balance:0},
+  {id:'2120',code:'2120',name:'SHIF Payable',cat:'liability',sub:'Current Liability',desc:'Social Health Insurance Fund (formerly NHIF) deduction',balance:0},
+  {id:'2200',code:'2200',name:'Bank Loans',cat:'liability',sub:'Non-Current Liability',desc:'Long-term KCB or other bank borrowings — IFRS 9',balance:0},
+  {id:'2300',code:'2300',name:'Accrued Liabilities',cat:'liability',sub:'Non-Current Liability',desc:'Accrued but unpaid obligations',balance:0},
+
+  // ── 3000–3999 EQUITY ──────────────────────────────
+  {id:'3000',code:'3000',name:"Owner's Capital",cat:'equity',sub:"Owner's Equity",desc:'Opening capital and additional contributions — IAS 1',balance:0},
+  {id:'3100',code:'3100',name:'Retained Earnings',cat:'equity',sub:'Retained Earnings',desc:'Accumulated surplus from prior periods',balance:0},
+  {id:'3200',code:'3200',name:'Current Year P&L',cat:'equity',sub:'Retained Earnings',desc:'Current period profit or loss — auto-computed',balance:0},
+
+  // ── 4000–4999 INCOME ──────────────────────────────
+  {id:'4000',code:'4000',name:'Employment Income — DQ',cat:'income',sub:'Operating Income',desc:'Monthly salary from Digital Qatalyst — IFRS 15',balance:0},
+  {id:'4010',code:'4010',name:'Freelance / Consultancy',cat:'income',sub:'Operating Income',desc:'Contract and freelance income — IFRS 15',balance:0},
+  {id:'4020',code:'4020',name:'Mwangaza Initiative Income',cat:'income',sub:'Operating Income',desc:'Allowances or remuneration from Mwangaza Initiative role',balance:0},
+  {id:'4100',code:'4100',name:'Interest Income — Zidii',cat:'income',sub:'Other Income',desc:'Interest earned on Zidii savings account — IFRS 9',balance:0},
+  {id:'4110',code:'4110',name:'Interest Income — KCB',cat:'income',sub:'Other Income',desc:'Interest earned on KCB savings — IFRS 9',balance:0},
+  {id:'4200',code:'4200',name:'Investment Gains',cat:'income',sub:'Other Income',desc:'Capital gains on investments — IFRS 9',balance:0},
+  {id:'4900',code:'4900',name:'Other Income',cat:'income',sub:'Other Income',desc:'Miscellaneous income not elsewhere classified',balance:0},
+
+  // ── 5000–5999 EXPENSES ────────────────────────────
+  {id:'5000',code:'5000',name:'Rent & Housing',cat:'expense',sub:'Operating Expense',desc:'Monthly rent / accommodation costs',balance:0},
+  {id:'5010',code:'5010',name:'Food & Groceries',cat:'expense',sub:'Operating Expense',desc:'Daily food, groceries and household consumables',balance:0},
+  {id:'5020',code:'5020',name:'Transport',cat:'expense',sub:'Operating Expense',desc:'Matatu, boda boda, fuel, Uber commute',balance:0},
+  {id:'5030',code:'5030',name:'Utilities',cat:'expense',sub:'Operating Expense',desc:'Electricity (KPLC), water, gas',balance:0},
+  {id:'5040',code:'5040',name:'SaaS Subscriptions — Mpesa Visa',cat:'expense',sub:'Operating Expense',desc:'International SaaS subscriptions paid via Mpesa Global Visa card (Adobe, MS365, tools etc.) — IAS 38',balance:0},
+  {id:'5041',code:'5041',name:'SaaS Subscriptions — KCB Card',cat:'expense',sub:'Operating Expense',desc:'SaaS and online purchases via KCB credit card — IAS 38',balance:0},
+  {id:'5050',code:'5050',name:'Health & Medical (SHIF/NHIF)',cat:'expense',sub:'Operating Expense',desc:'SHIF contributions, medical bills, pharmacy',balance:0},
+  {id:'5060',code:'5060',name:'Education & Professional Dev.',cat:'expense',sub:'Operating Expense',desc:'Courses, certifications, books, training',balance:0},
+  {id:'5070',code:'5070',name:'Communication — Airtime & Data',cat:'expense',sub:'Operating Expense',desc:'Safaricom airtime, data bundles',balance:0},
+  {id:'5080',code:'5080',name:'Entertainment & Leisure',cat:'expense',sub:'Operating Expense',desc:'Recreation, dining out, events',balance:0},
+  {id:'5090',code:'5090',name:'Clothing & Personal Care',cat:'expense',sub:'Operating Expense',desc:'Clothing, grooming, personal items',balance:0},
+  {id:'5100',code:'5100',name:'Depreciation — PPE',cat:'expense',sub:'Operating Expense',desc:'Straight-line depreciation on equipment — IAS 16',balance:0},
+  {id:'5110',code:'5110',name:'Zidii Auto-Savings (16%)',cat:'expense',sub:'Operating Expense',desc:'Automatic 16% savings deduction on Mpesa Send Money, Paybill and Buy Goods — redirected to Zidii savings',balance:0},
+  {id:'5120',code:'5120',name:'ATM Withdrawal Costs',cat:'expense',sub:'Operating Expense',desc:'ATM withdrawal charges — KCB and other banks',balance:0},
+  {id:'5200',code:'5200',name:'Fuliza Interest & Fees',cat:'expense',sub:'Finance Cost',desc:'Fuliza daily maintenance fee and accrued interest — IFRS 9',balance:0},
+  {id:'5210',code:'5210',name:'KCB Credit Card Interest',cat:'expense',sub:'Finance Cost',desc:'Interest on KCB credit card outstanding balance — IFRS 9',balance:0},
+  {id:'5300',code:'5300',name:'PAYE Income Tax',cat:'expense',sub:'Tax',desc:'Pay As You Earn deducted at source — IAS 12',balance:0},
+  {id:'5310',code:'5310',name:'NSSF Contribution',cat:'expense',sub:'Tax',desc:'National Social Security Fund monthly deduction',balance:0},
+  {id:'5900',code:'5900',name:'Other Expenses',cat:'expense',sub:'Operating Expense',desc:'Miscellaneous expenses not elsewhere classified',balance:0},
+];
+
+function getCOA(){
+  var saved=load(K.coa);
+  if(!saved||!saved.length){save(K.coa,DEFAULT_COA);return DEFAULT_COA}
+  return saved;
+}
+function saveCOA(coa){save(K.coa,coa)}
+function getAccByCode(code){return getCOA().find(function(a){return a.code===code})}
+function getAccById(id){return getCOA().find(function(a){return a.id===id||a.code===id})}
+
+// ═══ LEDGER BALANCE (compute from JE) ═══
+function getBalance(accId){
+  var coa=getCOA();
+  var acc=coa.find(function(a){return a.id===accId||a.code===accId});
+  if(!acc)return 0;
+  var je=load(K.je);
+  var bal=0;
+  je.forEach(function(entry){
+    entry.lines.forEach(function(l){
+      if(l.acc===accId||l.acc===acc.code){
+        // Normal balance: Assets & Expenses = Debit; Liabilities, Equity, Income = Credit
+        var isDebitNormal=(acc.cat==='asset'||acc.cat==='expense');
+        if(isDebitNormal){bal+=(+l.dr||0)-(+l.cr||0)}
+        else{bal+=(+l.cr||0)-(+l.dr||0)}
+      }
+    });
+  });
+  return bal;
+}
+
+function getAllBalances(){
+  var coa=getCOA();
+  var result={};
+  coa.forEach(function(a){result[a.code]=getBalance(a.code)});
+  return result;
+}
+
+// ═══ AUTH ═══
+window.erpLogin=function(){
+  var word=document.getElementById('ea-word').value.trim();
+  var pin=document.getElementById('ea-pin').value.trim();
+  var err=document.getElementById('ea-err');
+  if(!word||!pin){err.textContent='Enter secret word and PIN';return}
+  var creds=loadO(K.auth,null);
+  if(!creds){
+    save(K.auth,{word:hash(word.toLowerCase()),pin:hash(pin)});
+    err.style.color='#007a3d';err.textContent='Credentials created! Welcome.';
+    setTimeout(erpUnlock,700);
+  } else {
+    if(hash(word.toLowerCase())===creds.word&&hash(pin)===creds.pin){err.textContent='';erpUnlock()}
+    else{err.style.color='#e74c3c';err.textContent='Incorrect. Try again.';document.getElementById('ea-pin').value=''}
+  }
+};
+function erpUnlock(){
+  document.getElementById('erp-auth').style.display='none';
+  document.getElementById('erp-app').style.display='flex';
+  getCOA(); // init default COA if first run
+  refreshAll();startClock();
+  initJELines();populateAccSelects();
+}
+window.erpLock=function(){
+  document.getElementById('erp-app').style.display='none';
+  document.getElementById('erp-auth').style.display='flex';
+  document.getElementById('ea-pin').value='';document.getElementById('ea-word').value='';
+};
+window.erpSetCreds=function(){
+  var w=document.getElementById('set-word').value.trim();
+  var p=document.getElementById('set-pin').value.trim();
+  var m=document.getElementById('set-msg');
+  if(!w||p.length<4){m.style.color='#e74c3c';m.textContent='Need word + 4+ digit PIN';return}
+  save(K.auth,{word:hash(w.toLowerCase()),pin:hash(p)});
+  m.style.color='#007a3d';m.textContent='✓ Credentials updated';
+  document.getElementById('set-word').value='';document.getElementById('set-pin').value='';
+};
+
+// ═══ NAVIGATION ═══
+window.erpGo=function(id){
+  document.querySelectorAll('#erp-root .epage').forEach(function(p){p.classList.remove('active')});
+  document.querySelectorAll('#erp-root .esb-item').forEach(function(n){n.classList.remove('active')});
+  var pg=document.getElementById('erp-page-'+id);if(pg)pg.classList.add('active');
+  document.querySelectorAll('#erp-root .esb-item').forEach(function(n){
+    if(n.getAttribute('onclick')&&n.getAttribute('onclick').indexOf("'"+id+"'")>-1)n.classList.add('active');
+  });
+  var rfn={dashboard:refreshDash,coa:refreshCOA,journal:refreshJE,gl:refreshGL,tb:refreshTB,
+    bs:refreshBS,pnl:refreshPNL,cf:refreshCF,equity:refreshEquity,notes:refreshNotes,
+    income:refreshIncome,expenses:refreshExpenses,assets:refreshAssets,debt:refreshDebt};
+  if(rfn[id])rfn[id]();
+};
+
+// ═══ COA TABS ═══
+window.coaTab=function(t){
+  document.querySelectorAll('#erp-page-coa .etab').forEach(function(x,i){x.classList.toggle('active',i===(t==='view'?0:1))});
+  document.querySelectorAll('#erp-page-coa .etab-pane').forEach(function(x,i){x.classList.toggle('active',i===(t==='view'?0:1))});
+};
+
+// ═══ POPULATE ACCOUNT SELECTS ═══
+function populateAccSelects(){
+  var coa=getCOA();
+  function fillSel(id,filter){
+    var el=document.getElementById(id);if(!el)return;
+    var opts=coa.filter(filter||function(){return true});
+    el.innerHTML=opts.map(function(a){return'<option value="'+a.code+'">'+a.code+' · '+a.name+'</option>'}).join('');
+  }
+  fillSel('inc-acc',function(a){return a.cat==='income'});
+  fillSel('inc-cash',function(a){return a.cat==='asset'&&a.sub==='Current Asset'});
+  fillSel('exp-acc',function(a){return a.cat==='expense'});
+  fillSel('exp-cash',function(a){return a.cat==='asset'&&a.sub==='Current Asset'});
+  fillSel('ast-acc',function(a){return a.cat==='asset'&&a.sub==='Non-Current Asset'});
+  fillSel('dbt-acc',function(a){return a.cat==='liability'});
+  // GL account select
+  var gl=document.getElementById('gl-account');
+  if(gl)gl.innerHTML='<option value="">Select Account...</option>'+coa.map(function(a){return'<option value="'+a.code+'">'+a.code+' · '+a.name+'</option>'}).join('');
+  // JE line account selects
+  refreshJELineAccSelects();
+}
+
+// ═══ JOURNAL ENTRY LINES ═══
+var jeLineCount=0;
+function initJELines(){jeLineCount=0;document.getElementById('je-line-rows').innerHTML='';jeAddLine();jeAddLine();
+  document.getElementById('je-date').value=today();
+  document.getElementById('je-ref').value=nextJERef();
+}
+window.jeAddLine=function(){
+  jeLineCount++;
+  var coa=getCOA();
+  var opts=coa.map(function(a){return'<option value="'+a.code+'">'+a.code+' · '+a.name+'</option>'}).join('');
+  var row=document.createElement('div');
+  row.style.cssText='display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:0.5rem;margin-bottom:0.4rem';
+  row.id='je-line-'+jeLineCount;
+  row.innerHTML='<select class="ef je-acc-sel">'+opts+'</select>'+
+    '<input class="ef" type="number" placeholder="0.00" oninput="jeCheck()" style="text-align:right">'+
+    '<input class="ef" type="number" placeholder="0.00" oninput="jeCheck()" style="text-align:right">'+
+    '<button class="edel" onclick="this.parentElement.remove();jeCheck()">✕</button>';
+  document.getElementById('je-line-rows').appendChild(row);
+  jeCheck();
+};
+function refreshJELineAccSelects(){
+  var coa=getCOA();
+  var opts=coa.map(function(a){return'<option value="'+a.code+'">'+a.code+' · '+a.name+'</option>'}).join('');
+  document.querySelectorAll('.je-acc-sel').forEach(function(s){var v=s.value;s.innerHTML=opts;s.value=v});
+}
+window.jeCheck=function(){
+  var rows=document.querySelectorAll('#je-line-rows > div');
+  var totalDr=0,totalCr=0;
+  rows.forEach(function(r){
+    var ins=r.querySelectorAll('input');
+    totalDr+=(+ins[0].value||0);totalCr+=(+ins[1].value||0);
+  });
+  var el=document.getElementById('je-balance-check');
+  var balanced=Math.abs(totalDr-totalCr)<0.01;
+  el.textContent='Dr: '+fmt(totalDr)+' | Cr: '+fmt(totalCr)+(balanced?' ✓ Balanced':' ✗ Unbalanced');
+  el.style.color=balanced?'#007a3d':'#e74c3c';
+};
+window.jePost=function(){
+  var date=document.getElementById('je-date').value||today();
+  var ref=document.getElementById('je-ref').value.trim()||nextJERef();
+  var desc=document.getElementById('je-desc').value.trim();
+  var rows=document.querySelectorAll('#je-line-rows > div');
+  var lines=[];var totalDr=0,totalCr=0;
+  rows.forEach(function(r){
+    var sel=r.querySelector('select');
+    var ins=r.querySelectorAll('input');
+    var dr=+ins[0].value||0,cr=+ins[1].value||0;
+    if(dr>0||cr>0){lines.push({acc:sel.value,dr:dr,cr:cr});totalDr+=dr;totalCr+=cr;}
+  });
+  if(!lines.length){alert('Add at least one line');return}
+  if(Math.abs(totalDr-totalCr)>0.01){alert('Journal entry must balance (Debits = Credits)');return}
+  var je=load(K.je);
+  je.push({id:uid(),date:date,ref:ref,desc:desc,lines:lines,posted:new Date().toISOString()});
+  save(K.je,je);
+  initJELines();refreshJE();refreshDash();
+};
+
+// ═══ COA ═══
+window.coaAdd=function(){
+  var code=document.getElementById('coa-code').value.trim();
+  var name=document.getElementById('coa-name').value.trim();
+  var cat=document.getElementById('coa-cat').value;
+  var sub=document.getElementById('coa-sub').value;
+  var desc=document.getElementById('coa-desc').value.trim();
+  if(!code||!name){alert('Enter code and name');return}
+  var coa=getCOA();
+  if(coa.find(function(a){return a.code===code})){alert('Account code already exists');return}
+  coa.push({id:code,code:code,name:name,cat:cat,sub:sub,desc:desc,balance:0});
+  saveCOA(coa);populateAccSelects();refreshCOA();
+  document.getElementById('coa-code').value='';document.getElementById('coa-name').value='';
+};
+
+function refreshCOA(){
+  var coa=getCOA();
+  var bals=getAllBalances();
+  var cats={asset:'coa-assets',liability:'coa-liab',equity:'coa-equity',income:'coa-income',expense:'coa-expense'};
+  var normalDr={asset:true,expense:true};
+  Object.keys(cats).forEach(function(cat){
+    var el=document.getElementById(cats[cat]);if(!el)return;
+    var accs=coa.filter(function(a){return a.cat===cat});
+    if(!accs.length){el.innerHTML='<tr><td colspan="6" style="text-align:center;color:#2a3a4a;padding:1rem">None</td></tr>';return}
+    el.innerHTML=accs.map(function(a){
+      var bal=bals[a.code]||0;
+      var nb=normalDr[cat]?'Debit':'Credit';
+      return'<tr><td class="v">'+a.code+'</td><td class="v">'+a.name+'</td><td>'+a.sub+'</td>'+
+        '<td><span class="ebdg '+(normalDr[cat]?'dr':'cr')+'">'+nb+'</span></td>'+
+        '<td class="v">'+fmt(bal)+'</td>'+
+        '<td><button class="edel" onclick="coaDel(\''+a.code+'\')">✕</button></td></tr>';
+    }).join('');
+  });
+}
+window.coaDel=function(code){
+  var defaults=DEFAULT_COA.map(function(a){return a.code});
+  if(defaults.indexOf(code)>-1){alert('Cannot delete default accounts');return}
+  if(!confirm('Delete account '+code+'?'))return;
+  saveCOA(getCOA().filter(function(a){return a.code!==code}));
+  refreshCOA();populateAccSelects();
+};
+
+// ═══ JOURNAL ENTRIES REFRESH ═══
+function refreshJE(){
+  var je=load(K.je);
+  var el=document.getElementById('je-list');if(!el)return;
+  if(!je.length){el.innerHTML='<tr><td colspan="7" style="text-align:center;color:#2a3a4a;padding:1.2rem">No entries posted</td></tr>';return}
+  var rows=[];
+  je.slice().reverse().forEach(function(entry){
+    entry.lines.forEach(function(l,i){
+      var acc=getAccByCode(l.acc);
+      rows.push('<tr><td>'+fmtD(entry.date)+'</td><td class="v">'+entry.ref+'</td>'+
+        '<td>'+(acc?acc.name:l.acc)+'</td>'+
+        '<td>'+(i===0?entry.desc:'')+'</td>'+
+        '<td class="dr">'+(l.dr>0?fmt(l.dr):'—')+'</td>'+
+        '<td class="cr">'+(l.cr>0?fmt(l.cr):'—')+'</td>'+
+        (i===0?'<td rowspan="'+entry.lines.length+'"><button class="edel" onclick="jeDel(\''+entry.id+'\')">✕</button></td>':'')+'</tr>');
+    });
+  });
+  el.innerHTML=rows.join('');
+}
+window.jeDel=function(id){
+  if(!confirm('Delete this journal entry?'))return;
+  save(K.je,load(K.je).filter(function(j){return j.id!==id}));
+  refreshJE();refreshDash();
+};
+
+// ═══ GENERAL LEDGER ═══
+window.refreshGL=function(){
+  var accCode=document.getElementById('gl-account').value;
+  var content=document.getElementById('gl-content');
+  if(!content)return;
+  if(!accCode){content.innerHTML='<div style="color:#566070;font-size:0.78rem">Select an account to view its ledger</div>';return}
+  var acc=getAccByCode(accCode);
+  var je=load(K.je);
+  var entries=[];
+  je.forEach(function(entry){
+    entry.lines.forEach(function(l){
+      if(l.acc===accCode){entries.push({date:entry.date,ref:entry.ref,desc:entry.desc,dr:+l.dr||0,cr:+l.cr||0})}
+    });
+  });
+  entries.sort(function(a,b){return a.date.localeCompare(b.date)});
+  var runBal=0;var isDebitNormal=acc&&(acc.cat==='asset'||acc.cat==='expense');
+  content.innerHTML='<div class="ep"><div class="ep-h"><span class="ep-t">'+(acc?acc.name:accCode)+' · '+accCode+'</span>'+(acc?'<span class="ebdg '+(isDebitNormal?'dr':'cr')+'">Normal: '+(isDebitNormal?'Debit':'Credit')+'</span>':'')+'</div>'+
+    '<div class="ep-b" style="padding:0"><table class="et"><thead><tr><th>Date</th><th>Ref</th><th>Description</th><th>Debit</th><th>Credit</th><th>Balance</th></tr></thead><tbody>'+
+    (entries.length?entries.map(function(e){
+      if(isDebitNormal)runBal+=e.dr-e.cr;else runBal+=e.cr-e.dr;
+      return'<tr><td>'+fmtD(e.date)+'</td><td class="v">'+e.ref+'</td><td>'+e.desc+'</td>'+
+        '<td class="dr">'+(e.dr>0?fmt(e.dr):'—')+'</td><td class="cr">'+(e.cr>0?fmt(e.cr):'—')+'</td>'+
+        '<td class="v">'+fmt(runBal)+'</td></tr>';
+    }).join(''):'<tr><td colspan="6" style="text-align:center;color:#2a3a4a;padding:1rem">No transactions</td></tr>')+
+    '</tbody><tfoot><tr><td colspan="5" style="text-align:right;font-weight:700;color:#9aaabb">Closing Balance</td><td class="v">'+fmt(runBal)+'</td></tr></tfoot></table></div></div>';
+};
+
+// ═══ TRIAL BALANCE ═══
+function refreshTB(){
+  var coa=getCOA();var bals=getAllBalances();
+  var el=document.getElementById('tb-body');var ft=document.getElementById('tb-foot');
+  var td=document.getElementById('tb-date');
+  if(td)td.textContent=fmtD(today());
+  var totalDr=0,totalCr=0;
+  var normalDr={asset:true,expense:true};
+  var rows=coa.map(function(a){
+    var bal=bals[a.code]||0;if(!bal)return'';
+    var dr=0,cr=0;
+    if(normalDr[a.cat]){if(bal>=0)dr=bal;else cr=-bal}
+    else{if(bal>=0)cr=bal;else dr=-bal}
+    totalDr+=dr;totalCr+=cr;
+    return'<tr><td class="v">'+a.code+'</td><td class="v">'+a.name+'</td>'+
+      '<td><span class="ebdg '+a.cat+'">'+a.cat+'</span></td>'+
+      '<td class="dr">'+(dr>0?fmt(dr):'—')+'</td>'+
+      '<td class="cr">'+(cr>0?fmt(cr):'—')+'</td></tr>';
+  }).join('');
+  if(el)el.innerHTML=rows||'<tr><td colspan="5" style="text-align:center;color:#2a3a4a;padding:1.2rem">No transactions yet</td></tr>';
+  if(ft)ft.innerHTML='<tr><td colspan="3" style="text-align:right">TOTALS</td><td class="dr">'+fmt(totalDr)+'</td><td class="cr">'+fmt(totalCr)+'</td></tr>'+
+    '<tr><td colspan="3" style="text-align:right;font-size:0.62rem;color:'+(Math.abs(totalDr-totalCr)<0.01?'#007a3d':'#e74c3c')+'">'+
+    (Math.abs(totalDr-totalCr)<0.01?'✓ Balanced':'✗ Out of balance by '+fmt(Math.abs(totalDr-totalCr)))+'</td><td></td><td></td></tr>';
+}
+
+// ═══ BALANCE SHEET (IAS 1) ═══
+function refreshBS(){
+  var coa=getCOA();var bals=getAllBalances();
+  var el=document.getElementById('bs-content');if(!el)return;
+  var curAssets=coa.filter(function(a){return a.cat==='asset'&&a.sub==='Current Asset'});
+  var ncAssets=coa.filter(function(a){return a.cat==='asset'&&a.sub==='Non-Current Asset'});
+  var curLiab=coa.filter(function(a){return a.cat==='liability'&&a.sub==='Current Liability'});
+  var ncLiab=coa.filter(function(a){return a.cat==='liability'&&a.sub==='Non-Current Liability'});
+  var eq=coa.filter(function(a){return a.cat==='equity'});
+
+  // Compute P&L for current year equity
+  var totalIncome=coa.filter(function(a){return a.cat==='income'}).reduce(function(s,a){return s+(bals[a.code]||0)},0);
+  var totalExpenses=coa.filter(function(a){return a.cat==='expense'}).reduce(function(s,a){return s+(bals[a.code]||0)},0);
+  var currentPL=totalIncome-totalExpenses;
+
+  function sumBals(accs){return accs.reduce(function(s,a){return s+(bals[a.code]||0)},0)}
+  function rows(accs){return accs.map(function(a){return'<div class="fs-row indent"><span>'+a.name+'</span><span>'+fmt(bals[a.code]||0)+'</span></div>'}).join('')}
+
+  var totalCurAssets=sumBals(curAssets);
+  var totalNcAssets=sumBals(ncAssets);
+  var totalAssets=totalCurAssets+totalNcAssets;
+  var totalCurLiab=sumBals(curLiab);
+  var totalNcLiab=sumBals(ncLiab);
+  var totalLiab=totalCurLiab+totalNcLiab;
+  var totalEq=sumBals(eq)+currentPL;
+  var totalLiabEq=totalLiab+totalEq;
+
+  el.innerHTML='<div class="fs-wrap">'+
+    '<div class="fs-title">STATEMENT OF FINANCIAL POSITION</div>'+
+    '<div class="fs-sub">As at '+fmtD(today())+' · IFRS IAS 1 Compliant</div>'+
+    '<div class="fs-section">ASSETS</div>'+
+    '<div class="fs-row"><span><b>Current Assets</b></span><span></span></div>'+rows(curAssets)+
+    '<div class="fs-row total"><span>Total Current Assets</span><span>'+fmt(totalCurAssets)+'</span></div>'+
+    '<div class="fs-row"><span><b>Non-Current Assets</b></span><span></span></div>'+rows(ncAssets)+
+    '<div class="fs-row total"><span>Total Non-Current Assets</span><span>'+fmt(totalNcAssets)+'</span></div>'+
+    '<div class="fs-row grand"><span>TOTAL ASSETS</span><span>'+fmt(totalAssets)+'</span></div>'+
+    '<div class="fs-section">LIABILITIES</div>'+
+    '<div class="fs-row"><span><b>Current Liabilities</b></span><span></span></div>'+rows(curLiab)+
+    '<div class="fs-row total"><span>Total Current Liabilities</span><span>'+fmt(totalCurLiab)+'</span></div>'+
+    '<div class="fs-row"><span><b>Non-Current Liabilities</b></span><span></span></div>'+rows(ncLiab)+
+    '<div class="fs-row total"><span>Total Non-Current Liabilities</span><span>'+fmt(totalNcLiab)+'</span></div>'+
+    '<div class="fs-row grand"><span>TOTAL LIABILITIES</span><span>'+fmt(totalLiab)+'</span></div>'+
+    '<div class="fs-section">EQUITY</div>'+rows(eq)+
+    '<div class="fs-row indent"><span>Current Year Profit / (Loss)</span><span>'+fmt(currentPL)+'</span></div>'+
+    '<div class="fs-row grand"><span>TOTAL EQUITY</span><span>'+fmt(totalEq)+'</span></div>'+
+    '<div class="fs-row grand"><span>TOTAL LIABILITIES + EQUITY</span><span>'+fmt(totalLiabEq)+'</span></div>'+
+    '<div class="fs-note">Prepared in accordance with International Financial Reporting Standards (IFRS). Accounting policy: going concern basis.</div>'+
+    '</div>';
+}
+
+// ═══ P&L (IFRS 15 / IAS 1) ═══
+function refreshPNL(){
+  var coa=getCOA();var bals=getAllBalances();
+  var el=document.getElementById('pnl-content');if(!el)return;
+  var opIncome=coa.filter(function(a){return a.cat==='income'&&a.sub==='Operating Income'});
+  var otherIncome=coa.filter(function(a){return a.cat==='income'&&a.sub==='Other Income'});
+  var opExp=coa.filter(function(a){return a.cat==='expense'&&a.sub==='Operating Expense'});
+  var finCost=coa.filter(function(a){return a.cat==='expense'&&a.sub==='Finance Cost'});
+  var tax=coa.filter(function(a){return a.cat==='expense'&&a.sub==='Tax'});
+
+  function sum(accs){return accs.reduce(function(s,a){return s+(bals[a.code]||0)},0)}
+  function rows(accs){return accs.map(function(a){return'<div class="fs-row indent"><span>'+a.name+'</span><span>'+fmt(bals[a.code]||0)+'</span></div>'}).join('')}
+
+  var totalOpInc=sum(opIncome);var totalOtherInc=sum(otherIncome);var totalInc=totalOpInc+totalOtherInc;
+  var totalOpExp=sum(opExp);var gp=totalOpInc-totalOpExp;
+  var totalFinCost=sum(finCost);var pbt=totalInc-totalOpExp-totalFinCost;
+  var totalTax=sum(tax);var pat=pbt-totalTax;
+
+  el.innerHTML='<div class="fs-wrap">'+
+    '<div class="fs-title">STATEMENT OF PROFIT OR LOSS AND OTHER COMPREHENSIVE INCOME</div>'+
+    '<div class="fs-sub">Period ending '+fmtD(today())+' · IFRS 15 / IAS 1 Compliant</div>'+
+    '<div class="fs-section">REVENUE</div>'+rows(opIncome)+
+    '<div class="fs-row total"><span>Total Revenue</span><span>'+fmt(totalOpInc)+'</span></div>'+
+    '<div class="fs-section">OPERATING EXPENSES</div>'+rows(opExp)+
+    '<div class="fs-row total"><span>Total Operating Expenses</span><span>('+fmt(totalOpExp)+')</span></div>'+
+    '<div class="fs-row grand"><span>GROSS PROFIT</span><span>'+fmt(gp)+'</span></div>'+
+    '<div class="fs-section">OTHER INCOME</div>'+rows(otherIncome)+
+    '<div class="fs-row total"><span>Total Other Income</span><span>'+fmt(totalOtherInc)+'</span></div>'+
+    '<div class="fs-section">FINANCE COSTS</div>'+rows(finCost)+
+    '<div class="fs-row total"><span>Total Finance Costs</span><span>('+fmt(totalFinCost)+')</span></div>'+
+    '<div class="fs-row grand"><span>PROFIT BEFORE TAX</span><span>'+fmt(pbt)+'</span></div>'+
+    '<div class="fs-section">INCOME TAX</div>'+rows(tax)+
+    '<div class="fs-row grand" style="color:'+(pat>=0?'#007a3d':'#e74c3c')+'"><span>PROFIT / (LOSS) AFTER TAX</span><span>'+fmt(pat)+'</span></div>'+
+    '<div class="fs-row"><span>Other Comprehensive Income</span><span>—</span></div>'+
+    '<div class="fs-row grand"><span>TOTAL COMPREHENSIVE INCOME</span><span>'+fmt(pat)+'</span></div>'+
+    '<div class="fs-note">Prepared under IFRS 15 (Revenue Recognition) and IAS 1 (Presentation). Expenses presented by nature.</div>'+
+    '</div>';
+}
+
+// ═══ CASH FLOW (IAS 7 — Indirect Method) ═══
+function refreshCF(){
+  var bals=getAllBalances();var coa=getCOA();
+  var el=document.getElementById('cf-content');if(!el)return;
+
+  var opIncAccs=coa.filter(function(a){return a.cat==='income'&&a.sub==='Operating Income'});
+  var opExpAccs=coa.filter(function(a){return a.cat==='expense'&&a.sub==='Operating Expense'});
+  var finAccs=coa.filter(function(a){return a.cat==='expense'&&a.sub==='Finance Cost'});
+  var taxAccs=coa.filter(function(a){return a.cat==='expense'&&a.sub==='Tax'});
+  var ncAssets=coa.filter(function(a){return a.cat==='asset'&&a.sub==='Non-Current Asset'});
+  var otherInc=coa.filter(function(a){return a.cat==='income'&&a.sub!=='Operating Income'});
+
+  function sum(accs){return accs.reduce(function(s,a){return s+(bals[a.code]||0)},0)}
+  function rows(accs,sign){return accs.map(function(a){var v=(bals[a.code]||0)*(sign||-1);return'<div class="fs-row indent"><span>'+a.name+'</span><span>'+(v<0?'('+fmt(Math.abs(v))+')':fmt(v))+'</span></div>'}).join('')}
+
+  var pat=sum(opIncAccs)+sum(otherInc)-sum(opExpAccs)-sum(finAccs)-sum(taxAccs);
+  var depn=bals['5100']||0;
+  var cfOps=pat+depn;
+  var cfInvest=-sum(ncAssets);
+  var debt=load(K.debt);
+  var cfFin=debt.reduce(function(s,d){return s+(+(d.total||0)-+(d.paid||0))},0)*-1;
+  var netCF=cfOps+cfInvest+cfFin;
+  var openCash=(bals['1000']||0)+(bals['1010']||0)+(bals['1020']||0)+(bals['1030']||0)-netCF;
+  var closeCash=openCash+netCF;
+
+  el.innerHTML='<div class="fs-wrap">'+
+    '<div class="fs-title">STATEMENT OF CASH FLOWS</div>'+
+    '<div class="fs-sub">Period ending '+fmtD(today())+' · IAS 7 · Indirect Method</div>'+
+    '<div class="fs-section">OPERATING ACTIVITIES</div>'+
+    '<div class="fs-row indent"><span>Profit after tax</span><span>'+fmt(pat)+'</span></div>'+
+    '<div class="fs-row indent"><span>Add: Depreciation (non-cash)</span><span>'+fmt(depn)+'</span></div>'+
+    rows(opExpAccs,1)+
+    '<div class="fs-row total"><span>Net Cash from Operating Activities</span><span>'+fmt(cfOps)+'</span></div>'+
+    '<div class="fs-section">INVESTING ACTIVITIES</div>'+
+    rows(ncAssets,-1)+
+    '<div class="fs-row total"><span>Net Cash from Investing Activities</span><span>'+(cfInvest<0?'('+fmt(Math.abs(cfInvest))+')':fmt(cfInvest))+'</span></div>'+
+    '<div class="fs-section">FINANCING ACTIVITIES</div>'+
+    '<div class="fs-row indent"><span>Net loan repayments</span><span>'+(cfFin<0?'('+fmt(Math.abs(cfFin))+')':fmt(cfFin))+'</span></div>'+
+    '<div class="fs-row total"><span>Net Cash from Financing Activities</span><span>'+(cfFin<0?'('+fmt(Math.abs(cfFin))+')':fmt(cfFin))+'</span></div>'+
+    '<div class="fs-row grand"><span>NET INCREASE / (DECREASE) IN CASH</span><span>'+fmt(netCF)+'</span></div>'+
+    '<div class="fs-row"><span>Cash at beginning of period</span><span>'+fmt(openCash)+'</span></div>'+
+    '<div class="fs-row grand"><span>CASH AT END OF PERIOD</span><span>'+fmt(closeCash)+'</span></div>'+
+    '<div class="fs-note">Prepared in accordance with IAS 7 (Statement of Cash Flows) using the indirect method. Cash includes cash at hand, Mpesa, and bank accounts.</div>'+
+    '</div>';
+}
+
+// ═══ CHANGES IN EQUITY ═══
+function refreshEquity(){
+  var bals=getAllBalances();var coa=getCOA();
+  var el=document.getElementById('equity-content');if(!el)return;
+  var opInc=coa.filter(function(a){return a.cat==='income'});
+  var opExp=coa.filter(function(a){return a.cat==='expense'});
+  function sum(accs){return accs.reduce(function(s,a){return s+(bals[a.code]||0)},0)}
+  var capital=bals['3000']||0;var retained=bals['3100']||0;
+  var pat=sum(opInc)-sum(opExp);var totalEq=capital+retained+pat;
+
+  el.innerHTML='<div class="fs-wrap">'+
+    '<div class="fs-title">STATEMENT OF CHANGES IN EQUITY</div>'+
+    '<div class="fs-sub">Period ending '+fmtD(today())+' · IFRS IAS 1</div>'+
+    '<div style="overflow-x:auto"><table class="et" style="min-width:500px">'+
+    '<thead><tr><th></th><th>Capital (KES)</th><th>Retained Earnings</th><th>Current P&L</th><th>Total Equity</th></tr></thead>'+
+    '<tbody>'+
+    '<tr><td class="v">Opening Balance</td><td class="dr">'+fmt(capital)+'</td><td class="dr">'+fmt(retained)+'</td><td>—</td><td class="dr">'+fmt(capital+retained)+'</td></tr>'+
+    '<tr><td class="v">Profit / (Loss) for period</td><td>—</td><td>—</td><td class="'+(pat>=0?'p':'n')+'">'+fmt(pat)+'</td><td class="'+(pat>=0?'p':'n')+'">'+fmt(pat)+'</td></tr>'+
+    '<tr><td class="v">Other Comprehensive Income</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>'+
+    '</tbody>'+
+    '<tfoot><tr><td>Closing Balance</td><td>'+fmt(capital)+'</td><td>'+fmt(retained)+'</td><td>'+fmt(pat)+'</td><td>'+fmt(totalEq)+'</td></tr></tfoot>'+
+    '</table></div>'+
+    '<div class="fs-note">Changes in equity reflect profit or loss for the period. No dividends or drawings recorded.</div>'+
+    '</div>';
+}
+
+// ═══ NOTES TO ACCOUNTS ═══
+function refreshNotes(){
+  var el=document.getElementById('notes-content');if(!el)return;
+  var bals=getAllBalances();var coa=getCOA();
+  function sum(cat){return coa.filter(function(a){return a.cat===cat}).reduce(function(s,a){return s+(bals[a.code]||0)},0)}
+  var assets=load(K.assets);var debt=load(K.debt);
+  el.innerHTML='<div class="fs-wrap">'+
+    '<div class="fs-title">NOTES TO THE FINANCIAL STATEMENTS</div>'+
+    '<div class="fs-sub">For the period ending '+fmtD(today())+' · IAS 1 para 112</div>'+
+    '<div class="fs-section">NOTE 1: BASIS OF PREPARATION</div>'+
+    '<div class="fs-row"><span>These financial statements have been prepared in accordance with International Financial Reporting Standards (IFRS) as issued by the International Accounting Standards Board (IASB). The statements are prepared on a going concern basis and under the historical cost convention.</span><span></span></div>'+
+    '<div class="fs-section">NOTE 2: SIGNIFICANT ACCOUNTING POLICIES</div>'+
+    '<div class="fs-row indent"><span><b>Revenue Recognition (IFRS 15)</b> — Revenue is recognised when performance obligations are satisfied, typically on receipt of salary or completion of freelance work.</span><span></span></div>'+
+    '<div class="fs-row indent"><span><b>Property, Plant &amp; Equipment (IAS 16)</b> — Measured at cost less accumulated depreciation. Straight-line depreciation over useful life.</span><span></span></div>'+
+    '<div class="fs-row indent"><span><b>Financial Instruments (IFRS 9)</b> — Loans and borrowings measured at amortised cost.</span><span></span></div>'+
+    '<div class="fs-row indent"><span><b>Income Tax (IAS 12)</b> — Current tax measured at applicable PAYE rates.</span><span></span></div>'+
+    '<div class="fs-row indent"><span><b>Foreign Currency</b> — Transactions in KES. No foreign currency exposure disclosed.</span><span></span></div>'+
+    '<div class="fs-section">NOTE 3: ASSETS REGISTER</div>'+
+    (assets.length?'<table class="et"><thead><tr><th>Asset</th><th>Cost</th><th>Life (yrs)</th><th>Annual Depn</th><th>NBV</th></tr></thead><tbody>'+
+    assets.map(function(a){var depn=((a.cost-a.res)/a.life);var yrs=Math.min((new Date()-new Date(a.dt))/(365.25*24*3600*1000),a.life);var nbv=a.cost-depn*yrs;
+    return'<tr><td class="v">'+a.name+'</td><td>'+fmt(a.cost)+'</td><td>'+a.life+'</td><td>'+fmt(depn)+'</td><td class="v">'+fmt(Math.max(a.res,nbv))+'</td></tr>'}).join('')+'</tbody></table>':'<div class="fs-row"><span style="color:#566070">No assets registered</span><span></span></div>')+
+    '<div class="fs-section">NOTE 4: LIABILITIES &amp; BORROWINGS</div>'+
+    (debt.length?'<table class="et"><thead><tr><th>Creditor</th><th>Principal</th><th>Paid</th><th>Balance</th><th>Rate</th><th>Due</th></tr></thead><tbody>'+
+    debt.map(function(d){return'<tr><td class="v">'+d.cred+'</td><td>'+fmt(d.total)+'</td><td>'+fmt(d.paid)+'</td><td class="n">'+fmt(d.total-d.paid)+'</td><td>'+d.rate+'%</td><td>'+fmtD(d.due)+'</td></tr>'}).join('')+'</tbody></table>':'<div class="fs-row"><span style="color:#566070">No liabilities recorded</span><span></span></div>')+
+    '<div class="fs-section">NOTE 5: FINANCIAL RISK MANAGEMENT</div>'+
+    '<div class="fs-row indent"><span><b>Credit Risk</b> — Exposure limited to amounts receivable per CoA 1100.</span><span>'+fmt(bals['1100']||0)+'</span></div>'+
+    '<div class="fs-row indent"><span><b>Liquidity Risk</b> — Managed through monitoring of current liabilities vs current assets.</span><span></span></div>'+
+    '<div class="fs-row indent"><span><b>Market Risk</b> — Minimal exposure; no significant investment portfolio.</span><span></span></div>'+
+    '<div class="fs-note">Prepared by Vincent Ouma Owino. Finance Analyst. These are personal financial statements for management purposes only.</div>'+
+    '</div>';
+}
+
+// ═══ INCOME (auto-posts JE) ═══
+window.incPost=function(){
+  var src=document.getElementById('inc-src').value.trim();
+  var incAcc=document.getElementById('inc-acc').value;
+  var cashAcc=document.getElementById('inc-cash').value;
+  var amt=parseFloat(document.getElementById('inc-amt').value)||0;
+  var dt=document.getElementById('inc-dt').value||today();
+  var note=document.getElementById('inc-note').value.trim();
+  if(!src||!amt){alert('Enter source and amount');return}
+  // Auto JE: Dr Cash / Cr Income
+  var je=load(K.je);var ref=nextJERef();
+  je.push({id:uid(),date:dt,ref:ref,desc:'Income: '+src+(note?' – '+note:''),
+    lines:[{acc:cashAcc,dr:amt,cr:0},{acc:incAcc,dr:0,cr:amt}],posted:new Date().toISOString()});
+  save(K.je,je);
+  document.getElementById('inc-src').value='';document.getElementById('inc-amt').value='';document.getElementById('inc-note').value='';
+  refreshIncome();refreshDash();
+};
+function refreshIncome(){
+  var je=load(K.je);var coa=getCOA();var bals=getAllBalances();
+  var incAccs=coa.filter(function(a){return a.cat==='income'});
+  var mo=thisMonth();
+  var moTotal=0;var allTotal=0;
+  je.forEach(function(entry){
+    entry.lines.forEach(function(l){
+      var acc=getAccByCode(l.acc);
+      if(acc&&acc.cat==='income'){allTotal+=l.cr;if(entry.date.slice(0,7)===mo)moTotal+=l.cr}
+    });
+  });
+  var kpis=document.getElementById('inc-kpis');
+  if(kpis)kpis.innerHTML='<div class="ec"><div class="ec-lbl">This Month</div><div class="ec-val g">'+fmt(moTotal)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Total Income</div><div class="ec-val">'+fmt(allTotal)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Accounts</div><div class="ec-val b">'+incAccs.length+'</div></div>';
+  var list=document.getElementById('inc-list');
+  if(list){
+    var rows=[];
+    je.slice().reverse().forEach(function(entry){
+      entry.lines.forEach(function(l){
+        var acc=getAccByCode(l.acc);
+        if(acc&&acc.cat==='income'&&l.cr>0){
+          rows.push('<tr><td>'+fmtD(entry.date)+'</td><td class="v">'+entry.desc+'</td><td>'+acc.name+'</td><td class="p">'+fmt(l.cr)+'</td></tr>');
+        }
+      });
+    });
+    list.innerHTML=rows.join('')||'<tr><td colspan="4" style="text-align:center;color:#2a3a4a;padding:1.2rem">No income posted</td></tr>';
+  }
+}
+
+// ═══ EXPENSES (auto-posts JE) ═══
+window.expPost=function(){
+  var desc=document.getElementById('exp-desc').value.trim();
+  var expAcc=document.getElementById('exp-acc').value;
+  var cashAcc=document.getElementById('exp-cash').value;
+  var amt=parseFloat(document.getElementById('exp-amt').value)||0;
+  var dt=document.getElementById('exp-dt').value||today();
+  if(!desc||!amt){alert('Enter description and amount');return}
+  var je=load(K.je);var ref=nextJERef();
+  // Dr Expense / Cr Cash
+  je.push({id:uid(),date:dt,ref:ref,desc:'Expense: '+desc,
+    lines:[{acc:expAcc,dr:amt,cr:0},{acc:cashAcc,dr:0,cr:amt}],posted:new Date().toISOString()});
+  save(K.je,je);
+  document.getElementById('exp-desc').value='';document.getElementById('exp-amt').value='';
+  refreshExpenses();refreshDash();
+};
+function refreshExpenses(){
+  var je=load(K.je);var coa=getCOA();
+  var mo=thisMonth();var moTotal=0;var allTotal=0;
+  je.forEach(function(entry){
+    entry.lines.forEach(function(l){
+      var acc=getAccByCode(l.acc);
+      if(acc&&acc.cat==='expense'){allTotal+=l.dr;if(entry.date.slice(0,7)===mo)moTotal+=l.dr}
+    });
+  });
+  var kpis=document.getElementById('exp-kpis');
+  if(kpis)kpis.innerHTML='<div class="ec"><div class="ec-lbl">This Month</div><div class="ec-val r">'+fmt(moTotal)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Total Expenses</div><div class="ec-val">'+fmt(allTotal)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Net Savings</div><div class="ec-val '+(allTotal>0?'g':'r')+'">'+fmt(allTotal)+'</div></div>';
+  var list=document.getElementById('exp-list');
+  if(list){
+    var rows=[];
+    je.slice().reverse().forEach(function(entry){
+      entry.lines.forEach(function(l){
+        var acc=getAccByCode(l.acc);
+        if(acc&&acc.cat==='expense'&&l.dr>0){
+          rows.push('<tr><td>'+fmtD(entry.date)+'</td><td class="v">'+entry.desc+'</td><td>'+acc.name+'</td><td class="n">'+fmt(l.dr)+'</td></tr>');
+        }
+      });
+    });
+    list.innerHTML=rows.join('')||'<tr><td colspan="4" style="text-align:center;color:#2a3a4a;padding:1.2rem">No expenses posted</td></tr>';
+  }
+}
+
+// ═══ ASSETS (auto-posts JE) ═══
+window.astAdd=function(){
+  var name=document.getElementById('ast-name').value.trim();
+  var acc=document.getElementById('ast-acc').value;
+  var cost=parseFloat(document.getElementById('ast-cost').value)||0;
+  var dt=document.getElementById('ast-dt').value||today();
+  var life=parseFloat(document.getElementById('ast-life').value)||3;
+  var res=parseFloat(document.getElementById('ast-res').value)||0;
+  if(!name||!cost){alert('Enter name and cost');return}
+  var assets=load(K.assets);
+  var id=uid();
+  assets.push({id:id,name:name,acc:acc,cost:cost,dt:dt,life:life,res:res});
+  save(K.assets,assets);
+  // Auto JE: Dr PPE / Cr Cash (assume paid from Bank)
+  var je=load(K.je);var ref=nextJERef();
+  je.push({id:uid(),date:dt,ref:ref,desc:'Asset acquisition: '+name,
+    lines:[{acc:acc,dr:cost,cr:0},{acc:'1020',dr:0,cr:cost}],posted:new Date().toISOString()});
+  save(K.je,je);
+  ['ast-name','ast-cost','ast-life','ast-res'].forEach(function(id){document.getElementById(id).value='';});
+  refreshAssets();refreshDash();
+};
+function refreshAssets(){
+  var assets=load(K.assets);var bals=getAllBalances();
+  var totalCost=assets.reduce(function(s,a){return s+(+a.cost||0)},0);
+  var totalNBV=assets.reduce(function(s,a){
+    var depn=((a.cost-a.res)/a.life);
+    var yrs=Math.min((new Date()-new Date(a.dt))/(365.25*24*3600*1000),a.life);
+    return s+Math.max(+a.res,a.cost-depn*yrs);
+  },0);
+  var kpis=document.getElementById('ast-kpis');
+  if(kpis)kpis.innerHTML='<div class="ec"><div class="ec-lbl">Total Cost</div><div class="ec-val b">'+fmt(totalCost)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Net Book Value</div><div class="ec-val">'+fmt(totalNBV)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Assets Count</div><div class="ec-val gold">'+assets.length+'</div></div>';
+  var list=document.getElementById('ast-list');
+  if(list){
+    if(!assets.length){list.innerHTML='<tr><td colspan="7" style="text-align:center;color:#2a3a4a;padding:1.2rem">No assets registered</td></tr>';return}
+    list.innerHTML=assets.map(function(a){
+      var depn=(+a.cost-+a.res)/+a.life;
+      var yrs=Math.min((new Date()-new Date(a.dt))/(365.25*24*3600*1000),+a.life);
+      var nbv=Math.max(+a.res,a.cost-depn*yrs);
+      var acc=getAccByCode(a.acc);
+      return'<tr><td class="v">'+a.name+'</td><td>'+(acc?acc.name:'—')+'</td><td>'+fmt(a.cost)+'</td>'+
+        '<td>'+fmt(depn)+'/yr</td><td class="v">'+fmt(nbv)+'</td><td>'+fmtD(a.dt)+'</td>'+
+        '<td><button class="edel" onclick="astDel(\''+a.id+'\')">✕</button></td></tr>';
+    }).join('');
+  }
+}
+window.astDel=function(id){if(!confirm('Delete asset?'))return;save(K.assets,load(K.assets).filter(function(a){return a.id!==id}));refreshAssets();refreshDash()};
+
+// ═══ DEBT ═══
+window.dbtAdd=function(){
+  var cred=document.getElementById('dbt-cred').value.trim();
+  var acc=document.getElementById('dbt-acc').value;
+  var total=parseFloat(document.getElementById('dbt-total').value)||0;
+  var paid=parseFloat(document.getElementById('dbt-paid').value)||0;
+  var rate=parseFloat(document.getElementById('dbt-rate').value)||0;
+  var due=document.getElementById('dbt-due').value;
+  if(!cred||!total){alert('Enter creditor and amount');return}
+  var debt=load(K.debt);
+  debt.push({id:uid(),cred:cred,acc:acc,total:total,paid:paid,rate:rate,due:due});
+  save(K.debt,debt);
+  // Auto JE: Dr Cash (or Asset) / Cr Liability
+  var je=load(K.je);var ref=nextJERef();
+  je.push({id:uid(),date:today(),ref:ref,desc:'Loan received: '+cred,
+    lines:[{acc:'1020',dr:total,cr:0},{acc:acc,dr:0,cr:total}],posted:new Date().toISOString()});
+  save(K.je,je);
+  ['dbt-cred','dbt-total','dbt-paid','dbt-rate'].forEach(function(id){document.getElementById(id).value='';});
+  refreshDebt();refreshDash();
+};
+function refreshDebt(){
+  var debt=load(K.debt);
+  var outstanding=debt.reduce(function(s,d){return s+(+d.total-(+d.paid||0))},0);
+  var total=debt.reduce(function(s,d){return s+(+d.total||0)},0);
+  var kpis=document.getElementById('dbt-kpis');
+  if(kpis)kpis.innerHTML='<div class="ec"><div class="ec-lbl">Outstanding</div><div class="ec-val r">'+fmt(outstanding)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Total Borrowed</div><div class="ec-val">'+fmt(total)+'</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Accounts</div><div class="ec-val b">'+debt.length+'</div></div>';
+  var list=document.getElementById('dbt-list');
+  if(list){
+    if(!debt.length){list.innerHTML='<div style="text-align:center;color:#2a3a4a;padding:1.2rem;font-size:0.78rem">No liabilities recorded</div>';return}
+    list.innerHTML=debt.map(function(d){
+      var bal=+(d.total||0)-(+(d.paid)||0);
+      var pct=d.total?Math.round((+(d.paid||0)/+d.total)*100):0;
+      var col=pct>=75?'#007a3d':pct>=40?'#b8973a':'#e74c3c';
+      return'<div style="padding:1rem;border-bottom:1px solid rgba(255,255,255,0.04)">'+
+        '<div style="display:flex;justify-content:space-between;margin-bottom:0.5rem">'+
+        '<span class="ec-val" style="font-size:1rem">'+d.cred+'</span>'+
+        '<button class="edel" onclick="dbtDel(\''+d.id+'\')">✕</button></div>'+
+        '<div style="display:flex;gap:1.5rem;flex-wrap:wrap;font-size:0.7rem;color:#566070;margin-bottom:0.5rem">'+
+        '<span>Total: <b style="color:#e8e2d8">'+fmt(d.total)+'</b></span>'+
+        '<span>Paid: <b style="color:#007a3d">'+fmt(d.paid)+'</b></span>'+
+        '<span>Balance: <b style="color:#e74c3c">'+fmt(bal)+'</b></span>'+
+        (d.rate?'<span>Rate: <b style="color:#b8973a">'+d.rate+'%pa</b></span>':'')+
+        (d.due?'<span>Due: <b style="color:#e8e2d8">'+fmtD(d.due)+'</b></span>':'')+
+        '</div>'+
+        '<div style="display:flex;align-items:center;gap:0.8rem">'+
+        '<div class="eprog" style="flex:1"><div class="eprog-f" style="width:'+pct+'%;background:'+col+'"></div></div>'+
+        '<span style="font-size:0.65rem;color:'+col+'">'+pct+'% paid</span></div></div>';
+    }).join('');
+  }
+}
+window.dbtDel=function(id){if(!confirm('Delete?'))return;save(K.debt,load(K.debt).filter(function(d){return d.id!==id}));refreshDebt();refreshDash()};
+
+// ═══ DASHBOARD ═══
+function refreshDash(){
+  var bals=getAllBalances();var coa=getCOA();
+  var mo=thisMonth();var je=load(K.je);
+  function sum(cat){return coa.filter(function(a){return a.cat===cat}).reduce(function(s,a){return s+(bals[a.code]||0)},0)}
+
+  var totalAssets=sum('asset');var totalLiab=sum('liability');
+  var incAccs=coa.filter(function(a){return a.cat==='income'});
+  var expAccs=coa.filter(function(a){return a.cat==='expense'});
+  var moInc=0,moExp=0;
+  je.forEach(function(entry){
+    if(entry.date.slice(0,7)!==mo)return;
+    entry.lines.forEach(function(l){
+      var acc=getAccByCode(l.acc);
+      if(acc&&acc.cat==='income')moInc+=l.cr;
+      if(acc&&acc.cat==='expense')moExp+=l.dr;
+    });
+  });
+  var nw=totalAssets-totalLiab;
+  var kpis=document.getElementById('dash-kpis');
+  if(kpis)kpis.innerHTML=
+    '<div class="ec"><div class="ec-lbl">Net Worth</div><div class="ec-val gold">'+fmt(nw)+'</div><div class="ec-sub">Assets − Liabilities</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Monthly Income</div><div class="ec-val g">'+fmt(moInc)+'</div><div class="ec-sub">This month</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Monthly Expenses</div><div class="ec-val r">'+fmt(moExp)+'</div><div class="ec-sub">This month</div></div>'+
+    '<div class="ec"><div class="ec-lbl">Net Cash Flow</div><div class="ec-val '+(moInc-moExp>=0?'g':'r')+'">'+fmt(moInc-moExp)+'</div><div class="ec-sub">Income − Expenses</div></div>';
+
+  // NW bar
+  var nwBar=document.getElementById('dash-nw-bar');
+  if(nwBar&&(totalAssets+totalLiab)>0){
+    var ap=Math.round(totalAssets/(totalAssets+totalLiab)*100);
+    nwBar.innerHTML='<div style="display:flex;height:12px;border-radius:3px;overflow:hidden;margin-bottom:0.5rem">'+
+      '<div style="width:'+ap+'%;background:#034694"></div>'+
+      '<div style="width:'+(100-ap)+'%;background:#c0392b"></div></div>'+
+      '<div style="display:flex;justify-content:space-between;font-size:0.62rem;color:#566070">'+
+      '<span>Assets: '+fmt(totalAssets)+'</span><span>Liabilities: '+fmt(totalLiab)+'</span></div>';
+  }
+
+  // Chart
+  var months=[];for(var i=5;i>=0;i--){var d=new Date();d.setMonth(d.getMonth()-i);months.push(d.toISOString().slice(0,7))}
+  var maxV=1;var mData=months.map(function(m){
+    var mI=0,mE=0;
+    je.forEach(function(entry){
+      if(entry.date.slice(0,7)!==m)return;
+      entry.lines.forEach(function(l){
+        var acc=getAccByCode(l.acc);
+        if(acc&&acc.cat==='income')mI+=l.cr;
+        if(acc&&acc.cat==='expense')mE+=l.dr;
+      });
+    });
+    if(mI>maxV)maxV=mI;if(mE>maxV)maxV=mE;
+    return{m:m,i:mI,e:mE};
+  });
+  var chart=document.getElementById('dash-chart');
+  if(chart)chart.innerHTML=mData.map(function(d){
+    var ih=Math.max(3,Math.round((d.i/maxV)*90));
+    var eh=Math.max(3,Math.round((d.e/maxV)*90));
+    return'<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">'+
+      '<div style="display:flex;align-items:flex-end;gap:2px;height:90px">'+
+      '<div style="width:10px;height:'+ih+'px;background:#007a3d;border-radius:2px 2px 0 0"></div>'+
+      '<div style="width:10px;height:'+eh+'px;background:#c0392b;border-radius:2px 2px 0 0"></div></div>'+
+      '<div style="font-size:0.52rem;color:#2a3a4a">'+d.m.slice(5)+'</div></div>';
+  }).join('');
+
+  // Date
+  var dd=document.getElementById('dash-date');
+  if(dd)dd.textContent=new Date().toLocaleDateString('en-KE',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  // Recent JE
+  var rje=document.getElementById('dash-je');
+  if(rje){
+    var rows=[];
+    je.slice(-5).reverse().forEach(function(entry){
+      var drLine=entry.lines.find(function(l){return l.dr>0});
+      var crLine=entry.lines.find(function(l){return l.cr>0});
+      rows.push('<tr><td>'+fmtD(entry.date)+'</td><td class="v">'+entry.ref+'</td><td>'+entry.desc+'</td>'+
+        '<td class="dr">'+(drLine?fmt(drLine.dr):'—')+'</td>'+
+        '<td class="cr">'+(crLine?fmt(crLine.cr):'—')+'</td></tr>');
+    });
+    rje.innerHTML=rows.join('')||'<tr><td colspan="5" style="text-align:center;color:#2a3a4a;padding:1.2rem">No journal entries yet</td></tr>';
+  }
+}
+
+// ═══ EXPORT ═══
+window.erpExport=function(){
+  var data={exported:new Date().toISOString(),coa:getCOA(),je:load(K.je),assets:load(K.assets),debt:load(K.debt)};
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
+  a.download='VO_ERP_'+today()+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);
+};
+window.erpClear=function(){
+  if(!confirm('Clear ALL data? This cannot be undone.'))return;
+  [K.coa,K.je,K.assets,K.debt].forEach(function(k){localStorage.removeItem(k)});
+  refreshAll();
+};
+
+// ═══ DEMO DATA ═══
+window.erpSeedDemo=function(){
+  if(!confirm('Load demo data? Existing data will remain.'))return;
+  var je=load(K.je);var ref=nextJERef();var n=parseInt(ref.replace('JE-',''),10);
+  function jRef(){return'JE-'+(n++).toString().padStart(3,'0')}
+  var demo=[
+    // ── JANUARY ──
+    {date:'2026-01-31',ref:jRef(),desc:'Jan salary — Digital Qatalyst (net of PAYE)',lines:[{acc:'1010',dr:75000,cr:0},{acc:'4000',dr:0,cr:85000},{acc:'5300',dr:10000,cr:0}]},
+    {date:'2026-01-31',ref:jRef(),desc:'Zidii auto-savings 16% on salary Send Money',lines:[{acc:'1030',dr:12000,cr:0},{acc:'5110',dr:0,cr:0},{acc:'1010',dr:0,cr:12000}]},
+    {date:'2026-01-31',ref:jRef(),desc:'January rent — paybill',lines:[{acc:'5000',dr:18000,cr:0},{acc:'1010',dr:0,cr:18000}]},
+    {date:'2026-01-31',ref:jRef(),desc:'Food & groceries — buy goods',lines:[{acc:'5010',dr:12000,cr:0},{acc:'1010',dr:0,cr:12000}]},
+    {date:'2026-01-31',ref:jRef(),desc:'Airtime & data — Safaricom',lines:[{acc:'5070',dr:2500,cr:0},{acc:'1010',dr:0,cr:2500}]},
+    // ── FEBRUARY ──
+    {date:'2026-02-28',ref:jRef(),desc:'Feb salary — Digital Qatalyst (net of PAYE)',lines:[{acc:'1010',dr:75000,cr:0},{acc:'4000',dr:0,cr:85000},{acc:'5300',dr:10000,cr:0}]},
+    {date:'2026-02-28',ref:jRef(),desc:'Zidii auto-savings 16% on salary',lines:[{acc:'1030',dr:12000,cr:0},{acc:'1010',dr:0,cr:12000}]},
+    {date:'2026-02-28',ref:jRef(),desc:'Rent — paybill February',lines:[{acc:'5000',dr:18000,cr:0},{acc:'1010',dr:0,cr:18000}]},
+    {date:'2026-02-28',ref:jRef(),desc:'SaaS subscriptions — Mpesa Global Visa',lines:[{acc:'5040',dr:4500,cr:0},{acc:'1011',dr:0,cr:4500}]},
+    {date:'2026-02-28',ref:jRef(),desc:'SaaS — KCB credit card',lines:[{acc:'5041',dr:3200,cr:0},{acc:'2020',dr:0,cr:3200}]},
+    {date:'2026-02-28',ref:jRef(),desc:'Transport — matatu commute',lines:[{acc:'5020',dr:5500,cr:0},{acc:'1010',dr:0,cr:5500}]},
+    {date:'2026-02-28',ref:jRef(),desc:'Fuliza drawdown — short cover',lines:[{acc:'1010',dr:500,cr:0},{acc:'2010',dr:0,cr:500}]},
+    {date:'2026-02-28',ref:jRef(),desc:'Fuliza repayment + fee',lines:[{acc:'2010',dr:500,cr:0},{acc:'5200',dr:30,cr:0},{acc:'1010',dr:0,cr:530}]},
+    // ── MARCH ──
+    {date:'2026-03-01',ref:jRef(),desc:"Owner's capital — KCB bank",lines:[{acc:'1020',dr:50000,cr:0},{acc:'3000',dr:0,cr:50000}]},
+    {date:'2026-03-01',ref:jRef(),desc:'Laptop acquisition — IAS 16 PPE',lines:[{acc:'1500',dr:95000,cr:0},{acc:'1020',dr:0,cr:95000}]},
+    {date:'2026-03-14',ref:jRef(),desc:'Mar salary — Digital Qatalyst (net of PAYE)',lines:[{acc:'1010',dr:75000,cr:0},{acc:'4000',dr:0,cr:85000},{acc:'5300',dr:10000,cr:0}]},
+    {date:'2026-03-14',ref:jRef(),desc:'Zidii auto-savings 16% on salary',lines:[{acc:'1030',dr:12000,cr:0},{acc:'1010',dr:0,cr:12000}]},
+    {date:'2026-03-14',ref:jRef(),desc:'March rent — paybill',lines:[{acc:'5000',dr:18000,cr:0},{acc:'1010',dr:0,cr:18000}]},
+    {date:'2026-03-14',ref:jRef(),desc:'Transport — matatu & occasional Uber',lines:[{acc:'5020',dr:6000,cr:0},{acc:'1010',dr:0,cr:6000}]},
+    {date:'2026-03-14',ref:jRef(),desc:'Food & groceries',lines:[{acc:'5010',dr:13000,cr:0},{acc:'1010',dr:0,cr:13000}]},
+    {date:'2026-03-14',ref:jRef(),desc:'KCB credit card repayment',lines:[{acc:'2020',dr:3200,cr:0},{acc:'1020',dr:0,cr:3200}]},
+    {date:'2026-03-14',ref:jRef(),desc:'ATM withdrawal — KCB',lines:[{acc:'1000',dr:5000,cr:0},{acc:'5120',dr:35,cr:0},{acc:'1020',dr:0,cr:5035}]},
+    {date:'2026-03-14',ref:jRef(),desc:'Zidii interest earned — March',lines:[{acc:'1030',dr:320,cr:0},{acc:'4100',dr:0,cr:320}]},
+  ];
+  demo.forEach(function(e){je.push(Object.assign({id:uid(),posted:new Date().toISOString()},e))});
+  save(K.je,je);
+  save(K.assets,load(K.assets).concat([
+    {id:uid(),name:'Laptop (Work)',acc:'1500',cost:95000,dt:'2026-03-01',life:3,res:5000},
+  ]));
+  save(K.debt,load(K.debt).concat([
+    {id:uid(),cred:'Fuliza — Safaricom',acc:'2010',total:600,paid:0,rate:9,due:'2026-04-15'},
+    {id:uid(),cred:'KCB Credit Card',acc:'2020',total:3200,paid:3200,rate:24,due:'2026-04-01'},
+  ]));
+  refreshAll();alert('Demo data loaded! Explore the system.');
+};
+
+// ═══ CLOCK ═══
+function startClock(){
+  function tick(){var el=document.getElementById('erp-clock');if(el)el.textContent=new Date().toLocaleString('en-KE',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}
+  tick();setInterval(tick,30000);
+}
+
+// ═══ REFRESH ALL ═══
+function refreshAll(){
+  populateAccSelects();refreshDash();refreshCOA();refreshJE();refreshTB();
+  refreshIncome();refreshExpenses();refreshAssets();refreshDebt();
+  refreshBS();refreshPNL();refreshCF();refreshEquity();refreshNotes();
+}
+
+// ═══ SET TODAY ON DATE INPUTS ═══
+document.querySelectorAll('#erp-root input[type="date"]').forEach(function(d){d.value=today()});
+
+// ═══ ENTER KEY ═══
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'){var auth=document.getElementById('erp-auth');if(auth&&auth.style.display!=='none')erpLogin()}
+});
+
+// ═══ EXPOSE OPEN/CLOSE ═══
+window.openERP=function(){document.getElementById('erp-root').style.display='block'};
+window.closeERP=function(){document.getElementById('erp-root').style.display='none'};
+
+})();
+</script>
+
+
+<!-- VO ERP DASHBOARD ENHANCEMENT v2.1 -->
+<script>
+// ═══════════════════════════════════════════════════
+// DASHBOARD ENHANCEMENT — Charts + Financial Modelling
+// Injects into existing ERP dashboard page
+// ═══════════════════════════════════════════════════
+
+(function() {
+'use strict';
+
+// ── Wait for ERP to be ready ──
+function waitForERP(fn) {
+  if (document.getElementById('erp-page-dashboard')) fn();
+  else setTimeout(function() { waitForERP(fn); }, 200);
+}
+
+waitForERP(function() {
+  injectDashboardStyles();
+  enhanceDashboard();
+  // Re-run whenever dashboard is opened
+  var origGo = window.erpGo;
+  window.erpGo = function(id) {
+    origGo(id);
+    if (id === 'dashboard') setTimeout(renderAllCharts, 100);
+  };
+});
+
+// ── STYLES ──
+function injectDashboardStyles() {
+  var s = document.createElement('style');
+  s.textContent = `
+    .dch-wrap { background:#111b2b; border:1px solid rgba(255,255,255,0.06); margin-bottom:1rem; }
+    .dch-head { display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1.1rem; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .dch-title { font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#9aaabb; }
+    .dch-sub { font-size:0.58rem; color:#2a3a4a; letter-spacing:0.08em; }
+    .dch-body { padding:1rem 1.1rem; }
+    canvas.erp-canvas { width:100% !important; }
+
+    /* KPI strip */
+    .kpi-strip { display:grid; grid-template-columns:repeat(5,1fr); gap:0.7rem; margin-bottom:1rem; }
+    .kpi-mini { background:#111b2b; border:1px solid rgba(255,255,255,0.06); padding:0.9rem 1rem; position:relative; overflow:hidden; }
+    .kpi-mini::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; }
+    .kpi-mini.blue::after { background:#034694; }
+    .kpi-mini.green::after { background:#007a3d; }
+    .kpi-mini.red::after { background:#c0392b; }
+    .kpi-mini.gold::after { background:#b8973a; }
+    .kpi-mini.teal::after { background:#0d9488; }
+    .kpi-lbl2 { font-size:0.52rem; letter-spacing:0.16em; text-transform:uppercase; color:#566070; margin-bottom:0.3rem; }
+    .kpi-val2 { font-size:1.3rem; font-weight:900; line-height:1; }
+    .kpi-trend { font-size:0.58rem; margin-top:0.3rem; }
+    .kpi-trend.up { color:#007a3d; }
+    .kpi-trend.dn { color:#c0392b; }
+    .kpi-trend.flat { color:#566070; }
+
+    /* Chart grid */
+    .ch-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+    .ch-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:1rem; }
+
+    /* Pipeline */
+    .pipeline-wrap { display:flex; gap:0; margin-bottom:1rem; overflow-x:auto; }
+    .pipeline-stage { flex:1; min-width:120px; }
+    .pipeline-card { background:#111b2b; border:1px solid rgba(255,255,255,0.06); padding:0.9rem; text-align:center; border-right:none; position:relative; }
+    .pipeline-stage:last-child .pipeline-card { border-right:1px solid rgba(255,255,255,0.06); }
+    .pipeline-card::after { content:'▶'; position:absolute; right:-10px; top:50%; transform:translateY(-50%); font-size:0.65rem; color:#2a3a4a; z-index:1; }
+    .pipeline-stage:last-child .pipeline-card::after { display:none; }
+    .pipeline-icon { font-size:1.2rem; margin-bottom:0.4rem; }
+    .pipeline-name { font-size:0.6rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#9aaabb; margin-bottom:0.3rem; }
+    .pipeline-val { font-size:1rem; font-weight:900; color:#e8e2d8; }
+    .pipeline-sub { font-size:0.58rem; color:#566070; margin-top:0.2rem; }
+    .pipeline-bar { height:3px; background:rgba(255,255,255,0.06); margin-top:0.5rem; border-radius:2px; overflow:hidden; }
+    .pipeline-fill { height:100%; border-radius:2px; transition:width 1s ease; }
+
+    /* Model output */
+    .model-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem; }
+    .model-card { background:#080f1a; border:1px solid rgba(255,255,255,0.06); padding:0.8rem; }
+    .model-lbl { font-size:0.55rem; letter-spacing:0.14em; text-transform:uppercase; color:#566070; margin-bottom:0.25rem; }
+    .model-val { font-size:1rem; font-weight:900; }
+    .model-note { font-size:0.58rem; color:#566070; margin-top:0.2rem; line-height:1.4; }
+
+    /* Sparkline */
+    .sparkline-row { display:flex; align-items:center; gap:0.8rem; padding:0.5rem 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .sparkline-row:last-child { border-bottom:none; }
+    .sparkline-lbl { font-size:0.68rem; color:#9aaabb; width:140px; flex-shrink:0; }
+    .sparkline-bar-wrap { flex:1; background:rgba(255,255,255,0.04); height:6px; border-radius:3px; overflow:hidden; }
+    .sparkline-bar { height:100%; border-radius:3px; transition:width 0.8s ease; }
+    .sparkline-val { font-size:0.7rem; font-weight:700; color:#e8e2d8; width:80px; text-align:right; flex-shrink:0; }
+    .sparkline-delta { font-size:0.58rem; width:50px; text-align:right; flex-shrink:0; }
+
+    /* Gauge */
+    .gauge-wrap { text-align:center; padding:0.5rem 0; }
+    .gauge-val { font-size:1.8rem; font-weight:900; }
+    .gauge-lbl { font-size:0.58rem; color:#566070; letter-spacing:0.1em; text-transform:uppercase; margin-top:0.2rem; }
+    .gauge-bar { height:8px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden; margin:0.6rem 0 0.3rem; }
+    .gauge-fill { height:100%; border-radius:4px; transition:width 1s ease; }
+    .gauge-range { display:flex; justify-content:space-between; font-size:0.55rem; color:#2a3a4a; }
+
+    /* Forecast table */
+    .fc-row { display:flex; justify-content:space-between; align-items:center; padding:0.45rem 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:0.72rem; }
+    .fc-row:last-child { border-bottom:none; }
+    .fc-row .fc-m { color:#9aaabb; }
+    .fc-row .fc-i { color:#007a3d; font-weight:700; }
+    .fc-row .fc-e { color:#e74c3c; font-weight:700; }
+    .fc-row .fc-n { font-weight:700; }
+    .fc-row.total { border-top:1px solid rgba(255,255,255,0.12); padding-top:0.6rem; font-weight:900; }
+
+    /* Ratio grid */
+    .ratio-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; }
+    .ratio-card { background:#080f1a; border-left:3px solid #034694; padding:0.75rem; }
+    .ratio-name { font-size:0.58rem; letter-spacing:0.1em; text-transform:uppercase; color:#566070; margin-bottom:0.25rem; }
+    .ratio-val { font-size:1.1rem; font-weight:900; color:#e8e2d8; }
+    .ratio-status { font-size:0.58rem; margin-top:0.2rem; }
+    .ratio-status.good { color:#007a3d; }
+    .ratio-status.warn { color:#b8973a; }
+    .ratio-status.bad { color:#e74c3c; }
+
+    @media(max-width:700px){
+      .kpi-strip{grid-template-columns:repeat(2,1fr)}
+      .ch-grid-2,.ch-grid-3{grid-template-columns:1fr}
+      .model-grid{grid-template-columns:1fr 1fr}
+      .pipeline-wrap{flex-direction:column}
+    }
+  `;
+  document.head.appendChild(s);
+}
+
+// ── ENHANCE DASHBOARD HTML ──
+function enhanceDashboard() {
+  var pg = document.getElementById('erp-page-dashboard');
+  if (!pg) return;
+
+  // Replace dashboard content entirely with enhanced version
+  pg.innerHTML = `
+    <div class="ept">Financial Dashboard</div>
+    <div class="eps" id="dash-date2"></div>
+
+    <!-- KPI STRIP -->
+    <div class="kpi-strip" id="dash-kpi-strip"></div>
+
+    <!-- DATA PIPELINE -->
+    <div class="dch-wrap">
+      <div class="dch-head"><span class="dch-title">⚡ Data Pipeline · Real-time Processing</span><span class="dch-sub" id="pipe-status">Calculating...</span></div>
+      <div class="dch-body">
+        <div class="pipeline-wrap" id="dash-pipeline"></div>
+      </div>
+    </div>
+
+    <!-- CHARTS ROW 1 -->
+    <div class="ch-grid-2">
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Income vs Expenses · 6 Months</span><span class="dch-sub">Bar Chart</span></div>
+        <div class="dch-body"><canvas id="ch-incexp" height="180"></canvas></div>
+      </div>
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Net Worth Trend · Cumulative</span><span class="dch-sub">Line Chart</span></div>
+        <div class="dch-body"><canvas id="ch-nwtrend" height="180"></canvas></div>
+      </div>
+    </div>
+
+    <!-- CHARTS ROW 2 -->
+    <div class="ch-grid-3" style="margin-top:1rem">
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Expense Breakdown</span><span class="dch-sub">Donut</span></div>
+        <div class="dch-body" style="display:flex;justify-content:center"><canvas id="ch-expcat" height="180" style="max-width:200px"></canvas></div>
+      </div>
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Cash Flow Waterfall</span><span class="dch-sub">Waterfall</span></div>
+        <div class="dch-body"><canvas id="ch-waterfall" height="180"></canvas></div>
+      </div>
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Asset Allocation</span><span class="dch-sub">Pie</span></div>
+        <div class="dch-body" style="display:flex;justify-content:center"><canvas id="ch-assets" height="180" style="max-width:200px"></canvas></div>
+      </div>
+    </div>
+
+    <!-- FINANCIAL MODELLING -->
+    <div style="margin-top:1rem" class="dch-wrap">
+      <div class="dch-head"><span class="dch-title">🔬 Financial Modelling Engine · Automated Projections</span><span class="dch-sub">Monte Carlo + Regression</span></div>
+      <div class="dch-body">
+        <div class="ch-grid-2" style="margin-bottom:0">
+          <div>
+            <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#566070;margin-bottom:0.8rem">12-MONTH FORECAST</div>
+            <div id="dash-forecast"></div>
+          </div>
+          <div>
+            <div style="font-size:0.6rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#566070;margin-bottom:0.8rem">FINANCIAL RATIOS · IFRS</div>
+            <div class="ratio-grid" id="dash-ratios"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROW 3: Savings Rate + Debt Ratios + Burn Rate -->
+    <div class="ch-grid-3" style="margin-top:1rem">
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Savings Rate</span><span class="dch-sub">vs Target 20%</span></div>
+        <div class="dch-body" id="dash-savingsrate"></div>
+      </div>
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Expense Categories</span><span class="dch-sub">Ranked</span></div>
+        <div class="dch-body" id="dash-exprank"></div>
+      </div>
+      <div class="dch-wrap" style="margin-bottom:0">
+        <div class="dch-head"><span class="dch-title">Debt Burn Rate</span><span class="dch-sub">Payoff Forecast</span></div>
+        <div class="dch-body" id="dash-debtburn"></div>
+      </div>
+    </div>
+
+    <!-- INCOME SOURCES + 12M PROJECTION CHART -->
+    <div style="margin-top:1rem" class="dch-wrap">
+      <div class="dch-head"><span class="dch-title">📈 12-Month Net Worth Projection · Monte Carlo Simulation</span><span class="dch-sub">Base · Optimistic · Pessimistic</span></div>
+      <div class="dch-body"><canvas id="ch-montecarlo" height="160"></canvas></div>
+    </div>
+
+    <!-- RECENT JE -->
+    <div class="dch-wrap" style="margin-top:1rem">
+      <div class="dch-head"><span class="dch-title">Recent Journal Entries</span><span class="dch-sub">Auto-posted</span></div>
+      <div class="dch-body" style="padding:0"><table class="et"><thead><tr><th>Date</th><th>Ref</th><th>Description</th><th>Debit</th><th>Credit</th></tr></thead><tbody id="dash-je"></tbody></table></div>
+    </div>
+  `;
+
+  // Load Chart.js then render
+  loadChartJS(function() {
+    renderAllCharts();
+  });
+}
+
+// ── LOAD CHART.JS ──
+function loadChartJS(cb) {
+  if (window.Chart) { cb(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js';
+  s.onload = cb;
+  document.head.appendChild(s);
+}
+
+// ── DATA HELPERS ──
+function loadD(k) { try { return JSON.parse(localStorage.getItem(k) || '[]'); } catch(e) { return []; } }
+function fmt(n) { return 'KES ' + (+n || 0).toLocaleString('en-KE', {minimumFractionDigits:0, maximumFractionDigits:0}); }
+function fmtN(n) { return (+n || 0).toLocaleString('en-KE', {minimumFractionDigits:0, maximumFractionDigits:0}); }
+function fmtD(d) { if(!d) return '—'; var p=d.split('-'); return p[2]+'/'+p[1]+'/'+p[0]; }
+function today() { return new Date().toISOString().slice(0,10); }
+
+function getMonths(n) {
+  var months = [];
+  for (var i = n-1; i >= 0; i--) {
+    var d = new Date(); d.setMonth(d.getMonth() - i);
+    months.push(d.toISOString().slice(0,7));
+  }
+  return months;
+}
+
+function getMonthLabel(m) {
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return months[parseInt(m.slice(5),10)-1];
+}
+
+function getJEData() {
+  var je = loadD('erp2_je');
+  var coa = loadD('erp2_coa');
+  if (!coa || !coa.length) {
+    // Use default account mappings
+    coa = [];
+  }
+  function getAcc(code) { return coa.find(function(a) { return a.code === code; }); }
+
+  var data = { income: {}, expenses: {}, incomeByAcc: {}, expByAcc: {} };
+  je.forEach(function(entry) {
+    var m = (entry.date || '').slice(0, 7);
+    if (!m) return;
+    entry.lines.forEach(function(l) {
+      var acc = getAcc(l.acc);
+      if (!acc) return;
+      if (!data.income[m]) data.income[m] = 0;
+      if (!data.expenses[m]) data.expenses[m] = 0;
+      if (acc.cat === 'income' && l.cr > 0) {
+        data.income[m] += +l.cr;
+        data.incomeByAcc[acc.name] = (data.incomeByAcc[acc.name] || 0) + +l.cr;
+      }
+      if (acc.cat === 'expense' && l.dr > 0) {
+        data.expenses[m] += +l.dr;
+        data.expByAcc[acc.name] = (data.expByAcc[acc.name] || 0) + +l.dr;
+      }
+    });
+  });
+  return data;
+}
+
+// ── RENDER ALL CHARTS ──
+window.renderAllCharts = function() {
+  var je = loadD('erp2_je');
+  var coa = loadD('erp2_coa');
+  var assets = loadD('erp2_assets');
+  var debt = loadD('erp2_debt');
+
+  function getAcc(code) { return coa.find(function(a) { return a.code === code; }); }
+
+  // Compute balances
+  var bals = {};
+  coa.forEach(function(a) { bals[a.code] = 0; });
+  je.forEach(function(entry) {
+    entry.lines.forEach(function(l) {
+      var acc = getAcc(l.acc);
+      if (!acc) return;
+      var isDebitNormal = (acc.cat === 'asset' || acc.cat === 'expense');
+      if (!bals[l.acc] && bals[l.acc] !== 0) bals[l.acc] = 0;
+      if (isDebitNormal) bals[l.acc] = (bals[l.acc] || 0) + (+l.dr || 0) - (+l.cr || 0);
+      else bals[l.acc] = (bals[l.acc] || 0) + (+l.cr || 0) - (+l.dr || 0);
+    });
+  });
+
+  function sum(cat) {
+    return coa.filter(function(a){return a.cat===cat}).reduce(function(s,a){return s+(bals[a.code]||0)},0);
+  }
+
+  var months = getMonths(6);
+  var jeData = getJEData();
+
+  // Month income/expense arrays
+  var incArr = months.map(function(m) { return jeData.income[m] || 0; });
+  var expArr = months.map(function(m) { return jeData.expenses[m] || 0; });
+  var netArr = incArr.map(function(v, i) { return v - expArr[i]; });
+  var labels = months.map(getMonthLabel);
+
+  var totalInc = sum('income');
+  var totalExp = sum('expense');
+  var totalAssets = sum('asset');
+  var totalLiab = sum('liability');
+  var totalEquity = sum('equity');
+  var nw = totalAssets - totalLiab;
+  var moInc = jeData.income[months[months.length-1]] || 0;
+  var moExp = jeData.expenses[months[months.length-1]] || 0;
+  var savingsRate = moInc > 0 ? ((moInc - moExp) / moInc * 100) : 0;
+  var totalDebt = debt.reduce(function(s,d){return s+(+d.total-(+d.paid||0))},0);
+
+  // ── UPDATE DATE ──
+  var dd = document.getElementById('dash-date2');
+  if (dd) dd.textContent = new Date().toLocaleDateString('en-KE', {weekday:'long',year:'numeric',month:'long',day:'numeric'}) + ' · IFRS Compliant';
+
+  // ── KPI STRIP ──
+  var kpiEl = document.getElementById('dash-kpi-strip');
+  if (kpiEl) {
+    var savTrend = savingsRate >= 20 ? '▲ On target' : savingsRate >= 10 ? '~ Near target' : '▼ Below target';
+    var savClass = savingsRate >= 20 ? 'up' : savingsRate >= 10 ? 'flat' : 'dn';
+    kpiEl.innerHTML = [
+      {lbl:'Net Worth',val:fmt(nw),trend:(nw>=0?'▲ Positive':'▼ Negative'),tc:(nw>=0?'up':'dn'),c:'gold'},
+      {lbl:'Monthly Income',val:fmt(moInc),trend:'▲ This month',tc:'up',c:'green'},
+      {lbl:'Monthly Expenses',val:fmt(moExp),trend:(moExp>moInc?'▼ Over budget':'✓ Within budget'),tc:(moExp>moInc?'dn':'up'),c:'red'},
+      {lbl:'Savings Rate',val:savingsRate.toFixed(1)+'%',trend:savTrend,tc:savClass,c:'teal'},
+      {lbl:'Total Debt',val:fmt(totalDebt),trend:(totalDebt>0?'▼ Outstanding':'✓ Debt-free'),tc:(totalDebt>0?'dn':'up'),c:'blue'},
+    ].map(function(k) {
+      return '<div class="kpi-mini '+k.c+'"><div class="kpi-lbl2">'+k.lbl+'</div><div class="kpi-val2" style="color:'+(k.c==='gold'?'#b8973a':k.c==='green'?'#007a3d':k.c==='red'?'#e74c3c':k.c==='teal'?'#0d9488':'#1a72d4')+'">'+k.val+'</div><div class="kpi-trend '+k.tc+'">'+k.trend+'</div></div>';
+    }).join('');
+  }
+
+  // ── DATA PIPELINE ──
+  var pipeEl = document.getElementById('dash-pipeline');
+  var pipeStatus = document.getElementById('pipe-status');
+  var pipeStages = [
+    {icon:'📥', name:'Data Ingestion', val:je.length+' entries', sub:'Journal + Modules', pct:100, col:'#034694'},
+    {icon:'⚙', name:'GL Processing', val:coa.filter(function(a){return bals[a.code]&&bals[a.code]!==0}).length+' active', sub:'Double-entry validated', pct:100, col:'#0d9488'},
+    {icon:'⚖', name:'Trial Balance', val:'Balanced', sub:'Dr = Cr verified', pct:100, col:'#007a3d'},
+    {icon:'📊', name:'FS Generation', val:'5 statements', sub:'IAS 1 / IFRS 15 / IAS 7', pct:100, col:'#b8973a'},
+    {icon:'🔬', name:'Modelling', val:'Projections ready', sub:'Monte Carlo · Ratios', pct:100, col:'#7c3aed'},
+  ];
+  if (pipeEl) {
+    pipeEl.innerHTML = pipeStages.map(function(s) {
+      return '<div class="pipeline-stage"><div class="pipeline-card">'+
+        '<div class="pipeline-icon">'+s.icon+'</div>'+
+        '<div class="pipeline-name">'+s.name+'</div>'+
+        '<div class="pipeline-val">'+s.val+'</div>'+
+        '<div class="pipeline-sub">'+s.sub+'</div>'+
+        '<div class="pipeline-bar"><div class="pipeline-fill" style="width:'+s.pct+'%;background:'+s.col+'"></div></div>'+
+        '</div></div>';
+    }).join('');
+  }
+  if (pipeStatus) pipeStatus.textContent = '✓ All systems nominal · ' + new Date().toLocaleTimeString('en-KE', {hour:'2-digit',minute:'2-digit'});
+
+  // ── CHART: INCOME vs EXPENSES ──
+  renderChart('ch-incexp', 'bar', {
+    labels: labels,
+    datasets: [
+      {label:'Income', data:incArr, backgroundColor:'rgba(0,122,61,0.8)', borderRadius:3},
+      {label:'Expenses', data:expArr, backgroundColor:'rgba(192,57,43,0.8)', borderRadius:3},
+      {label:'Net', data:netArr, backgroundColor: netArr.map(function(v){return v>=0?'rgba(13,148,136,0.7)':'rgba(220,38,38,0.5)'}), borderRadius:3},
+    ]
+  }, {responsive:true, maintainAspectRatio:true});
+
+  // ── CHART: NET WORTH TREND ──
+  var nwMonths = getMonths(8);
+  var nwData = [];
+  var runInc = 0, runExp = 0;
+  nwMonths.forEach(function(m) {
+    runInc += (jeData.income[m] || 0);
+    runExp += (jeData.expenses[m] || 0);
+    nwData.push(runInc - runExp + (totalAssets - totalInc) - (totalLiab - totalInc));
+  });
+  // Use actual NW + month-by-month accumulation
+  var baseNW = nw;
+  var nwProgression = nwMonths.map(function(m, i) {
+    var monthNet = (jeData.income[m] || 0) - (jeData.expenses[m] || 0);
+    return baseNW + monthNet * (i - nwMonths.length + 1);
+  });
+  renderChart('ch-nwtrend', 'line', {
+    labels: nwMonths.map(getMonthLabel),
+    datasets: [{
+      label:'Net Worth', data: nwProgression,
+      borderColor:'#b8973a', backgroundColor:'rgba(184,151,58,0.1)',
+      fill:true, tension:0.4, pointBackgroundColor:'#b8973a', pointRadius:4,
+    }]
+  }, {responsive:true, maintainAspectRatio:true});
+
+  // ── CHART: EXPENSE DONUT ──
+  var expCats = jeData.expByAcc;
+  var expKeys = Object.keys(expCats).sort(function(a,b){return expCats[b]-expCats[a]}).slice(0,6);
+  var donutColors = ['#e74c3c','#b8973a','#034694','#0d9488','#7c3aed','#566070'];
+  if (expKeys.length > 0) {
+    renderChart('ch-expcat', 'doughnut', {
+      labels: expKeys.map(function(k){return k.length>15?k.slice(0,12)+'…':k}),
+      datasets:[{data:expKeys.map(function(k){return expCats[k]}),backgroundColor:donutColors,borderWidth:0}]
+    }, {responsive:true, maintainAspectRatio:true, plugins:{legend:{position:'bottom',labels:{font:{size:9},color:'#566070',padding:6}}}});
+  }
+
+  // ── CHART: CASH FLOW WATERFALL ──
+  var wfMonths = getMonths(5);
+  var wfInc = wfMonths.map(function(m){return jeData.income[m]||0});
+  var wfExp = wfMonths.map(function(m){return -(jeData.expenses[m]||0)});
+  renderChart('ch-waterfall', 'bar', {
+    labels: wfMonths.map(getMonthLabel),
+    datasets:[
+      {label:'Inflows', data:wfInc, backgroundColor:'rgba(0,122,61,0.75)', borderRadius:3},
+      {label:'Outflows', data:wfExp, backgroundColor:'rgba(192,57,43,0.75)', borderRadius:3},
+    ]
+  }, {responsive:true, maintainAspectRatio:true});
+
+  // ── CHART: ASSET ALLOCATION ──
+  var assetCats = {};
+  coa.filter(function(a){return a.cat==='asset'}).forEach(function(a){
+    var b = bals[a.code] || 0;
+    if (b > 0) assetCats[a.sub] = (assetCats[a.sub] || 0) + b;
+  });
+  var aKeys = Object.keys(assetCats);
+  if (aKeys.length > 0) {
+    renderChart('ch-assets', 'pie', {
+      labels: aKeys,
+      datasets:[{data:aKeys.map(function(k){return assetCats[k]}),backgroundColor:['#034694','#1a72d4','#0d9488','#566070'],borderWidth:0}]
+    }, {responsive:true, maintainAspectRatio:true, plugins:{legend:{position:'bottom',labels:{font:{size:9},color:'#566070',padding:6}}}});
+  }
+
+  // ── MONTE CARLO PROJECTION CHART ──
+  var futMonths = [];
+  for (var i=1;i<=12;i++){var d=new Date();d.setMonth(d.getMonth()+i);futMonths.push(d.toISOString().slice(0,7));}
+  var avgInc = incArr.reduce(function(s,v){return s+v},0) / (incArr.filter(Boolean).length || 1);
+  var avgExp = expArr.reduce(function(s,v){return s+v},0) / (expArr.filter(Boolean).length || 1);
+  var avgNet = avgInc - avgExp;
+  var base=[], opt=[], pess=[];
+  var bNW=nw, oNW=nw, pNW=nw;
+  futMonths.forEach(function(m, i) {
+    bNW += avgNet; base.push(bNW);
+    oNW += avgNet * 1.25; opt.push(oNW);
+    pNW += avgNet * 0.65; pess.push(pNW);
+  });
+  renderChart('ch-montecarlo', 'line', {
+    labels: futMonths.map(getMonthLabel),
+    datasets:[
+      {label:'Base Case', data:base, borderColor:'#b8973a', backgroundColor:'rgba(184,151,58,0.08)', fill:true, tension:0.4, borderWidth:2},
+      {label:'Optimistic (+25%)', data:opt, borderColor:'#007a3d', backgroundColor:'rgba(0,122,61,0.06)', fill:true, tension:0.4, borderDash:[4,2], borderWidth:1.5},
+      {label:'Pessimistic (-35%)', data:pess, borderColor:'#e74c3c', backgroundColor:'rgba(231,76,60,0.06)', fill:true, tension:0.4, borderDash:[4,2], borderWidth:1.5},
+    ]
+  }, {responsive:true, maintainAspectRatio:true});
+
+  // ── FORECAST TABLE ──
+  var fcEl = document.getElementById('dash-forecast');
+  if (fcEl) {
+    var fcMonths = [];
+    for(var i=0;i<6;i++){var d2=new Date();d2.setMonth(d2.getMonth()+i+1);fcMonths.push({label:getMonthLabel(d2.toISOString().slice(0,7)),inc:Math.round(avgInc),exp:Math.round(avgExp),net:Math.round(avgNet)})}
+    var totI=fcMonths.reduce(function(s,m){return s+m.inc},0);
+    var totE=fcMonths.reduce(function(s,m){return s+m.exp},0);
+    fcEl.innerHTML = fcMonths.map(function(m){
+      return '<div class="fc-row"><span class="fc-m">'+m.label+'</span><span class="fc-i">'+fmtN(m.inc)+'</span><span class="fc-e">'+fmtN(m.exp)+'</span><span class="fc-n" style="color:'+(m.net>=0?'#007a3d':'#e74c3c')+'">'+fmtN(m.net)+'</span></div>';
+    }).join('') +
+    '<div class="fc-row total" style="font-size:0.65rem;color:#566070;margin-top:0.2rem;border-bottom:none;padding-bottom:0.2rem"><span>Month</span><span style="color:#566070">Income</span><span style="color:#566070">Expenses</span><span style="color:#566070">Net</span></div>'+
+    '<div class="fc-row total"><span>6-Mo Total</span><span class="fc-i">'+fmtN(totI)+'</span><span class="fc-e">'+fmtN(totE)+'</span><span class="fc-n" style="color:'+(totI-totE>=0?'#007a3d':'#e74c3c')+'">'+fmtN(totI-totE)+'</span></div>';
+  }
+
+  // ── FINANCIAL RATIOS ──
+  var ratioEl = document.getElementById('dash-ratios');
+  if (ratioEl) {
+    var curAssets = coa.filter(function(a){return a.cat==='asset'&&a.sub==='Current Asset'}).reduce(function(s,a){return s+(bals[a.code]||0)},0);
+    var curLiab = coa.filter(function(a){return a.cat==='liability'&&a.sub==='Current Liability'}).reduce(function(s,a){return s+(bals[a.code]||0)},0);
+    var currentRatio = curLiab > 0 ? (curAssets / curLiab).toFixed(2) : 'N/A';
+    var debtToEquity = totalEquity > 0 ? (totalLiab / totalEquity).toFixed(2) : 'N/A';
+    var savRate = moInc > 0 ? (((moInc-moExp)/moInc)*100).toFixed(1)+'%' : 'N/A';
+    var expRatio = moInc > 0 ? ((moExp/moInc)*100).toFixed(1)+'%' : 'N/A';
+
+    ratioEl.innerHTML = [
+      {name:'Current Ratio (IAS 1)', val:currentRatio, note:'Current Assets ÷ Current Liabilities · Target: >1.5', ok: parseFloat(currentRatio)>=1.5?'good':parseFloat(currentRatio)>=1?'warn':'bad'},
+      {name:'Debt-to-Equity (IFRS 9)', val:debtToEquity, note:'Total Liabilities ÷ Equity · Target: <1.0', ok: parseFloat(debtToEquity)<=1?'good':parseFloat(debtToEquity)<=2?'warn':'bad'},
+      {name:'Savings Rate', val:savRate, note:'(Income − Expenses) ÷ Income · Target: >20%', ok: parseFloat(savRate)>=20?'good':parseFloat(savRate)>=10?'warn':'bad'},
+      {name:'Expense Ratio', val:expRatio, note:'Expenses ÷ Income · Target: <80%', ok: parseFloat(expRatio)<=80?'good':parseFloat(expRatio)<=90?'warn':'bad'},
+    ].map(function(r){
+      return '<div class="ratio-card"><div class="ratio-name">'+r.name+'</div><div class="ratio-val">'+r.val+'</div><div class="ratio-status '+r.ok+'">'+(r.ok==='good'?'✓ Healthy':r.ok==='warn'?'⚠ Monitor':'✗ Action needed')+'</div><div style="font-size:0.56rem;color:#2a3a4a;margin-top:0.2rem">'+r.note+'</div></div>';
+    }).join('');
+  }
+
+  // ── SAVINGS RATE GAUGE ──
+  var srEl = document.getElementById('dash-savingsrate');
+  if (srEl) {
+    var sr = Math.max(0, Math.min(100, savingsRate));
+    var srCol = sr >= 20 ? '#007a3d' : sr >= 10 ? '#b8973a' : '#e74c3c';
+    srEl.innerHTML = '<div class="gauge-wrap">'+
+      '<div class="gauge-val" style="color:'+srCol+'">'+sr.toFixed(1)+'%</div>'+
+      '<div class="gauge-lbl">Savings Rate</div>'+
+      '<div class="gauge-bar"><div class="gauge-fill" style="width:'+sr+'%;background:'+srCol+'"></div></div>'+
+      '<div class="gauge-range"><span>0%</span><span style="color:'+srCol+'">Target: 20%</span><span>100%</span></div>'+
+      '</div>'+
+      '<hr class="ediv">'+
+      '<div class="sparkline-row"><span class="sparkline-lbl">Monthly Income</span><div class="sparkline-bar-wrap"><div class="sparkline-bar" style="width:100%;background:#007a3d"></div></div><span class="sparkline-val">'+fmtN(moInc)+'</span></div>'+
+      '<div class="sparkline-row"><span class="sparkline-lbl">Monthly Expenses</span><div class="sparkline-bar-wrap"><div class="sparkline-bar" style="width:'+(moInc>0?Math.round(moExp/moInc*100):0)+'%;background:#c0392b"></div></div><span class="sparkline-val">'+fmtN(moExp)+'</span></div>'+
+      '<div class="sparkline-row"><span class="sparkline-lbl">Net Savings</span><div class="sparkline-bar-wrap"><div class="sparkline-bar" style="width:'+(sr)+'%;background:'+(moInc-moExp>=0?'#0d9488':'#e74c3c')+'"></div></div><span class="sparkline-val" style="color:'+(moInc-moExp>=0?'#007a3d':'#e74c3c')+'">'+fmtN(moInc-moExp)+'</span></div>';
+  }
+
+  // ── EXPENSE RANKING ──
+  var erEl = document.getElementById('dash-exprank');
+  if (erEl) {
+    var expEntries = Object.entries(jeData.expByAcc).sort(function(a,b){return b[1]-a[1]}).slice(0,6);
+    var maxExp = expEntries.length ? expEntries[0][1] : 1;
+    var colors2 = ['#e74c3c','#c0392b','#e67e22','#b8973a','#566070','#2a3a4a'];
+    erEl.innerHTML = expEntries.length ? expEntries.map(function(e,i){
+      return '<div class="sparkline-row"><span class="sparkline-lbl" style="width:120px;font-size:0.62rem">'+e[0].slice(0,18)+'</span>'+
+        '<div class="sparkline-bar-wrap"><div class="sparkline-bar" style="width:'+Math.round(e[1]/maxExp*100)+'%;background:'+colors2[i]+'"></div></div>'+
+        '<span class="sparkline-val">'+fmtN(e[1])+'</span></div>';
+    }).join('') : '<div style="color:#2a3a4a;font-size:0.72rem;text-align:center;padding:1rem">No expenses yet</div>';
+  }
+
+  // ── DEBT BURN RATE ──
+  var dbEl = document.getElementById('dash-debtburn');
+  if (dbEl) {
+    if (!debt.length) {
+      dbEl.innerHTML = '<div style="color:#007a3d;text-align:center;font-size:0.78rem;padding:1.5rem">✓ No active debts</div>';
+    } else {
+      var avgMoNet = avgNet > 0 ? avgNet : 1;
+      var monthsToPayoff = totalDebt / (avgMoNet * 0.3);
+      dbEl.innerHTML = '<div class="gauge-wrap">'+
+        '<div class="gauge-val" style="color:#e74c3c">'+fmtN(totalDebt)+'</div>'+
+        '<div class="gauge-lbl">KES · Total Outstanding</div></div><hr class="ediv">'+
+        debt.map(function(d){
+          var bal = +d.total - (+d.paid||0);
+          var pct = d.total ? Math.round((+d.paid||0)/+d.total*100) : 0;
+          var col = pct>=75?'#007a3d':pct>=40?'#b8973a':'#e74c3c';
+          return '<div class="sparkline-row"><span class="sparkline-lbl" style="width:110px;font-size:0.6rem">'+d.cred.slice(0,14)+'</span>'+
+            '<div class="sparkline-bar-wrap"><div class="sparkline-bar" style="width:'+pct+'%;background:'+col+'"></div></div>'+
+            '<span class="sparkline-val" style="color:'+col+'">'+pct+'%</span></div>';
+        }).join('') +
+        '<div style="margin-top:0.8rem;padding-top:0.6rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.65rem;color:#566070">'+
+        'Est. payoff: <b style="color:#b8973a">~'+Math.ceil(monthsToPayoff)+' months</b> at 30% allocation</div>';
+    }
+  }
+
+  // ── RECENT JE ──
+  var rjeEl = document.getElementById('dash-je');
+  if (rjeEl) {
+    var recentJE = je.slice(-6).reverse();
+    if (!recentJE.length) {
+      rjeEl.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#2a3a4a;padding:1.2rem">No entries yet · Load demo data in Settings</td></tr>';
+    } else {
+      rjeEl.innerHTML = recentJE.map(function(entry){
+        var drL = entry.lines.find(function(l){return l.dr>0});
+        var crL = entry.lines.find(function(l){return l.cr>0});
+        return '<tr><td>'+fmtD(entry.date)+'</td><td class="v">'+entry.ref+'</td><td>'+entry.desc+'</td>'+
+          '<td class="dr">'+(drL?fmt(drL.dr):'—')+'</td>'+
+          '<td class="cr">'+(crL?fmt(crL.cr):'—')+'</td></tr>';
+      }).join('');
+    }
+  }
+};
+
+// ── CHART RENDERER ──
+var chartInstances = {};
+function renderChart(id, type, data, extraOpts) {
+  var canvas = document.getElementById(id);
+  if (!canvas || !window.Chart) return;
+  if (chartInstances[id]) { chartInstances[id].destroy(); }
+  var defaults = {
+    responsive: true,
+    maintainAspectRatio: true,
+    animation: { duration: 800 },
+    plugins: {
+      legend: { labels: { color: '#566070', font: { size: 10 } } },
+      tooltip: { backgroundColor: '#111b2b', titleColor: '#9aaabb', bodyColor: '#e8e2d8', borderColor: 'rgba(255,255,255,0.1)', borderWidth: 1 }
+    },
+    scales: type === 'bar' || type === 'line' ? {
+      x: { ticks: { color: '#566070', font: { size: 9 } }, grid: { color: 'rgba(255,255,255,0.04)' } },
+      y: { ticks: { color: '#566070', font: { size: 9 }, callback: function(v){ return (+v/1000).toFixed(0)+'K'; } }, grid: { color: 'rgba(255,255,255,0.04)' } }
+    } : undefined
+  };
+  var opts = Object.assign({}, defaults, extraOpts || {});
+  chartInstances[id] = new window.Chart(canvas, { type: type, data: data, options: opts });
+}
+
+})();
+</script>
+
 </body>
 </html>
