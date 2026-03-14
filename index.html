@@ -1075,15 +1075,22 @@
   showTab('hero');
 
   // ── DYNAMIC CV FILENAME ──
-  // Format: YY.MM_CV_Vincent Owino_V.0.1
-  // Version is stored in the button's data-version attribute
   const cvBtn = document.getElementById('cv-download-btn');
   if (cvBtn) {
-    const now = new Date();
-    const yy = String(now.getFullYear()).slice(-2);
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const version = cvBtn.getAttribute('data-cv-version') || '0.1';
-    cvBtn.setAttribute('download', `${yy}.${mm}_CV_Vincent Owino_V.${version}`);
+    cvBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const now = new Date();
+      const yy = String(now.getFullYear()).slice(-2);
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const version = this.getAttribute('data-cv-version') || '0.1';
+      const filename = yy + '.' + mm + '_CV_Vincent Owino_V.' + version;
+      const a = document.createElement('a');
+      a.href = this.href;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
   }
 
   const tdata = [
