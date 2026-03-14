@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vincent Owino — Finance Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      /* Chelsea Royal Blue */
+      --blue:         #034694;
+      --blue-mid:     #0a5cb8;
+      --blue-light:   #1a72d4;
+      --blue-pale:    #e8f0fb;
+      --blue-dim:     rgba(3,70,148,0.08);
+      --blue-border:  rgba(3,70,148,0.2);
+
+      /* Gor Mahia Green */
+      --green:        #007a3d;
+      --green-mid:    #009a4e;
+      --green-light:  #00b85c;
+      --green-pale:   #e6f5ed;
+      --green-dim:    rgba(0,122,61,0.08);
+      --green-border: rgba(0,122,61,0.22);
+
+      /* Neutrals */
+      --white:        #ffffff;
+      --off-white:    #f7f9fc;
+      --light-grey:   #edf1f7;
+      --mid-grey:     #c8d2e0;
+      --charcoal:     #1a2030;
+      --charcoal-mid: #374155;
+      --charcoal-dim: #6b7890;
+      --text-light:   #9aaabb;
+
+      --ticker-h:     34px;
+      --nav-h:        88px;
+
+      --rule:         1px solid #dde3ee;
+      --rule-mid:     1px solid #c8d2e0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Serif 4', serif;
+      background: var(--off-white);
+      color: var(--charcoal);
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ══ TICKER ══ */
+    .ticker-wrap {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      height: var(--ticker-h);
+      background: var(--blue);
+      overflow: hidden;
+      display: flex; align-items: center;
+    }
+    .ticker-label {
+      flex-shrink: 0; height: 100%;
+      display: flex; align-items: center;
+      padding: 0 1.2rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.58rem; font-weight: 900;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green-light);
+      border-right: 1px solid rgba(255,255,255,0.15);
+      background: var(--blue);
+      z-index: 1;
+    }
+    .ticker-track {
+      display: flex;
+      animation: ticker 44s linear infinite;
+      white-space: nowrap;
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      padding: 0 2rem;
+      border-right: 1px solid rgba(255,255,255,0.1);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; letter-spacing: 0.06em;
+    }
+    .ticker-sym { color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.12em; }
+    .ticker-val { color: rgba(255,255,255,0.9); }
+    .ticker-chg { font-size: 0.56rem; color: var(--green-light); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ══ NAV ══ */
+    nav {
+      position: fixed;
+      top: var(--ticker-h); left: 0; right: 0; z-index: 200;
+      background: var(--white);
+      border-bottom: 3px solid var(--blue);
+      box-shadow: 0 2px 16px rgba(3,70,148,0.1);
+    }
+    .nav-row1 {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.55rem 4vw 0.3rem;
+      border-bottom: 1px solid var(--light-grey);
+    }
+    .nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--blue); letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .nav-brand span { color: var(--green); }
+    .nav-tagline {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.55rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--charcoal-dim);
+    }
+    .nav-row2 {
+      display: flex; align-items: center;
+      padding: 0 4vw;
+      gap: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 0; }
+    .nav-links a {
+      display: flex; align-items: center;
+      padding: 0.55rem 1rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--charcoal-dim);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -3px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); border-bottom-color: var(--green); }
+    .nav-badge {
+      margin-left: auto;
+      display: flex; align-items: center; gap: 0.4rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--green);
+      padding: 0.25rem 0.7rem;
+      border: 1px solid var(--green-border);
+      background: var(--green-pale);
+      white-space: nowrap;
+    }
+    .nav-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.25;} }
+
+    /* ══ SHARED SECTION ══ */
+    section {
+      min-height: calc(100vh - var(--ticker-h) - var(--nav-h));
+      padding: calc(var(--ticker-h) + var(--nav-h) + 2rem) 5vw 5rem;
+    }
+
+    .sec-head {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: var(--rule-mid);
+      position: relative;
+    }
+    .sec-head::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0;
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+    }
+    .sec-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 900;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green); white-space: nowrap;
+    }
+    .sec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700;
+      color: var(--blue); line-height: 1.1; letter-spacing: -0.01em;
+    }
+    .sec-rule { flex: 1; height: 1px; background: var(--mid-grey); align-self: center; }
+
+    /* ══ HERO ══ */
+    #hero {
+      padding-top: calc(var(--ticker-h) + var(--nav-h) + 3rem);
+      display: grid; grid-template-columns: 1fr 400px;
+      gap: 4rem; align-items: start;
+      background: var(--off-white);
+      position: relative; overflow: hidden;
+    }
+    /* diagonal accent */
+    #hero::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 45%; height: 100%;
+      background: linear-gradient(135deg, transparent 40%, rgba(3,70,148,0.03) 100%);
+      pointer-events: none;
+    }
+
+    .hero-left { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.8rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.62rem; font-weight: 900;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 1.8rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 2px; background: var(--green); }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6.5vw, 6.5rem); font-weight: 300;
+      color: var(--charcoal); line-height: 0.92;
+      letter-spacing: -0.02em; margin-bottom: 0.6rem;
+    }
+    .hero-name strong { font-weight: 700; color: var(--blue); display: block; }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem); font-style: italic; font-weight: 300;
+      color: var(--charcoal-dim); margin-bottom: 2rem;
+    }
+
+    .hero-divider {
+      width: 56px; height: 3px; margin-bottom: 2rem;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+    }
+
+    .hero-summary {
+      font-size: 1.05rem; font-weight: 300;
+      color: var(--charcoal-mid); max-width: 520px;
+      line-height: 1.9; margin-bottom: 2.8rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2.2rem;
+      background: var(--blue); color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--blue-mid); }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2.2rem;
+      border: 2px solid var(--green); color: var(--green);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 2.2rem;
+      border: 2px solid var(--blue-border);
+      color: var(--blue);
+      background: var(--blue-pale);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-download:hover { background: var(--blue-dim); border-color: var(--blue); }
+
+    /* ══ PROFILE CARD ══ */
+    .profile-card {
+      position: sticky; top: calc(var(--ticker-h) + var(--nav-h) + 2rem);
+      z-index: 1; overflow: hidden;
+      box-shadow: 0 4px 32px rgba(3,70,148,0.12);
+    }
+    .profile-card-header {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 100%);
+      padding: 1.6rem 1.8rem;
+      position: relative; overflow: hidden;
+    }
+    .profile-card-header::after {
+      content: '';
+      position: absolute; bottom: 0; right: 0;
+      width: 80px; height: 80px;
+      background: rgba(0,122,61,0.25);
+      border-radius: 50%;
+      transform: translate(20px, 20px);
+    }
+    .pc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.25rem; position: relative; z-index: 1;
+    }
+    .pc-role {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 400;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65); position: relative; z-index: 1;
+    }
+
+    .kpi-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--white);
+      border-bottom: var(--rule);
+    }
+    .kpi-cell {
+      padding: 1.2rem 1.4rem;
+      border-right: var(--rule);
+      border-bottom: var(--rule);
+    }
+    .kpi-cell:nth-child(even) { border-right: none; }
+    .kpi-cell:nth-last-child(-n+2) { border-bottom: none; }
+    .kpi-lbl {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 0.3rem;
+    }
+    .kpi-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem; font-weight: 700;
+      color: var(--blue); line-height: 1;
+    }
+    .kpi-sub { font-family: 'Lato', sans-serif; font-size: 0.56rem; color: var(--charcoal-dim); margin-top: 0.2rem; }
+
+    .pc-list { background: var(--white); }
+    .pc-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1.4rem;
+      border-bottom: var(--rule);
+      font-family: 'Lato', sans-serif; font-size: 0.62rem;
+    }
+    .pc-item:last-child { border-bottom: none; }
+    .pc-item-name { color: var(--charcoal-mid); }
+    .pc-badge {
+      font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.18rem 0.55rem;
+      background: var(--blue-pale); color: var(--blue);
+      border: 1px solid var(--blue-border);
+    }
+    .pc-badge.erp {
+      background: var(--green-pale); color: var(--green);
+      border-color: var(--green-border);
+    }
+
+    /* ══ ABOUT ══ */
+    #about { background: var(--white); }
+    .about-layout { display: grid; grid-template-columns: 1fr 320px; gap: 5rem; align-items: start; }
+    .about-bio { font-size: 1.05rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.95; }
+    .about-bio p { margin-bottom: 1.4rem; }
+    .about-bio strong { color: var(--blue); font-weight: 700; }
+
+    .info-table { display: flex; flex-direction: column; }
+    .info-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 0.85rem 0; border-bottom: var(--rule); gap: 1rem;
+    }
+    .info-row:first-child { border-top: var(--rule); }
+    .info-k {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text-light); white-space: nowrap;
+    }
+    .info-v { font-size: 0.88rem; color: var(--charcoal); text-align: right; }
+    .info-v.open { color: var(--green); font-weight: 700; font-family: 'Lato', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; }
+
+    /* ══ SERVICES ══ */
+    #services { background: var(--off-white); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px; background: var(--mid-grey);
+      border: 1px solid var(--mid-grey);
+    }
+    .svc-card {
+      background: var(--white); padding: 2.2rem 2rem;
+      border-top: 3px solid transparent;
+      transition: border-top-color 0.22s, background 0.22s;
+    }
+    .svc-card:hover { border-top-color: var(--green); background: var(--green-pale); }
+    .svc-num {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.58rem; font-weight: 900;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .svc-num::before { content: ''; width: 16px; height: 2px; background: var(--blue); }
+    .svc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 0.8rem; line-height: 1.25;
+    }
+    .svc-desc { font-size: 0.88rem; font-weight: 300; color: var(--charcoal-light, #6b7890); line-height: 1.75; }
+
+    /* ══ EXPERIENCE ══ */
+    #experience { background: var(--white); }
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0.5rem; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--blue) 0%, var(--green) 100%);
+    }
+    .exp-item {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 2.5rem; padding: 0 0 3rem 2rem; position: relative;
+    }
+    .exp-item::before {
+      content: ''; position: absolute; left: -5px; top: 0.4rem;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--blue);
+      box-shadow: 0 0 0 3px var(--blue-pale);
+    }
+    .exp-item + .exp-item { border-top: var(--rule); padding-top: 2.5rem; }
+    .exp-meta-period {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 900;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 0.4rem;
+    }
+    .exp-meta-org { font-size: 0.85rem; font-style: italic; color: var(--charcoal-dim); line-height: 1.4; }
+    .exp-meta-type {
+      display: inline-block; margin-top: 0.6rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--mid-grey); color: var(--text-light);
+    }
+    .exp-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--blue); margin-bottom: 1rem; line-height: 1.2;
+    }
+    .exp-duties { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .exp-duties li {
+      font-size: 0.9rem; font-weight: 300; color: var(--charcoal-mid);
+      line-height: 1.75; padding-left: 1.1rem; position: relative;
+    }
+    .exp-duties li::before { content: '–'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+    .exp-duties li strong { color: var(--blue); font-weight: 600; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
+    .exp-tag {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.55rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.22rem 0.65rem;
+      border: 1px solid var(--blue-border);
+      color: var(--blue); background: var(--blue-pale);
+    }
+    .exp-tag.green { border-color: var(--green-border); color: var(--green); background: var(--green-pale); }
+
+    /* ══ SKILLS ══ */
+    #skills {
+      background: linear-gradient(160deg, var(--blue) 0%, #023070 100%);
+    }
+    #skills .sec-head { border-bottom-color: rgba(255,255,255,0.12); }
+    #skills .sec-head::after { background: linear-gradient(90deg, rgba(255,255,255,0.5), var(--green-light)); }
+    #skills .sec-eyebrow { color: var(--green-light); }
+    #skills .sec-title { color: var(--white); }
+    #skills .sec-rule { background: rgba(255,255,255,0.1); }
+
+    .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .skill-group-lbl {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 900;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--green-light); margin-bottom: 1.6rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .skill-rows { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 3rem; }
+    .skill-meta { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+    .skill-name-t { font-family: 'Lato', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.8); font-weight: 400; }
+    .skill-pct-t { font-family: 'Lato', sans-serif; font-size: 0.62rem; color: rgba(255,255,255,0.35); }
+    .skill-bar { height: 3px; background: rgba(255,255,255,0.1); overflow: hidden; border-radius: 2px; }
+    .skill-fill {
+      height: 100%; width: 0;
+      background: linear-gradient(90deg, var(--green-light), #7dd4b0);
+      transition: width 1.4s cubic-bezier(0.4,0,0.2,1);
+      border-radius: 2px;
+    }
+    .tools-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tool-chip {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.38rem 0.8rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.04);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .tool-chip:hover { border-color: var(--green-light); color: var(--green-light); background: rgba(0,184,92,0.08); }
+
+    /* ══ EDUCATION ══ */
+    #education { background: var(--off-white); }
+    .edu-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px; background: var(--mid-grey); border: 1px solid var(--mid-grey);
+    }
+    .edu-card {
+      background: var(--white); padding: 2.2rem 2rem;
+      border-top: 4px solid transparent;
+      transition: border-top-color 0.2s;
+    }
+    .edu-card:hover { border-top-color: var(--blue); }
+    .edu-year {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 900;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 0.8rem;
+    }
+    .edu-degree {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--blue); line-height: 1.3; margin-bottom: 0.5rem;
+    }
+    .edu-inst { font-size: 0.88rem; font-style: italic; color: var(--charcoal-dim); }
+    .edu-badge {
+      display: inline-block; margin-top: 1rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.22rem 0.65rem;
+      color: var(--green); border: 1px solid var(--green-border); background: var(--green-pale);
+    }
+
+    /* ══ CONTACT ══ */
+    #contact { background: var(--white); }
+    .contact-layout { display: grid; grid-template-columns: 1fr 360px; gap: 5rem; align-items: start; }
+    .contact-body { font-size: 1.05rem; font-weight: 300; color: var(--charcoal-mid); line-height: 1.95; }
+    .contact-body p { margin-bottom: 1.3rem; }
+    .contact-body strong { color: var(--blue); font-weight: 700; }
+
+    .contact-card { overflow: hidden; border: 1px solid var(--mid-grey); box-shadow: 0 2px 20px rgba(3,70,148,0.08); }
+    .contact-card-head {
+      background: linear-gradient(135deg, var(--blue), var(--blue-mid));
+      padding: 1.3rem 1.6rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600; font-style: italic;
+      color: var(--white);
+    }
+    .contact-row {
+      display: flex; align-items: center; gap: 1.2rem;
+      padding: 1.1rem 1.5rem; border-bottom: var(--rule);
+      text-decoration: none; background: var(--white);
+      transition: background 0.2s;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-row:hover { background: var(--blue-pale); }
+    .cr-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.55rem; font-weight: 900;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--blue); width: 65px; flex-shrink: 0;
+    }
+    .cr-val { font-size: 0.88rem; color: var(--charcoal); }
+    .cr-val.open { color: var(--green); font-weight: 700; font-family: 'Lato', sans-serif; font-size: 0.72rem; }
+
+    /* ══ FOOTER ══ */
+    footer {
+      background: var(--blue);
+      padding: 1.6rem 5vw;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+      border-top: 4px solid var(--green);
+    }
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--white);
+    }
+    .footer-copy {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.4);
+    }
+    .footer-links { display: flex; gap: 1.8rem; }
+    .footer-links a {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--green-light); }
+
+    /* ══ ANIMATIONS ══ */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══ RESPONSIVE ══ */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; }
+      .profile-card { position: static; }
+      .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .skills-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .nav-row1 { padding: 0.5rem 1.5rem; }
+      .nav-row2 { padding: 0 1.5rem; }
+      .nav-tagline, .nav-badge { display: none; }
+      .nav-links a { padding: 0.55rem 0.65rem; font-size: 0.55rem; }
+      section { padding: 3.5rem 1.5rem 4rem; }
+      footer { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-label">Live</div>
+  <div class="ticker-track" id="ticker"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-row1">
+    <div class="nav-brand">Vincent <span>Owino</span></div>
+    <div class="nav-tagline">Finance & Accounting Professional</div>
+    <div class="nav-badge">Available for Hire</div>
+  </div>
+  <div class="nav-row2">
+    <div class="nav-links">
+      <a href="#" class="nav-tab" data-tab="hero">Home</a>
+      <a href="#" class="nav-tab" data-tab="about">Profile</a>
+      <a href="#" class="nav-tab" data-tab="services">Services</a>
+      <a href="#" class="nav-tab" data-tab="experience">Experience</a>
+      <a href="#" class="nav-tab" data-tab="skills">Skills</a>
+      <a href="#" class="nav-tab" data-tab="education">Education</a>
+      <a href="#" class="nav-tab" data-tab="contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Finance &amp; Accounting Professional</div>
+    <h1 class="hero-name">
+      Vincent<br>
+      <strong>Ouma Owino</strong>
+    </h1>
+    <p class="hero-title">Finance Analyst — Nairobi, Kenya</p>
+    <div class="hero-divider"></div>
+    <p class="hero-summary">
+      Delivering disciplined financial management, regulatory compliance, and data-driven
+      insight across accounts payable, payroll operations, SaaS cost governance, and
+      financial reporting. Committed to accuracy, efficiency, and the highest professional
+      standards in every engagement.
+    </p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary nav-tab" data-tab="contact">Hire Me</a>
+      <a href="#" class="btn-outline nav-tab" data-tab="experience">View Experience</a>
+      <a href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtT2JsaXF1ZSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjMgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9Db250ZW50cyAxMCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9Db250ZW50cyAxMSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgOSAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0F1dGhvciAoXChhbm9ueW1vdXNcKSkgL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MDMxNDA3MDgyMiswMCcwMCcpIC9DcmVhdG9yIChcKHVuc3BlY2lmaWVkXCkpIC9LZXl3b3JkcyAoKSAvTW9kRGF0ZSAoRDoyMDI2MDMxNDA3MDgyMiswMCcwMCcpIC9Qcm9kdWNlciAoUmVwb3J0TGFiIFBERiBMaWJyYXJ5IC0gXChvcGVuc291cmNlXCkpIAogIC9TdWJqZWN0IChcKHVuc3BlY2lmaWVkXCkpIC9UaXRsZSAoXChhbm9ueW1vdXNcKSkgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iago5IDAgb2JqCjw8Ci9Db3VudCAyIC9LaWRzIFsgNSAwIFIgNiAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjEwIDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI5NDQKPj4Kc3RyZWFtCkdhdWBVPj9CUU0mcTgwMVcoMUo5LnIqbSdxbSVKJSkucGAzUiRsVmotU0xKLzJIaEI2PFw8OVRjTW1WO1xnQDAsKlIpVixFM1BKVGxEal1sL21qa11nJV0uQDI5cSc4P2RsViM3YS5SbC41QjA+a2tbKXBZTV05QCVJNydrYmQmNkpFJSYoVi5nYz80a0FdMV0pJS1QPS8xOig7N1s+LkxtYDspOnA4NVc4T1xPXVJbMl5RN0JvJVs+ZC5GNHBbYjI5ZEhFIj84bDkoME00RUAvcyViJGQjMU1qJFFlQkcxTzZdVGo6MGtxNnUzJ0k5cTUvM3RRaHA3PklpbTYqRk1tbWcsRG4+cD5uLDxMKi5nXHJmNj8+QjxVNVlWZW0yYGwpRik8Rjo6XXJOZD5cUClFOj5BVF1DTGphYGQnLHVqKkNfKyxTV1VyTCFdMmwuJFhVYydOWE1GMTwsSyJoIyJRXGljNkNcbyU2XDxXOy5QJFUmMWMqbCteJVtTQUZNPUVWKT9UXyRhN2ZVb1tVZUZGLlFHJy05XCpcNydZWl5xaStsIUYuYzorXC5RVkZBaVhiXUlcS2dLL2NST1VqPywkVEkwcj8hPXVKREBhIjZDZkIjUU9fQSdnbiFETChzVikxUV5UTyRaKCxPX3MrcVNjNkVaXmNsOlgocGsyN2NnVCcuM0EvISRMazdNUVspcWtdYihXWHNEVFJMZTBqMW1HUigsLHMxIlVkdCtDRGBNaz5PSjckJSUoZWhzcWZPJXQvVVMjWSVrVTZdSmJlNEVuP29IaCJPKzBWWGc5Sz9MPFJQT1cxKEg/IkUzUkluSl9rT0lFTT1OUGIzYj9gOCczNk87dHJPUGRnWCVycS1SclwnRGVmbnAvN1smOHRxbmAuLiljZSg2OiZNQzJhKFQjPWFDMDw9XnE5JnBDa2pSbnI5T2JNUl0jZzFXT2U4M04rLSxhUmwhZSgiZjJDbTMwbTk5Lms6QEhoZGg9Wj9MWEIoaVQhSClaViJnSVEnSTteO0pAaklVJ111cjtVKDJZWDBlcyw9bktjRSxWSltmRVcraS5uS09bKzsnU05CPGhiZ1lOPUBFV0lrKnNRJEVdbUxIKGNYUCdsTlNHRlInKmBTO2wsQWhHQzJeYWpQRjQ2c1JvTS5DdWsmLiZbOm8tTSsrXS0+JWlXVS9KSTdDIWt1b2JxYkRwWmIpVEg9c3NWZ0JqPTRVVl9ybS0nS2YwJDc0c1ZtSTA1c0kzLjY+RE1KKCsnRFAmdGFlVDliaFosaG1uVixGQGBhMENCRlU1cExiImNgVmwuUzxTUlZlJCY1bFRpOkxWVy4uKjhEQVssanF1QTVENWhvL0VdJi46bDFrJkVoPTlUbiVwUExdYC0+T2JPTGhEaCUuVTxzQDE+ZXVKaVA6ZCgiNms4bFFdT3Q1JzBpREVVJzljRmcqQ15uYVEmSE9WTDlaXiNBOmhETF9dLFVBKXVsWDVAVWdjY2JrL2tucypcITZxJVRAX0xrJj9la0BDZiFlL01tMTFpNkpLWiFPJEomMlpWVy9NMzs8NTdkIiI3RXRuJWlDVD49VmUiamBfSGs/JE5tK2ZeVkkvMDZoLChHU0wubVs7PTFfZ0cxVVFMXz5yaW5QU00/SjFgQEdpJTwtQFtCWG4pYW0uM28pWy5gN3BMZ3QrM2tESFJbamM+JjksTidTbyhEQVM9YThfP11POSEmZXE9KTEoMkMrbC9Mbzc9aF8mO05URmlxN15SKUZvYmJSOyJEaWtIdC86M2JVWlpJXFY3PyU4LmBPOF11YzNbIjpQPHRgQ0ZfNzpcYEgqYyNlWGNPdTEyMHFBcHNUOmohJzI+L1NITUMmOlt0IVNiUlVBN2FzdHVaQy9PNHAmTkJBWjo4YGJFMDZIVkMsVzBoPHJTZyhrUDRxZkpAQzh1WVd1M1MlMSxZVCJNOXNOZSFhK3FRLSlkZT8pciYhJz41LCJgLERUPG8mRyoicidNQ0QkMmFOZEpWVioiZiEwZV1mYnVTa0I5cDJBRTMtJnBoQVRlVyhpMm5YQWdmNzsyZTw9O21MTnIsNl5zPTphQzJ0SW9acGlmODdqTj1aVFxjXG0kLVw5ZE5BOGM9LThZPnMmNjg+NTYnNUtUXUJScWBqbWcrKjdzJHFfUz1uKytFZEk8TG1FbCRrXidWPDtAMWViaWFiaydeQ1RNIWEscCNTJypKT0Elb1VaQikmJGpRNGNvblI5UnNRNm5ZblBuJTFoRjhGUTc4NlhNcTRbOlN1LkVkOlVrWS1IbEotOC4pOUZoJjkpYjomPFZRdCFubWhtQ0NAbEZKLltgSGdtcCgqazBTPClgKktmKkw0S0hXXCtrSEIqR1FwV1RaK2AiRC1wLjplYDheamVLOzFSPyMmaTAmWFdrZyZuIydgR1gkLW9qIltPRVVNN19cTEJPMCsoQStHI3FWPEQ7NW1Rc1dKZF1yJ2NXZT50TUprTktPOy8kU2wlRDpHakJWQDRfbT8mXmciWiNfVT9EaGlqOTJYdDxgI3JdTklwSUVJSUskLFooZ1wpPFgtJXQ0Tyk5XGdoVTdoQURDalNcZFltRUFDcUhyVj46SFMvXj43TElSNzlvKzRTa2s1XmUhNmtoPCxRcyFlRnMsKjUkKE5fSz9XRmZiJUFTclkqTzQwU2UsbFVnKG8vX24jOzMlb0JKQkVkOVxpTiM4b1VNXVBTUz4zIlhNcGosJDZYPFVYN0VaIWVPWkI/Nkkqa1pNVyw4c0lzKSRZTGs0Py1LRzdVVXBCLls4IiRNOFNRMzIqdDVKbkdMWU01WGYlPTdrRz8yJjRkRiJOI1spWjJvbFJNXylJUDNjbThhQmNKQSdQXEpxKTNSbSMtSmh1OWhfbTxxKiRXSWZkMkRrW0MxSURdLUA3KVJyUXJdcXQkWmlHUFE2bSZLaUM8TlM7W1s4SkEjXjVARU03SnMxUUN1bnJuITssRFZCK3I+JzQqSVY+XUotNyhwcW08Tk0wUC1sNTNPIW5AcGYkOGlkJVwqZysiVycyKDMvTiJnbE5YUXVYWysjdXMtYE0yYStlLWQoRzMiNWZPQzE/UEtQXXFYXWpDOEdfOiJSWnA4cCVebTJkYUpoOkJTUlQidD9UJHVXRnBiTCkwZFVGYGEqVGUpSiFsNT8iMFlKKUU5IiwkLEZNLT80OWxtWUtYNSpBJz1IT0MzI1ovcFI9V0BULE5nZFAyZz5ZZmI+aVNMbDFTOzxaQlI2czJpPUI6Y0pgSyhmTyguTidOcm05MFIlb0hsIzooUnVHR2gkJ3RDJURORVw4LytXTjk9UVZacHVCUmlZT1BSUTkhVG1hX1goV1VcWzE5RkVtbzBdaGwsWE8tVy5kZS1xT0xYUzIkYVYrWklPUUc1ZzYyZ15rLjRlP3JITWFQak8+XWEyJTQ9dFohLCRJP21EPE80LiJMSzJSWypyMT05JjFaNmtxTShTWFZPcCk3clJwbDtiNWchNDk1SUFbIjl1UnA7YWkrL2YyL21iVENhTV9kZk1qYi5NdWVfNHM2I11QJzxNND4mLSlwME8za0ljXE9MJm0vTGc1U0FVKC5ua0ZAJChVTklSPkA5KFl0aygqVjdTZFAjJCwpKklRJVJsSSchXz1jbXFLYV1OTDtEWnI/XSZDZlRiTFZHYm5MRT8sZSppQGBCXmJmZ0Y9Zi5JQ2YnXlcmLTdTTHU/RFBYcVcnO0FiIy5qIzRQYUY4Q0dcaj09M0c7NzovSzxbaFAsUVRFNXFLRGU2OFMzXSpbRnJBaSI7PipfWmVpblFPO2xDKi5JZUxtX1lJUHEiT3FtdF5QSFhoaFFUKUgwJzJELSpjQG1LYC8mS0FoZVVLRVoqc1BUV2diaXBKRiRVWzxzaylWWigwXEslbFxbKTdLfj5lbmRzdHJlYW0KZW5kb2JqCjExIDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI1MzkKPj4Kc3RyZWFtCkdhdWBVPkJBTFgnUm80SFM+VFk5MmckX0pyYDUxSWJHTWg9bUVFbDo3NTRrbmZHPS0rPW5eSjlPYz4/K0UkLGgmOXJIVzFkYTw6LGs2TSxNclpmQnAmLTg6cmk7SkgzVGVNbDgwZjlVa1Q0J19ESUkhJGc5JD5WKEM9ajQ/YTRCYE9FRjgxQ1xVW1dlQ2cmTGVmJGZRQUFEWEFJZCMwLjRlY0JwcCJpJkU/Oi0+InI3XTltRXBpJ01SPURKUEYjJlwpaTlIcDkoT2YhRyteX1BFISs6KUwhQi5WP2ReLUBYVUgoJCUyS2VVUycoK15YTkJEOTE+IypaNUVxLT86ckQ2W0xsKzRUbDokQjVPYWwrIVVBR2M5UnVAVyk5JS5pQF0vMVgiMy9sPDYvL1I2cHE6WGFtLWJpMTxnYyM1UG5LPD1uI3AoPiIoU15COm9BSkVcclBdKydIMiRHbFYlIU0wQGc7LkE0XU5ER2U5Oi1nW241QGFsbVQ0R211J1tgSSNKWlc9czsqWj1zX181dUxCMDhhXkM3ZiVKJ0glOT8tKzNoZFIoSXBDOUY+PiFnbGZcYitYbiNrJmknJERYR1NmQEBLOjlZXjE3UEJfTGktM29FN1NbLFhvTj1OUSJnZUdlaDlSOS1JKEc9Ly5sUWpYX3BaTCo5blZQX2xXbT4xQHIyOGklTmI+L2ROPVNQJD1OLTY5LF0rI3VNcj1nMS9HJ2JlYlksLU5HVVkhLmg4JjszX0YuOmU/KWs0OGE/M0lEYTtxLm1dPkpCKUFxLXE5P140Q1EoKytIaFM7TEZZcGVMSWU1P09SWGpyZjcwTzdRWWBMRyk0a0IhIV9INU05OFMkaytealFvNi07XlkoRUw4cktkQk4sMTVYTENtTTszYVBeMT4wJj48SkxaTWItRGdSYlAjKnFjc05AKGpBJ2xOS0B1UGE6bEIjN1hCVGAzQ24pZkorcmxNV08rT1FAYEtEQGY2Ji5OdC1HWUk8ZFc9JSdSc3I2W3VqKGc6IWk/KT9AVktwbCguMWx1ZWg/cFRZTU4sVStwSiUiUWhiRSJJWCQ0b0hrTz4/I09mbiYvUjAscG1bIikoIWdXKF1iOVtaZXAqSG9LM2NqVG08TjNBJi1WV2UyX1s6Pm86Z0ZdQDxlNzdbLzJLJClKQVo7Jmk6TGAiLSY0TSNLcmAvLk9YM0VEViIvNlxeUnBlM19DbVBMYHFjNEJUTldQayxYWHA8KkhgZlwxMkI8UGlnSFxTMkdGa0VLXF5JbnEmXjZDNU91Pkhyc0ZfXjE1b1MxP0RRJTJVSic3WyFtazlPbyE3UVA+UlVOOSxOLlo1YTxbYFZGMihrKVFiMlVoPiRLSERUXCVwOlRFWVI6SVZbMC5cUS5eYFs3Si5NWllGMjldbkhDOF5sTGNJWG1CJyZBVkZoNVw5SC0+RG0zQixPJlI5cVVoLjhSJDNVTzclQz8laiklLylnaSczRFUvZlQiRExHTiorcUIiRyZcbWEnY0VtaV9jazI6TlxEKTFdcUQ6V1hQM05ib1xrMDRaVWIzSikhRjJeLlNoTEZCLkEjMkVwYlBoRDpOIU4rSF0qQSl1Xk4/JjhSb1NvTFVic0QzWzJwI2RuZmgrYl1RRkJfSDdbWDRWKC8jPSFdL0sqM3RgV1goZV9BPE9ILGRQW2AsW1ZwNCE0SiQiIWhmak5SZVElWEVWbWBwJ28jNC9dX0w1YkpQM0JtQCE1c1FoO2Y5PmZyJmxVZ1knYmBraEgoVCgqOSgxVG1eRkNlJyk6MjBNQiQ4XFZAJEZhUSd0byg0Y0hnPDVkI11LWmpDaGhXNTxFbU5ON3AwZjZVcThAbj9uSydnLnNhMyVVdStcYFIrNVhVIUQtbVRgJWIjMmBScD4xZCJccHN0aWw6IlFLYF1UY0lqKD8jL01xLVJjZWFuWV5JSiQoV1VPN2A6cWo2JyVgWmw4UUlETVtlc285TEduOlUsczE+N1BJLmJZQzBrYTtwVGkmR29LKz0rK1VWZD9PbEFydFA+OCpiJmgwQjpFOWVRcHI4OGZSc3RfKWtLTCxKRlElSFZiUUUoPyxWVTpxUV5JKVxIWmFsN2JxJ3JkNEgwLFFBb2dSSmheR1xcUlsuTS0yXEpjTihnNGw8XWEoNG4lbSN0JCROaUNRMzVYNjVqNk5MImZqQl5pcidFZVxEWm43QDNXVVhAM3UmQUVGZmZ0YjItJ09RLG1wNSNHalQ9cEZqaGlpPUFpIlQ0cUNQamwqQ1ciLGU2UFVeVSZXWl4/WjhyQGhfOCo6S2RCNlktTVJjYS83bjZxI2QxRTpdaitpLjw9PVQhSz4pQmBTMUZpZ2o5Q0wxWFBiZD90MUplIz0uci9JZ1BHOCZNc3QrV1s+L2pkMDJESCpmK24wXUxjR0sybVcrMnNBI3JnP0lxRyFGZm5gIy02bWUnWlBFbV8kSFAxIj1xWWYrVDZpc0dJZFdUM2dQTEgkKVVSb24lPFNmUyc9JnUydEpdWD9CZzJxYilYNlAmRUFqTzRoc1Z1QzNQRDE7cilVLXI+QHQvNSIqQHJOPFMjXGhma1djLi40Zy5xI19GYzZkW081bjU4SkErc08xSFNOQSNsQWBbXyI8N1VCakhGY0wtJTNlcGtycihnSj1rKCxrcyNTIiw9Kj1ZPlZRUT5jWzpBSSZxaVw8VVsvNy5OVD1WYlpJc0k/MD0+QC9oL1dhMDhwZjtPKldbJnNCI0JpXUU+T3BnUkJsZGo/KEFsMF9bWk8rUC9iWE5rImY2WD9xYXEkP2lHZzkyQSNCXzQnS2VOTHE/Z1kxSjt0SV07Z2F0bTFJT0FvRGchJDA+VDo5dV10O1hrU10zaW9DZjxPaE9pcTpcUnNrdUdgSTokM05ZXXRBakhSdE4lK1JlZzEoaWMlTU1UaCZUNFJTXCpgITAyQmhcLihfa1xzXCFjYThMSVF1bDkibEk3dGJGRCctVV9gaEVkUWJlIygjb2VaWjpzKXFBSHRlNWAmJTM0SD1nN2RySk5pXjEzS1NpYCYvRWZSJSlzNCEoOmBja1Iqb2ZoW1JmM1QrYyMrQ2VjIVdOZDNNdS1BTG8lI2csdT1sN1Uic1JoSWJyP0U7VDVtalsxTkQucCkvcDxyVVEtbyVmTF83bzVUZTkwZXBnZys5LisnXXAjPFVjODI+Tjk9QzpLZEhdYC5AZFBqPnQ/OkcpYVc6S2xqPT4yTkpeKi5AUkM8KjBnPCZfXmJbL2kmKERNRV0pMGFGTD1POCtCbVVBUWUwOkRsYVxNbScpPFlGVF4zTVFuImJSLzwuXkJrb3QwXWlyLUknQF1pRFtfPjo+cTNBTDVpQzxwZUNSQkg7RiEhPGhnT3BBfj5lbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCAxMgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwNjEgMDAwMDAgbiAKMDAwMDAwMDExMiAwMDAwMCBuIAowMDAwMDAwMjE5IDAwMDAwIG4gCjAwMDAwMDAzMzEgMDAwMDAgbiAKMDAwMDAwMDQ0NiAwMDAwMCBuIAowMDAwMDAwNjUwIDAwMDAwIG4gCjAwMDAwMDA4NTQgMDAwMDAgbiAKMDAwMDAwMDkyMiAwMDAwMCBuIAowMDAwMDAxMjAyIDAwMDAwIG4gCjAwMDAwMDEyNjcgMDAwMDAgbiAKMDAwMDAwNDMwMyAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JRCAKWzxiYTdlNTg0ZjY3NzFkZDc3MjlhY2JkMDdlZjNjOTZkYT48YmE3ZTU4NGY2NzcxZGQ3NzI5YWNiZDA3ZWYzYzk2ZGE+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDggMCBSCi9Sb290IDcgMCBSCi9TaXplIDEyCj4+CnN0YXJ0eHJlZgo2OTM0CiUlRU9GCg==" download="Vincent_Owino_CV.pdf" id="cv-download-btn" data-cv-version="0.1" class="btn-download">↓ Download CV</a>
+    </div>
+  </div>
+
+  <div class="profile-card reveal">
+    <div class="profile-card-header">
+      <div class="pc-name">Vincent Ouma Owino</div>
+      <div class="pc-role">Finance Analyst · Digital Qatalyst</div>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-cell"><div class="kpi-lbl">Degree</div><div class="kpi-val">BBA</div><div class="kpi-sub">Business Admin with IT</div></div>
+      <div class="kpi-cell"><div class="kpi-lbl">University</div><div class="kpi-val" style="font-size:1.1rem;padding-top:0.3rem">Maseno</div><div class="kpi-sub">Class of 2024</div></div>
+      <div class="kpi-cell"><div class="kpi-lbl">Experience</div><div class="kpi-val">4+</div><div class="kpi-sub">Finance &amp; Admin roles</div></div>
+      <div class="kpi-cell"><div class="kpi-lbl">Standards</div><div class="kpi-val" style="font-size:1rem;padding-top:0.3rem">IFRS</div><div class="kpi-sub">GAAP · APQC</div></div>
+    </div>
+    <div class="pc-list">
+      <div class="pc-item"><span class="pc-item-name">MS Dynamics 365 Business Central</span><span class="pc-badge erp">ERP</span></div>
+      <div class="pc-item"><span class="pc-item-name">Accounts Payable Management</span><span class="pc-badge">Core</span></div>
+      <div class="pc-item"><span class="pc-item-name">Payroll Processing</span><span class="pc-badge">Core</span></div>
+      <div class="pc-item"><span class="pc-item-name">SaaS Subscription Governance</span><span class="pc-badge">Core</span></div>
+      <div class="pc-item"><span class="pc-item-name">Financial Reporting &amp; Variance Analysis</span><span class="pc-badge">Core</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ABOUT ══ -->
+<section id="about">
+  <div class="sec-head">
+    <span class="sec-eyebrow">01 — Profile</span>
+    <h2 class="sec-title">Professional Profile</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="about-layout reveal">
+    <div class="about-bio">
+      <p>I am a <strong>Finance Analyst</strong> holding a Bachelor of Business Administration
+      with IT (Accounting Option) from Maseno University, combining technical accounting
+      expertise with technology fluency to deliver measurable value in fast-paced environments.</p>
+      <p>My career spans <strong>corporate finance, public-sector accounting, SME financial
+      management, and community leadership</strong> — giving me a well-rounded, practical
+      understanding of how organisations manage money at different scales and in different contexts.</p>
+      <p>At <strong>Digital Qatalyst</strong>, I manage end-to-end accounts payable, govern SaaS
+      subscriptions, run full payroll cycles, and produce weekly and monthly management reports —
+      all within <strong>Microsoft Dynamics 365 Business Central</strong> and in strict compliance
+      with IFRS, GAAP, and APQC frameworks.</p>
+      <p>I am also <strong>Secretary General of Mwangaza Initiative</strong>, a youth wellbeing
+      and community resilience organisation in Homa Bay — where I apply the same governance and
+      financial discipline I bring to corporate settings.</p>
+      <p>My goal is to grow into a <strong>senior financial analyst or finance manager</strong>
+      role, applying both my accounting foundations and technology capabilities to drive
+      outstanding organisational outcomes.</p>
+    </div>
+    <div class="info-table">
+      <div class="info-row"><span class="info-k">Full Name</span><span class="info-v">Vincent Ouma Owino</span></div>
+      <div class="info-row"><span class="info-k">Role</span><span class="info-v">Finance Analyst</span></div>
+      <div class="info-row"><span class="info-k">Employer</span><span class="info-v">Digital Qatalyst (DQ)</span></div>
+      <div class="info-row"><span class="info-k">Location</span><span class="info-v">Nairobi, Kenya</span></div>
+      <div class="info-row"><span class="info-k">Education</span><span class="info-v">BBA with IT — Maseno, 2024</span></div>
+      <div class="info-row"><span class="info-k">Standards</span><span class="info-v">IFRS · GAAP · APQC</span></div>
+      <div class="info-row"><span class="info-k">ERP</span><span class="info-v">MS Dynamics 365 BC</span></div>
+      <div class="info-row"><span class="info-k">Phone</span><span class="info-v">+254 757 900 242</span></div>
+      <div class="info-row"><span class="info-k">Email</span><span class="info-v"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="19766e7077766f70777a7c776d766c7478597e74787075377a7674">[email&#160;protected]</a></span></div>
+      <div class="info-row"><span class="info-k">Status</span><span class="info-v open">Open to Opportunities</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICES ══ -->
+<section id="services">
+  <div class="sec-head">
+    <span class="sec-eyebrow">02 — Services</span>
+    <h2 class="sec-title">What I Offer</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="services-grid reveal">
+    <div class="svc-card"><div class="svc-num">AP / AR</div><div class="svc-name">Accounts Payable &amp; Receivable Management</div><div class="svc-desc">Full lifecycle payables management — invoice processing, vendor reconciliation, cut-off enforcement, and timely disbursements aligned to IFRS, GAAP, and APQC best practices.</div></div>
+    <div class="svc-card"><div class="svc-num">Payroll</div><div class="svc-name">Payroll Processing &amp; Statutory Compliance</div><div class="svc-desc">End-to-end payroll covering employee setup, PAYE, NSSF and SHIF calculations, compliance validation, reconciliation, and detailed payroll reporting.</div></div>
+    <div class="svc-card"><div class="svc-num">Reporting</div><div class="svc-name">Financial Reporting &amp; Variance Analysis</div><div class="svc-desc">Weekly and monthly management reports, variance identification, exception flagging, and operational insight supporting executive decision-making.</div></div>
+    <div class="svc-card"><div class="svc-num">SaaS</div><div class="svc-name">SaaS Subscription Governance</div><div class="svc-desc">License utilisation reviews, renewal planning, cost-benefit analysis, and elimination of redundant tools — driving measurable and sustained SaaS cost reduction.</div></div>
+    <div class="svc-card"><div class="svc-num">Budget</div><div class="svc-name">Budgeting &amp; Forecasting Support</div><div class="svc-desc">Expenditure trend monitoring, cost projection inputs, vendor commitment tracking, and support for annual and rolling budget cycles.</div></div>
+    <div class="svc-card"><div class="svc-num">Controls</div><div class="svc-name">Internal Controls &amp; Process Improvement</div><div class="svc-desc">Evaluation and redesign of financial workflows to strengthen documentation quality, tighten internal controls, and improve operational efficiency.</div></div>
+  </div>
+</section>
+
+<!-- ══ EXPERIENCE ══ -->
+<section id="experience">
+  <div class="sec-head">
+    <span class="sec-eyebrow">03 — Experience</span>
+    <h2 class="sec-title">Work History</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="timeline reveal">
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-meta-period">Sep 2025 — Present</div>
+        <div class="exp-meta-org">Digital Qatalyst (DQ)<br>Nairobi</div>
+        <div class="exp-meta-type">Full-time · Current</div>
+      </div>
+      <div>
+        <div class="exp-role">Finance Analyst</div>
+        <ul class="exp-duties">
+          <li>Manage the full accounts payable lifecycle in compliance with IFRS, GAAP, and APQC frameworks; maintain the payables tracker and enforce cut-off timelines.</li>
+          <li>Govern SaaS subscriptions organisation-wide — license utilisation reviews, renewal management, cost analysis, and elimination of redundant tools.</li>
+          <li>Run end-to-end payroll: employee setup, earnings and deduction calculations, statutory compliance (PAYE, NSSF, SHIF), execution, reconciliation, and reporting.</li>
+          <li>Conduct variance analysis to identify, resolve, and prevent payroll and payables discrepancies before escalation.</li>
+          <li>Prepare weekly and monthly financial reports covering payables, payroll summaries, SaaS spend trends, exceptions, and risk flags.</li>
+          <li>Support budgeting and forecasting with real-time visibility on vendor commitments, payroll obligations, and SaaS renewal timelines.</li>
+          <li>Utilise <strong>Microsoft Dynamics 365 Business Central</strong> for GL management, purchase order workflows, and real-time financial reporting — maintaining data integrity across all finance operations.</li>
+          <li>Continuously strengthen finance workflows — improving documentation, internal controls, and process efficiency.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Accounts Payable</span>
+          <span class="exp-tag">Payroll</span>
+          <span class="exp-tag">SaaS Governance</span>
+          <span class="exp-tag">IFRS</span>
+          <span class="exp-tag">Variance Analysis</span>
+          <span class="exp-tag">Financial Reporting</span>
+          <span class="exp-tag">MS D365 Business Central</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-meta-period">Present</div>
+        <div class="exp-meta-org">Mwangaza Initiative<br>Homa Bay, Kenya</div>
+        <div class="exp-meta-type">Volunteer · Leadership</div>
+      </div>
+      <div>
+        <div class="exp-role">Secretary General</div>
+        <ul class="exp-duties">
+          <li>Serve as Secretary General of Mwangaza Initiative, a youth wellbeing and community resilience organisation based in Homa Bay, Kenya.</li>
+          <li>Oversee organisational governance, correspondence, and official documentation — ensuring transparency and accountability.</li>
+          <li>Coordinate leadership meetings, record minutes, and follow up on resolutions to drive programme delivery and strategic priorities.</li>
+          <li>Support financial oversight and administrative operations, applying professional finance standards to the organisation's internal processes.</li>
+          <li>Represent the Initiative in external engagements and contribute to community outreach programmes focused on youth development.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag green">Governance</span>
+          <span class="exp-tag green">Leadership</span>
+          <span class="exp-tag green">Community Development</span>
+          <span class="exp-tag green">Youth Wellbeing</span>
+          <span class="exp-tag green">NGO Operations</span>
+        </div>
+        <div style="margin-top:0.9rem">
+          <a href="https://www.mwangazainitiative.online" target="_blank" style="font-family:'Lato',sans-serif;font-size:0.62rem;font-weight:700;letter-spacing:0.1em;color:var(--green);text-decoration:none;border-bottom:1px solid var(--green-border);padding-bottom:1px;">↗ www.mwangazainitiative.online</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-meta-period">Feb 2025 — Sep 2025</div>
+        <div class="exp-meta-org">Venlo Fresh Fries<br>Nairobi</div>
+        <div class="exp-meta-type">Full-time</div>
+      </div>
+      <div>
+        <div class="exp-role">Cashier</div>
+        <ul class="exp-duties">
+          <li>Processed all customer transactions via POS system, maintaining cash integrity and zero discrepancies across shifts.</li>
+          <li>Managed mobile money and cash payments with accurate end-of-day reconciliations and handover reports.</li>
+          <li>Supported inventory checks and escalated restocking requirements to management.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Cash Management</span>
+          <span class="exp-tag">POS Operations</span>
+          <span class="exp-tag">Reconciliation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-meta-period">Apr 2024 — Jan 2025</div>
+        <div class="exp-meta-org">Makodege Enterprise<br>Kenya</div>
+        <div class="exp-meta-type">Full-time</div>
+      </div>
+      <div>
+        <div class="exp-role">Administrative Assistant</div>
+        <ul class="exp-duties">
+          <li>Managed day-to-day finance operations: petty cash, expense tracking, supplier payments, and bookkeeping.</li>
+          <li>Prepared financial summaries and supported business budgeting with cost data and trend inputs.</li>
+          <li>Coordinated procurement, inventory management, and operations for the branding and printing unit.</li>
+          <li>Redesigned the business's record-keeping system, significantly improving data accuracy and retrieval speed.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">Bookkeeping</span>
+          <span class="exp-tag">Expense Tracking</span>
+          <span class="exp-tag">Procurement</span>
+          <span class="exp-tag">Inventory</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div>
+        <div class="exp-meta-period">May 2023 — Aug 2023</div>
+        <div class="exp-meta-org">Homa Bay County Teaching &amp; Referral Hospital</div>
+        <div class="exp-meta-type">Industrial Attachment</div>
+      </div>
+      <div>
+        <div class="exp-role">Accountant (Industrial Attachment)</div>
+        <ul class="exp-duties">
+          <li>Prepared bills, invoices, and receipts using Funsoft and Elephant accounting systems in a high-volume healthcare environment.</li>
+          <li>Batched and processed NHIF claims through the HICS system, ensuring accuracy and timely submission.</li>
+          <li>Prepared payment vouchers, posted cashbook entries, and maintained creditor ledgers with regular reconciliations.</li>
+          <li>Monitored debtor accounts and supported month-end closing activities.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">NHIF Claims</span>
+          <span class="exp-tag">Funsoft</span>
+          <span class="exp-tag">Creditor Ledgers</span>
+          <span class="exp-tag">Public Finance</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ SKILLS ══ -->
+<section id="skills">
+  <div class="sec-head">
+    <span class="sec-eyebrow">04 — Skills</span>
+    <h2 class="sec-title">Skills &amp; Competencies</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="skills-layout reveal">
+    <div>
+      <div class="skill-group-lbl">Finance &amp; Accounting</div>
+      <div class="skill-rows">
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Accounts Payable Management</span><span class="skill-pct-t">92%</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Payroll Processing &amp; Compliance</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Reporting</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Variance Analysis</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Budgeting &amp; Forecasting</span><span class="skill-pct-t">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Data Reconciliation</span><span class="skill-pct-t">92%</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">IFRS / GAAP / APQC Compliance</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+      </div>
+      <div class="skill-group-lbl">Technology &amp; Systems</div>
+      <div class="skill-rows">
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">MS Dynamics 365 Business Central</span><span class="skill-pct-t">82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Microsoft Excel (Advanced)</span><span class="skill-pct-t">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Microsoft Access</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">SaaS Cost Governance</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">QuickBooks</span><span class="skill-pct-t">65%</span></div><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-group-lbl">Professional Skills</div>
+      <div class="skill-rows">
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Attention to Detail</span><span class="skill-pct-t">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Analytical Problem-Solving</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Cross-Functional Collaboration</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Process Improvement</span><span class="skill-pct-t">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Communication</span><span class="skill-pct-t">82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Governance &amp; Leadership</span><span class="skill-pct-t">84%</span></div><div class="skill-bar"><div class="skill-fill" data-width="84"></div></div></div>
+      </div>
+      <div class="skill-group-lbl">Tools &amp; Standards</div>
+      <div class="tools-grid">
+        <span class="tool-chip">MS D365 BC</span><span class="tool-chip">MS Excel</span>
+        <span class="tool-chip">MS Access</span><span class="tool-chip">QuickBooks</span>
+        <span class="tool-chip">Funsoft</span><span class="tool-chip">Elephant</span>
+        <span class="tool-chip">HICS</span><span class="tool-chip">POS Systems</span>
+        <span class="tool-chip">IFRS</span><span class="tool-chip">GAAP</span>
+        <span class="tool-chip">APQC</span><span class="tool-chip">KRA iTax</span>
+        <span class="tool-chip">PAYE</span><span class="tool-chip">NSSF / SHIF</span>
+        <span class="tool-chip">NHIF</span><span class="tool-chip">SaaS Mgmt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EDUCATION ══ -->
+<section id="education">
+  <div class="sec-head">
+    <span class="sec-eyebrow">05 — Education</span>
+    <h2 class="sec-title">Education</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-year">2019 — 2024</div>
+      <div class="edu-degree">Bachelor of Business Administration with IT (Accounting Option)</div>
+      <div class="edu-inst">Maseno University</div>
+      <div class="edu-badge">Graduated</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2015 — 2019</div>
+      <div class="edu-degree">Kenya Certificate of Secondary Education (KCSE)</div>
+      <div class="edu-inst">St. Paul's Secondary School — Ligisa</div>
+      <div class="edu-badge">Completed</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">— 2015</div>
+      <div class="edu-degree">Kenya Certificate of Primary Education (KCPE)</div>
+      <div class="edu-inst">Kerenga Primary School</div>
+      <div class="edu-badge">Completed</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="sec-head">
+    <span class="sec-eyebrow">06 — Contact</span>
+    <h2 class="sec-title">Get in Touch</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="contact-layout reveal">
+    <div class="contact-body">
+      <p>I am actively open to new opportunities in finance and accounting — whether a
+      <strong>full-time analyst role</strong>, a project engagement, or a consultancy.
+      If you are looking for a detail-oriented finance professional with strong compliance
+      standards, ERP proficiency, and a technology-forward mindset, I would love to hear from you.</p>
+      <p>I am particularly interested in roles involving <strong>financial reporting, payroll
+      management, accounts payable, or financial systems</strong> — in Nairobi or with remote flexibility.</p>
+      <p>Feel free to reach out via email or phone. I respond promptly and am available for
+      interviews, calls, or a preliminary conversation at your convenience.</p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-head">Direct Contact</div>
+      <a class="contact-row" href="/cdn-cgi/l/email-protection#315e46585f5e47585f52545f455e445c5071565c50585d1f525e5c">
+        <span class="cr-label">Email</span>
+        <span class="cr-val"><span class="__cf_email__" data-cfemail="a2cdd5cbcccdd4cbccc1c7ccd6cdd7cfc3e2c5cfc3cbce8cc1cdcf">[email&#160;protected]</span></span>
+      </a>
+      <a class="contact-row" href="tel:+254757900242">
+        <span class="cr-label">Phone</span>
+        <span class="cr-val">+254 757 900 242</span>
+      </a>
+      <div class="contact-row">
+        <span class="cr-label">Location</span>
+        <span class="cr-val">Nairobi, Kenya</span>
+      </div>
+      <div class="contact-row">
+        <span class="cr-label">Status</span>
+        <span class="cr-val open">Open to Opportunities</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Vincent Owino</div>
+  <div class="footer-copy">© 2026 · Finance Analyst · Nairobi, Kenya</div>
+  <div class="footer-links">
+    <a href="#" class="nav-tab" data-tab="about">Profile</a>
+    <a href="#" class="nav-tab" data-tab="services">Services</a>
+    <a href="#" class="nav-tab" data-tab="contact">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── TABS ──
+  const allSections = document.querySelectorAll('section');
+  const allTabs = document.querySelectorAll('.nav-tab');
+
+  function showTab(id) {
+    allSections.forEach(s => s.style.display = s.id === id ? '' : 'none');
+    allTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
+    window.scrollTo(0, 0);
+
+    document.querySelectorAll('#' + id + ' .reveal').forEach((el, i) => {
+      el.classList.remove('visible');
+      setTimeout(() => el.classList.add('visible'), i * 80 + 80);
+    });
+
+    if (id === 'skills') {
+      setTimeout(() => {
+        document.querySelectorAll('.skill-fill').forEach(b => b.style.width = b.getAttribute('data-width') + '%');
+      }, 180);
+    } else {
+      document.querySelectorAll('.skill-fill').forEach(b => b.style.width = '0');
+    }
+
+    if (id === 'hero') {
+      const h = document.querySelector('.hero-left');
+      if (h) {
+        h.style.transition = 'none'; h.style.opacity = '0'; h.style.transform = 'translateY(24px)';
+        setTimeout(() => {
+          h.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+          h.style.opacity = '1'; h.style.transform = 'translateY(0)';
+        }, 80);
+      }
+    }
+  }
+
+  allTabs.forEach(t => t.addEventListener('click', e => { e.preventDefault(); showTab(t.dataset.tab); }));
+  showTab('hero');
+
+  // ── DYNAMIC CV FILENAME ──
+  // Format: YY.MM_CV_Vincent Owino_V.0.1
+  // Version is stored in the button's data-version attribute
+  const cvBtn = document.getElementById('cv-download-btn');
+  if (cvBtn) {
+    const now = new Date();
+    const yy = String(now.getFullYear()).slice(-2);
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const version = cvBtn.getAttribute('data-cv-version') || '0.1';
+    cvBtn.setAttribute('download', `${yy}.${mm}_CV_Vincent Owino_V.${version}`);
+  }
+
+  const tdata = [
+    { sym:'ACCOUNTS PAYABLE', val:'OPTIMISED', chg:'+IFRS' },
+    { sym:'PAYROLL', val:'END-TO-END', chg:'+COMPLIANT' },
+    { sym:'VARIANCE ANALYSIS', val:'MONTHLY', chg:'+INSIGHTS' },
+    { sym:'D365 BUSINESS CENTRAL', val:'ERP', chg:'+LIVE' },
+    { sym:'SAAS GOVERNANCE', val:'COST CONTROL', chg:'+ROI' },
+    { sym:'FINANCIAL REPORTS', val:'WEEKLY', chg:'+ACCURACY' },
+    { sym:'RECONCILIATION', val:'ZERO ERRORS', chg:'+CONTROLS' },
+    { sym:'BUDGETING', val:'FORECASTING', chg:'+PLANNING' },
+    { sym:'MS EXCEL', val:'ADVANCED', chg:'+SKILL' },
+    { sym:'IFRS / GAAP', val:'COMPLIANT', 
