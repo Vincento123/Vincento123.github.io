@@ -107,6 +107,7 @@
       font-size: 1.15rem; font-weight: 700;
       color: var(--blue); letter-spacing: 0.02em;
       white-space: nowrap;
+      flex-shrink: 0;
     }
     .nav-brand span { color: var(--green); }
     .nav-tagline {
@@ -1024,27 +1025,38 @@
     allTabs.forEach(t => t.classList.toggle('active', t.dataset.tab === id));
     window.scrollTo(0, 0);
 
-    document.querySelectorAll('#' + id + ' .reveal').forEach((el, i) => {
-      el.classList.remove('visible');
-      setTimeout(() => el.classList.add('visible'), i * 80 + 80);
+    // Force reveal all elements in the shown section immediately
+    const revealEls = document.querySelectorAll('#' + id + ' .reveal');
+    revealEls.forEach(el => el.classList.remove('visible'));
+    // Use requestAnimationFrame to ensure display:block has applied before animating
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        revealEls.forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), i * 100);
+        });
+      });
     });
 
+    // Skill bars
     if (id === 'skills') {
       setTimeout(() => {
         document.querySelectorAll('.skill-fill').forEach(b => b.style.width = b.getAttribute('data-width') + '%');
-      }, 180);
+      }, 300);
     } else {
       document.querySelectorAll('.skill-fill').forEach(b => b.style.width = '0');
     }
 
+    // Hero entrance
     if (id === 'hero') {
       const h = document.querySelector('.hero-left');
       if (h) {
         h.style.transition = 'none'; h.style.opacity = '0'; h.style.transform = 'translateY(24px)';
-        setTimeout(() => {
-          h.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
-          h.style.opacity = '1'; h.style.transform = 'translateY(0)';
-        }, 80);
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            h.style.transition = 'opacity 0.9s ease, transform 0.9s ease';
+            h.style.opacity = '1'; h.style.transform = 'translateY(0)';
+          });
+        });
       }
     }
   }
@@ -1074,4 +1086,4 @@
     { sym:'RECONCILIATION', val:'ZERO ERRORS', chg:'+CONTROLS' },
     { sym:'BUDGETING', val:'FORECASTING', chg:'+PLANNING' },
     { sym:'MS EXCEL', val:'ADVANCED', chg:'+SKILL' },
-    { sym:'IFRS / GAAP', val:'COMPLIANT', 
+    { sym:'IFRS / GAAP', val:'COMPLIANT',
