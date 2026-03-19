@@ -831,6 +831,7 @@
       <a href="#" onclick="showTab('services');return false;" class="nav-tab" data-tab="services">Services</a>
       <a href="#" onclick="showTab('experience');return false;" class="nav-tab" data-tab="experience">Experience</a>
       <a href="#" onclick="showTab('skills');return false;" class="nav-tab" data-tab="skills">Skills</a>
+      <a href="#" onclick="showTab('portfolio');return false;" class="nav-tab" data-tab="portfolio">Portfolio</a>
       <a href="#" onclick="showTab('education');return false;" class="nav-tab" data-tab="education">Education</a>
       <a href="#" onclick="showTab('contact');return false;" class="nav-tab" data-tab="contact">Contact</a>
     </div>
@@ -841,6 +842,7 @@
     <a href="#" class="nav-tab" data-tab="services" onclick="showTab('services');closeMobileMenu();return false;">Services</a>
     <a href="#" class="nav-tab" data-tab="experience" onclick="showTab('experience');closeMobileMenu();return false;">Experience</a>
     <a href="#" class="nav-tab" data-tab="skills" onclick="showTab('skills');closeMobileMenu();return false;">Skills</a>
+    <a href="#" class="nav-tab" data-tab="portfolio" onclick="showTab('portfolio');closeMobileMenu();return false;">Portfolio</a>
     <a href="#" class="nav-tab" data-tab="education" onclick="showTab('education');closeMobileMenu();return false;">Education</a>
     <a href="#" class="nav-tab" data-tab="contact" onclick="showTab('contact');closeMobileMenu();return false;">Contact</a>
   </div>
@@ -866,7 +868,7 @@
     <div class="hero-actions">
       <a href="#" class="btn-primary nav-tab" data-tab="contact">Hire Me</a>
       <a href="#" class="btn-outline nav-tab" data-tab="experience">View Experience</a>
-      <a href="data:application/pdf;base64,JVBERi0xLjQKJZOMi54gUmVwb3J0TGFiIEdlbmVyYXRlZCBQREYgZG9jdW1lbnQgKG9wZW5zb3VyY2UpCjEgMCBvYmoKPDwKL0YxIDIgMCBSIC9GMiAzIDAgUiAvRjMgNCAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EgL0VuY29kaW5nIC9XaW5BbnNpRW5jb2RpbmcgL05hbWUgL0YxIC9TdWJ0eXBlIC9UeXBlMSAvVHlwZSAvRm9udAo+PgplbmRvYmoKMyAwIG9iago8PAovQmFzZUZvbnQgL0hlbHZldGljYS1Cb2xkIC9FbmNvZGluZyAvV2luQW5zaUVuY29kaW5nIC9OYW1lIC9GMiAvU3VidHlwZSAvVHlwZTEgL1R5cGUgL0ZvbnQKPj4KZW5kb2JqCjQgMCBvYmoKPDwKL0Jhc2VGb250IC9IZWx2ZXRpY2EtT2JsaXF1ZSAvRW5jb2RpbmcgL1dpbkFuc2lFbmNvZGluZyAvTmFtZSAvRjMgL1N1YnR5cGUgL1R5cGUxIC9UeXBlIC9Gb250Cj4+CmVuZG9iago1IDAgb2JqCjw8Ci9Db250ZW50cyAxMCAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago2IDAgb2JqCjw8Ci9Db250ZW50cyAxMSAwIFIgL01lZGlhQm94IFsgMCAwIDU5NS4yNzU2IDg0MS44ODk4IF0gL1BhcmVudCA5IDAgUiAvUmVzb3VyY2VzIDw8Ci9Gb250IDEgMCBSIC9Qcm9jU2V0IFsgL1BERiAvVGV4dCAvSW1hZ2VCIC9JbWFnZUMgL0ltYWdlSSBdCj4+IC9Sb3RhdGUgMCAvVHJhbnMgPDwKCj4+IAogIC9UeXBlIC9QYWdlCj4+CmVuZG9iago3IDAgb2JqCjw8Ci9QYWdlTW9kZSAvVXNlTm9uZSAvUGFnZXMgOSAwIFIgL1R5cGUgL0NhdGFsb2cKPj4KZW5kb2JqCjggMCBvYmoKPDwKL0F1dGhvciAoXChhbm9ueW1vdXNcKSkgL0NyZWF0aW9uRGF0ZSAoRDoyMDI2MDMxNDE0MDAyNiswMCcwMCcpIC9DcmVhdG9yIChcKHVuc3BlY2lmaWVkXCkpIC9LZXl3b3JkcyAoKSAvTW9kRGF0ZSAoRDoyMDI2MDMxNDE0MDAyNiswMCcwMCcpIC9Qcm9kdWNlciAoUmVwb3J0TGFiIFBERiBMaWJyYXJ5IC0gXChvcGVuc291cmNlXCkpIAogIC9TdWJqZWN0IChcKHVuc3BlY2lmaWVkXCkpIC9UaXRsZSAoXChhbm9ueW1vdXNcKSkgL1RyYXBwZWQgL0ZhbHNlCj4+CmVuZG9iago5IDAgb2JqCjw8Ci9Db3VudCAyIC9LaWRzIFsgNSAwIFIgNiAwIFIgXSAvVHlwZSAvUGFnZXMKPj4KZW5kb2JqCjEwIDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI5NDQKPj4Kc3RyZWFtCkdhdWBVPj9CUU0mcTgwMVcoMUo5LnIqbSdxbSVKJSkucGAzUiRsVmotU0xKLzJIaEI2PFw8OVRjTW1WO1xnQDAsKlIpVixFM1BKVGxEal1sL21qa11nJV0uQDI5cSc4P2RsViM3YS5SbC41QjA+a2tbKXBZTV05QCVJNydrYmQmNkpFJSYoVi5nYz80a0FdMV0pJS1QPS8xOig7N1s+LkxtYDspOnA4NVc4T1xPXVJbMl5RN0JvJVs+ZC5GNHBbYjI5ZEhFIj84bDkoME00RUAvcyViJGQjMU1qJFFlQkcxTzZdVGo6MGtxNnUzJ0k5cTUvM3RRaHA3PklpbTYqRk1tbWcsRG4+cD5uLDxMKi5nXHJmNj8+QjxVNVlWZW0yYGwpRik8Rjo6XXJOZD5cUClFOj5BVF1DTGphYGQnLHVqKkNfKyxTV1VyTCFdMmwuJFhVYydOWE1GMTwsSyJoIyJRXGljNkNcbyU2XDxXOy5QJFUmMWMqbCteJVtTQUZNPUVWKT9UXyRhN2ZVb1tVZUZGLlFHJy05XCpcNydZWl5xaStsIUYuYzorXC5RVkZBaVhiXUlcS2dLL2NST1VqPywkVEkwcj8hPXVKREBhIjZDZkIjUU9fQSdnbiFETChzVikxUV5UTyRaKCxPX3MrcVNjNkVaXmNsOlgocGsyN2NnVCcuM0EvISRMazdNUVspcWtdYihXWHNEVFJMZTBqMW1HUigsLHMxIlVkdCtDRGBNaz5PSjckJSUoZWhzcWZPJXQvVVMjWSVrVTZdSmJlNEVuP29IaCJPKzBWWGc5Sz9MPFJQT1cxKEg/IkUzUkluSl9rT0lFTT1OUGIzYj9gOCczNk87dHJPUGRnWCVycS1SclwnRGVmbnAvN1smOHRxbmAuLiljZSg2OiZNQzJhKFQjPWFDMDw9XnE5JnBDa2pSbnI5T2JNUl0jZzFXT2U4M04rLSxhUmwhZSgiZjJDbTMwbTk5Lms6QEhoZGg9Wj9MWEIoaVQhSClaViJnSVEnSTteO0pAaklVJ111cjtVKDJZWDBlcyw9bktjRSxWSltmRVcraS5uS09bKzsnU05CPGhiZ1lOPUBFV0lrKnNRJEVdbUxIKGNYUCdsTlNHRlInKmBTO2wsQWhHQzJeYWpQRjQ2c1JvTS5DdWsmLiZbOm8tTSsrXS0+JWlXVS9KSTdDIWt1b2JxYkRwWmIpVEg9c3NWZ0JqPTRVVl9ybS0nS2YwJDc0c1ZtSTA1c0kzLjY+RE1KKCsnRFAmdGFlVDliaFosaG1uVixGQGBhMENCRlU1cExiImNgVmwuUzxTUlZlJCY1bFRpOkxWVy4uKjhEQVssanF1QTVENWhvL0VdJi46bDFrJkVoPTlUbiVwUExdYC0+T2JPTGhEaCUuVTxzQDE+ZXVKaVA6ZCgiNms4bFFdT3Q1JzBpREVVJzljRmcqQ15uYVEmSE9WTDlaXiNBOmhETF9dLFVBKXVsWDVAVWdjY2JrL2tucypcITZxJVRAX0xrJj9la0BDZiFlL01tMTFpNkpLWiFPJEomMlpWVy9NMzs8NTdkIiI3RXRuJWlDVD49VmUiamBfSGs/JE5tK2ZeVkkvMDZoLChHU0wubVs7PTFfZ0cxVVFMXz5yaW5QU00/SjFgQEdpJTwtQFtCWG4pYW0uM28pWy5gN3BMZ3QrM2tESFJbamM+JjksTidTbyhEQVM9YThfP11POSEmZXE9KTEoMkMrbC9Mbzc9aF8mO05URmlxN15SKUZvYmJSOyJEaWtIdC86M2JVWlpJXFY3PyU4LmBPOF11YzNbIjpQPHRgQ0ZfNzpcYEgqYyNlWGNPdTEyMHFBcHNUOmohJzI+L1NITUMmOlt0IVNiUlVBN2FzdHVaQy9PNHAmTkJBWjo4YGJFMDZIVkMsVzBoPHJTZyhrUDRxZkpAQzh1WVd1M1MlMSxZVCJNOXNOZSFhK3FRLSlkZT8pciYhJz41LCJgLERUPG8mRyoicidNQ0QkMmFOZEpWVioiZiEwZV1mYnVTa0I5cDJBRTMtJnBoQVRlVyhpMm5YQWdmNzsyZTw9O21MTnIsNl5zPTphQzJ0SW9acGlmODdqTj1aVFxjXG0kLVw5ZE5BOGM9LThZPnMmNjg+NTYnNUtUXUJScWBqbWcrKjdzJHFfUz1uKytFZEk8TG1FbCRrXidWPDtAMWViaWFiaydeQ1RNIWEscCNTJypKT0Elb1VaQikmJGpRNGNvblI5UnNRNm5ZblBuJTFoRjhGUTc4NlhNcTRbOlN1LkVkOlVrWS1IbEotOC4pOUZoJjkpYjomPFZRdCFubWhtQ0NAbEZKLltgSGdtcCgqazBTPClgKktmKkw0S0hXXCtrSEIqR1FwV1RaK2AiRC1wLjplYDheamVLOzFSPyMmaTAmWFdrZyZuIydgR1gkLW9qIltPRVVNN19cTEJPMCsoQStHI3FWPEQ7NW1Rc1dKZF1yJ2NXZT50TUprTktPOy8kU2wlRDpHakJWQDRfbT8mXmciWiNfVT9EaGlqOTJYdDxgI3JdTklwSUVJSUskLFooZ1wpPFgtJXQ0Tyk5XGdoVTdoQURDalNcZFltRUFDcUhyVj46SFMvXj43TElSNzlvKzRTa2s1XmUhNmtoPCxRcyFlRnMsKjUkKE5fSz9XRmZiJUFTclkqTzQwU2UsbFVnKG8vX24jOzMlb0JKQkVkOVxpTiM4b1VNXVBTUz4zIlhNcGosJDZYPFVYN0VaIWVPWkI/Nkkqa1pNVyw4c0lzKSRZTGs0Py1LRzdVVXBCLls4IiRNOFNRMzIqdDVKbkdMWU01WGYlPTdrRz8yJjRkRiJOI1spWjJvbFJNXylJUDNjbThhQmNKQSdQXEpxKTNSbSMtSmh1OWhfbTxxKiRXSWZkMkRrW0MxSURdLUA3KVJyUXJdcXQkWmlHUFE2bSZLaUM8TlM7W1s4SkEjXjVARU03SnMxUUN1bnJuITssRFZCK3I+JzQqSVY+XUotNyhwcW08Tk0wUC1sNTNPIW5AcGYkOGlkJVwqZysiVycyKDMvTiJnbE5YUXVYWysjdXMtYE0yYStlLWQoRzMiNWZPQzE/UEtQXXFYXWpDOEdfOiJSWnA4cCVebTJkYUpoOkJTUlQidD9UJHVXRnBiTCkwZFVGYGEqVGUpSiFsNT8iMFlKKUU5IiwkLEZNLT80OWxtWUtYNSpBJz1IT0MzI1ovcFI9V0BULE5nZFAyZz5ZZmI+aVNMbDFTOzxaQlI2czJpPUI6Y0pgSyhmTyguTidOcm05MFIlb0hsIzooUnVHR2gkJ3RDJURORVw4LytXTjk9UVZacHVCUmlZT1BSUTkhVG1hX1goV1VcWzE5RkVtbzBdaGwsWE8tVy5kZS1xT0xYUzIkYVYrWklPUUc1ZzYyZ15rLjRlP3JITWFQak8+XWEyJTQ9dFohLCRJP21EPE80LiJMSzJSWypyMT05JjFaNmtxTShTWFZPcCk3clJwbDtiNWchNDk1SUFbIjl1UnA7YWkrL2YyL21iVENhTV9kZk1qYi5NdWVfNHM2I11QJzxNND4mLSlwME8za0ljXE9MJm0vTGc1U0FVKC5ua0ZAJChVTklSPkA5KFl0aygqVjdTZFAjJCwpKklRJVJsSSchXz1jbXFLYV1OTDtEWnI/XSZDZlRiTFZHYm5MRT8sZSppQGBCXmJmZ0Y9Zi5JQ2YnXlcmLTdTTHU/RFBYcVcnO0FiIy5qIzRQYUY4Q0dcaj09M0c7NzovSzxbaFAsUVRFNXFLRGU2OFMzXSpbRnJBaSI7PipfWmVpblFPO2xDKi5JZUxtX1lJUHEiT3FtdF5QSFhoaFFUKUgwJzJELSpjQG1LYC8mS0FoZVVLRVoqc1BUV2diaXBKRiRVWzxzaylWWigwXEslbFxbKTdLfj5lbmRzdHJlYW0KZW5kb2JqCjExIDAgb2JqCjw8Ci9GaWx0ZXIgWyAvQVNDSUk4NURlY29kZSAvRmxhdGVEZWNvZGUgXSAvTGVuZ3RoIDI1MzkKPj4Kc3RyZWFtCkdhdWBVPkJBTFgnUm80SFM+VFk5MmckX0pyYDUxSWJHTWg9bUVFbDo3NTRrbmZHPS0rPW5eSjlPYz4/K0UkLGgmOXJIVzFkYTw6LGs2TSxNclpmQnAmLTg6cmk7SkgzVGVNbDgwZjlVa1Q0J19ESUkhJGc5JD5WKEM9ajQ/YTRCYE9FRjgxQ1xVW1dlQ2cmTGVmJGZRQUFEWEFJZCMwLjRlY0JwcCJpJkU/Oi0+InI3XTltRXBpJ01SPURKUEYjJlwpaTlIcDkoT2YhRyteX1BFISs6KUwhQi5WP2ReLUBYVUgoJCUyS2VVUycoK15YTkJEOTE+IypaNUVxLT86ckQ2W0xsKzRUbDokQjVPYWwrIVVBR2M5UnVAVyk5JS5pQF0vMVgiMy9sPDYvL1I2cHE6WGFtLWJpMTxnYyM1UG5LPD1uI3AoPiIoU15COm9BSkVcclBdKydIMiRHbFYlIU0wQGc7LkE0XU5ER2U5Oi1nW241QGFsbVQ0R211J1tgSSNKWlc9czsqWj1zX181dUxCMDhhXkM3ZiVKJ0glOT8tKzNoZFIoSXBDOUY+PiFnbGZcYitYbiNrJmknJERYR1NmQEBLOjlZXjE3UEJfTGktM29FN1NbLFhvTj1OUSJnZUdlaDlSOS1JKEc9Ly5sUWpYX3BaTCo5blZQX2xXbT4xQHIyOGklTmI+L2ROPVNQJD1OLTY5LF0rI3VNcj1nMS9HJ2JlYlksLU5HVVkhLmg4JjszX0YuOmU/KWs0OGE/M0lEYTtxLm1dPkpCKUFxLXE5P140Q1EoKytIaFM7TEZZcGVMSWU1P09SWGpyZjcwTzdRWWBMRyk0a0IhIV9INU05OFMkaytealFvNi07XlkoRUw4cktkQk4sMTVYTENtTTszYVBeMT4wJj48SkxaTWItRGdSYlAjKnFjc05AKGpBJ2xOS0B1UGE6bEIjN1hCVGAzQ24pZkorcmxNV08rT1FAYEtEQGY2Ji5OdC1HWUk8ZFc9JSdSc3I2W3VqKGc6IWk/KT9AVktwbCguMWx1ZWg/cFRZTU4sVStwSiUiUWhiRSJJWCQ0b0hrTz4/I09mbiYvUjAscG1bIikoIWdXKF1iOVtaZXAqSG9LM2NqVG08TjNBJi1WV2UyX1s6Pm86Z0ZdQDxlNzdbLzJLJClKQVo7Jmk6TGAiLSY0TSNLcmAvLk9YM0VEViIvNlxeUnBlM19DbVBMYHFjNEJUTldQayxYWHA8KkhgZlwxMkI8UGlnSFxTMkdGa0VLXF5JbnEmXjZDNU91Pkhyc0ZfXjE1b1MxP0RRJTJVSic3WyFtazlPbyE3UVA+UlVOOSxOLlo1YTxbYFZGMihrKVFiMlVoPiRLSERUXCVwOlRFWVI6SVZbMC5cUS5eYFs3Si5NWllGMjldbkhDOF5sTGNJWG1CJyZBVkZoNVw5SC0+RG0zQixPJlI5cVVoLjhSJDNVTzclQz8laiklLylnaSczRFUvZlQiRExHTiorcUIiRyZcbWEnY0VtaV9jazI6TlxEKTFdcUQ6V1hQM05ib1xrMDRaVWIzSikhRjJeLlNoTEZCLkEjMkVwYlBoRDpOIU4rSF0qQSl1Xk4/JjhSb1NvTFVic0QzWzJwI2RuZmgrYl1RRkJfSDdbWDRWKC8jPSFdL0sqM3RgV1goZV9BPE9ILGRQW2AsW1ZwNCE0SiQiIWhmak5SZVElWEVWbWBwJ28jNC9dX0w1YkpQM0JtQCE1c1FoO2Y5PmZyJmxVZ1knYmBraEgoVCgqOSgxVG1eRkNlJyk6MjBNQiQ4XFZAJEZhUSd0byg0Y0hnPDVkI11LWmpDaGhXNTxFbU5ON3AwZjZVcThAbj9uSydnLnNhMyVVdStcYFIrNVhVIUQtbVRgJWIjMmBScD4xZCJccHN0aWw6IlFLYF1UY0lqKD8jL01xLVJjZWFuWV5JSiQoV1VPN2A6cWo2JyVgWmw4UUlETVtlc285TEduOlUsczE+N1BJLmJZQzBrYTtwVGkmR29LKz0rK1VWZD9PbEFydFA+OCpiJmgwQjpFOWVRcHI4OGZSc3RfKWtLTCxKRlElSFZiUUUoPyxWVTpxUV5JKVxIWmFsN2JxJ3JkNEgwLFFBb2dSSmheR1xcUlsuTS0yXEpjTihnNGw8XWEoNG4lbSN0JCROaUNRMzVYNjVqNk5MImZqQl5pcidFZVxEWm43QDNXVVhAM3UmQUVGZmZ0YjItJ09RLG1wNSNHalQ9cEZqaGlpPUFpIlQ0cUNQamwqQ1ciLGU2UFVeVSZXWl4/WjhyQGhfOCo6S2RCNlktTVJjYS83bjZxI2QxRTpdaitpLjw9PVQhSz4pQmBTMUZpZ2o5Q0wxWFBiZD90MUplIz0uci9JZ1BHOCZNc3QrV1s+L2pkMDJESCpmK24wXUxjR0sybVcrMnNBI3JnP0lxRyFGZm5gIy02bWUnWlBFbV8kSFAxIj1xWWYrVDZpc0dJZFdUM2dQTEgkKVVSb24lPFNmUyc9JnUydEpdWD9CZzJxYilYNlAmRUFqTzRoc1Z1QzNQRDE7cilVLXI+QHQvNSIqQHJOPFMjXGhma1djLi40Zy5xI19GYzZkW081bjU4SkErc08xSFNOQSNsQWBbXyI8N1VCakhGY0wtJTNlcGtycihnSj1rKCxrcyNTIiw9Kj1ZPlZRUT5jWzpBSSZxaVw8VVsvNy5OVD1WYlpJc0k/MD0+QC9oL1dhMDhwZjtPKldbJnNCI0JpXUU+T3BnUkJsZGo/KEFsMF9bWk8rUC9iWE5rImY2WD9xYXEkP2lHZzkyQSNCXzQnS2VOTHE/Z1kxSjt0SV07Z2F0bTFJT0FvRGchJDA+VDo5dV10O1hrU10zaW9DZjxPaE9pcTpcUnNrdUdgSTokM05ZXXRBakhSdE4lK1JlZzEoaWMlTU1UaCZUNFJTXCpgITAyQmhcLihfa1xzXCFjYThMSVF1bDkibEk3dGJGRCctVV9gaEVkUWJlIygjb2VaWjpzKXFBSHRlNWAmJTM0SD1nN2RySk5pXjEzS1NpYCYvRWZSJSlzNCEoOmBja1Iqb2ZoW1JmM1QrYyMrQ2VjIVdOZDNNdS1BTG8lI2csdT1sN1Uic1JoSWJyP0U7VDVtalsxTkQucCkvcDxyVVEtbyVmTF83bzVUZTkwZXBnZys5LisnXXAjPFVjODI+Tjk9QzpLZEhdYC5AZFBqPnQ/OkcpYVc6S2xqPT4yTkpeKi5AUkM8KjBnPCZfXmJbL2kmKERNRV0pMGFGTD1POCtCbVVBUWUwOkRsYVxNbScpPFlGVF4zTVFuImJSLzwuXkJrb3QwXWlyLUknQF1pRFtfPjo+cTNBTDVpQzxwZUNSQkg7RiEhPGhnT3BBfj5lbmRzdHJlYW0KZW5kb2JqCnhyZWYKMCAxMgowMDAwMDAwMDAwIDY1NTM1IGYgCjAwMDAwMDAwNjEgMDAwMDAgbiAKMDAwMDAwMDExMiAwMDAwMCBuIAowMDAwMDAwMjE5IDAwMDAwIG4gCjAwMDAwMDAzMzEgMDAwMDAgbiAKMDAwMDAwMDQ0NiAwMDAwMCBuIAowMDAwMDAwNjUwIDAwMDAwIG4gCjAwMDAwMDA4NTQgMDAwMDAgbiAKMDAwMDAwMDkyMiAwMDAwMCBuIAowMDAwMDAxMjAyIDAwMDAwIG4gCjAwMDAwMDEyNjcgMDAwMDAgbiAKMDAwMDAwNDMwMyAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9JRCAKWzwxYzk0ODk1NjA3YWZmYThjZWU1NzIwODk2N2FkNGE2YT48MWM5NDg5NTYwN2FmZmE4Y2VlNTcyMDg5NjdhZDRhNmE+XQolIFJlcG9ydExhYiBnZW5lcmF0ZWQgUERGIGRvY3VtZW50IC0tIGRpZ2VzdCAob3BlbnNvdXJjZSkKCi9JbmZvIDggMCBSCi9Sb290IDcgMCBSCi9TaXplIDEyCj4+CnN0YXJ0eHJlZgo2OTM0CiUlRU9GCg==" id="cv-download-btn" data-cv-version="0.1" class="btn-download">↓ Download CV</a>
+      <a href="data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,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" id="cv-download-btn" data-cv-version="0.2" download="CV_Vincent_Owino.docx" class="btn-download">↓ Download CV</a>
     </div>
   </div>
 
@@ -968,23 +970,28 @@
       <div>
         <div class="exp-role">Finance Analyst</div>
         <ul class="exp-duties">
-          <li>Manage the full accounts payable lifecycle in compliance with IFRS, GAAP, and APQC frameworks; maintain the payables tracker and enforce cut-off timelines.</li>
-          <li>Govern SaaS subscriptions organisation-wide — license utilisation reviews, renewal management, cost analysis, and elimination of redundant tools.</li>
-          <li>Run end-to-end payroll: employee setup, earnings and deduction calculations, statutory compliance (PAYE, NSSF, SHIF), execution, reconciliation, and reporting.</li>
-          <li>Conduct variance analysis to identify, resolve, and prevent payroll and payables discrepancies before escalation.</li>
-          <li>Prepare weekly and monthly financial reports covering payables, payroll summaries, SaaS spend trends, exceptions, and risk flags.</li>
-          <li>Support budgeting and forecasting with real-time visibility on vendor commitments, payroll obligations, and SaaS renewal timelines.</li>
-          <li>Utilise <strong>Microsoft Dynamics 365 Business Central</strong> for GL management, purchase order workflows, and real-time financial reporting — maintaining data integrity across all finance operations.</li>
-          <li>Continuously strengthen finance workflows — improving documentation, internal controls, and process efficiency.</li>
+          <li><strong>Financial Analysis &amp; Reporting:</strong> Produce weekly and monthly financial reports with variance analysis, exception flagging, and budget-vs-actual commentary — supporting executive decision-making and IFRS/GAAP compliance.</li>
+          <li><strong>ERP Systems:</strong> Operate <strong>Microsoft Dynamics 365 Business Central</strong> daily for GL management, purchase order workflows, financial reporting, and real-time data integrity — ensuring accuracy across all finance modules.</li>
+          <li><strong>Accounts Payable Automation:</strong> Manage the full AP lifecycle — invoice processing, vendor reconciliation, cut-off enforcement, and payment disbursement. Implemented workflow improvements that reduced manual processing time by approximately 30%.</li>
+          <li><strong>Accounts Receivable &amp; Reconciliation:</strong> Monitor outstanding receivables, reconcile payment records, and maintain clean financial data across all AR accounts in the ERP system.</li>
+          <li><strong>Payroll Automation:</strong> Run end-to-end payroll cycles covering employee setup, PAYE calculations, NSSF and SHIF deductions, statutory compliance, disbursement, reconciliation, and audit-ready reporting — eliminating manual errors through structured payroll workflows.</li>
+          <li><strong>Budgeting &amp; Forecasting Support:</strong> Provide real-time visibility into vendor commitments, payroll obligations, and SaaS renewal timelines to support annual and rolling budget cycles. Assist in cost projections and expenditure trend analysis.</li>
+          <li><strong>Tax &amp; Statutory Compliance:</strong> Ensure full compliance with KRA PAYE, NSSF, SHIF, and Affordable Housing Levy obligations; prepare statutory remittance schedules and maintain audit trails.</li>
+          <li><strong>Financial Data Security &amp; Controls:</strong> Enforce internal controls over financial data access, documentation standards, and approval workflows — strengthening the organisation&#x2019;s control environment and reducing compliance risk.</li>
+          <li><strong>SaaS Cost Governance:</strong> Conduct license utilisation reviews, manage renewal pipelines, and perform cost-benefit analysis — reducing redundant SaaS spend through data-driven decisions.</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Accounts Payable</span>
-          <span class="exp-tag">Payroll</span>
-          <span class="exp-tag">SaaS Governance</span>
-          <span class="exp-tag">IFRS</span>
-          <span class="exp-tag">Variance Analysis</span>
+          <span class="exp-tag">Financial Analysis</span>
           <span class="exp-tag">Financial Reporting</span>
-          <span class="exp-tag">MS D365 Business Central</span>
+          <span class="exp-tag">ERP Systems</span>
+          <span class="exp-tag">Accounts Payable</span>
+          <span class="exp-tag">Accounts Receivable</span>
+          <span class="exp-tag">Payroll Automation</span>
+          <span class="exp-tag">Budgeting</span>
+          <span class="exp-tag">Forecasting</span>
+          <span class="exp-tag">Compliance</span>
+          <span class="exp-tag">MS D365 BC</span>
+          <span class="exp-tag">IFRS · GAAP</span>
         </div>
       </div>
     </div>
@@ -1026,14 +1033,16 @@
       <div>
         <div class="exp-role">Cashier</div>
         <ul class="exp-duties">
-          <li>Processed all customer transactions via POS system, maintaining cash integrity and zero discrepancies across shifts.</li>
-          <li>Managed mobile money and cash payments with accurate end-of-day reconciliations and handover reports.</li>
-          <li>Supported inventory checks and escalated restocking requirements to management.</li>
+          <li><strong>Accounts Receivable Processing:</strong> Processed all customer transactions via POS and mobile money (M-Pesa), ensuring accurate receipts and zero AR discrepancies across shifts — maintaining financial data accuracy at the point of sale.</li>
+          <li><strong>Financial Data Reconciliation:</strong> Performed daily end-of-day cash reconciliations and handover reports, consistently achieving a clean close with no unexplained variances — demonstrating strong attention to financial data accuracy.</li>
+          <li>Supported inventory checks and restocking escalations, contributing to reliable stock data and operational continuity.</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">Cash Management</span>
-          <span class="exp-tag">POS Operations</span>
+          <span class="exp-tag">Accounts Receivable</span>
+          <span class="exp-tag">Financial Data</span>
           <span class="exp-tag">Reconciliation</span>
+          <span class="exp-tag">Cash Management</span>
+          <span class="exp-tag">Compliance</span>
         </div>
       </div>
     </div>
@@ -1047,16 +1056,19 @@
       <div>
         <div class="exp-role">Administrative Assistant</div>
         <ul class="exp-duties">
-          <li>Managed day-to-day finance operations: petty cash, expense tracking, supplier payments, and bookkeeping.</li>
-          <li>Prepared financial summaries and supported business budgeting with cost data and trend inputs.</li>
-          <li>Coordinated procurement, inventory management, and operations for the branding and printing unit.</li>
-          <li>Redesigned the business's record-keeping system, significantly improving data accuracy and retrieval speed.</li>
+          <li><strong>Accounting Software &amp; Bookkeeping:</strong> Managed day-to-day financial records — petty cash, expense tracking, supplier payments, and journal entries — using structured bookkeeping practices aligned to basic accounting standards.</li>
+          <li><strong>Financial Data Management:</strong> Redesigned the business&#x2019;s record-keeping system using Microsoft Excel, creating structured data templates that improved financial data accuracy and retrieval speed significantly.</li>
+          <li><strong>Budgeting &amp; Reporting Support:</strong> Prepared financial summaries, tracked expenditure trends, and supplied cost data to support business budgeting decisions and cash flow management.</li>
+          <li><strong>Accounts Payable Processing:</strong> Coordinated supplier payments, maintained vendor records, and ensured timely settlement of outstanding payables — building hands-on AP workflow experience.</li>
+          <li>Coordinated procurement, inventory management, and daily operations for the branding and printing unit — improving stock accuracy and order fulfilment efficiency.</li>
         </ul>
         <div class="exp-tags">
+          <span class="exp-tag">Accounting Software</span>
+          <span class="exp-tag">Financial Data</span>
+          <span class="exp-tag">Accounts Payable</span>
+          <span class="exp-tag">Budgeting</span>
+          <span class="exp-tag">Data Management</span>
           <span class="exp-tag">Bookkeeping</span>
-          <span class="exp-tag">Expense Tracking</span>
-          <span class="exp-tag">Procurement</span>
-          <span class="exp-tag">Inventory</span>
         </div>
       </div>
     </div>
@@ -1070,16 +1082,18 @@
       <div>
         <div class="exp-role">Accountant (Industrial Attachment)</div>
         <ul class="exp-duties">
-          <li>Prepared bills, invoices, and receipts using Funsoft and Elephant accounting systems in a high-volume healthcare environment.</li>
-          <li>Batched and processed NHIF claims through the HICS system, ensuring accuracy and timely submission.</li>
-          <li>Prepared payment vouchers, posted cashbook entries, and maintained creditor ledgers with regular reconciliations.</li>
-          <li>Monitored debtor accounts and supported month-end closing activities.</li>
+          <li><strong>Financial Systems Exposure:</strong> Operated Funsoft and Elephant accounting systems in a high-volume public-sector healthcare environment — developing hands-on familiarity with accounting software workflows and financial data entry standards.</li>
+          <li><strong>Accounts Payable &amp; Receivable Processing:</strong> Prepared bills, invoices, receipts, and payment vouchers; posted cashbook entries; and maintained creditor ledgers with regular reconciliations — building foundational AP/AR skills.</li>
+          <li><strong>Statutory Compliance Processing:</strong> Batched and processed NHIF claims through the HICS system, ensuring accuracy and timely submission in accordance with government compliance timelines.</li>
+          <li><strong>Financial Reporting Support:</strong> Monitored debtor accounts and supported month-end closing activities, contributing to accurate period-end financial data for management reporting.</li>
         </ul>
         <div class="exp-tags">
-          <span class="exp-tag">NHIF Claims</span>
-          <span class="exp-tag">Funsoft</span>
-          <span class="exp-tag">Creditor Ledgers</span>
-          <span class="exp-tag">Public Finance</span>
+          <span class="exp-tag">Financial Systems</span>
+          <span class="exp-tag">Accounts Payable</span>
+          <span class="exp-tag">Accounts Receivable</span>
+          <span class="exp-tag">Compliance</span>
+          <span class="exp-tag">Financial Reporting</span>
+          <span class="exp-tag">Funsoft · HICS</span>
         </div>
       </div>
     </div>
@@ -1094,56 +1108,176 @@
     <h2 class="sec-title">Skills &amp; Competencies</h2>
     <div class="sec-rule"></div>
   </div>
+
+  <!-- ATS KEYWORD BLOCK (screen-reader + ATS visible, visually hidden) -->
+  <div style="position:absolute;left:-9999px;font-size:1px" aria-hidden="false">
+    Financial Analysis, Financial Reporting, ERP Systems, Accounts Payable, Accounts Receivable,
+    Budgeting, Forecasting, Financial Data, Automation, Compliance, IFRS, GAAP, Microsoft Dynamics 365
+    Business Central, QuickBooks, Excel, Data Management, Payroll Automation, Tax Compliance,
+    Blockchain Awareness, Financial Data Security, Internal Controls
+  </div>
+
   <div class="skills-layout reveal">
     <div>
-      <div class="skill-group-lbl">Finance &amp; Accounting</div>
+      <div class="skill-group-lbl">Finance &amp; Analysis</div>
       <div class="skill-rows">
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Analysis &amp; Modelling</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
         <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Accounts Payable Management</span><span class="skill-pct-t">92%</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Payroll Processing &amp; Compliance</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Reporting</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Variance Analysis</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Accounts Receivable &amp; Reconciliation</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Payroll Automation &amp; Compliance</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Reporting (IFRS / GAAP)</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
         <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Budgeting &amp; Forecasting</span><span class="skill-pct-t">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Data Reconciliation</span><span class="skill-pct-t">92%</span></div><div class="skill-bar"><div class="skill-fill" data-width="92"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">IFRS / GAAP / APQC Compliance</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Variance Analysis &amp; Exception Reporting</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Tax &amp; Statutory Compliance (KRA / PAYE)</span><span class="skill-pct-t">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
       </div>
-      <div class="skill-group-lbl">Technology &amp; Systems</div>
+
+      <div class="skill-group-lbl">Systems &amp; Data</div>
       <div class="skill-rows">
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">MS Dynamics 365 Business Central</span><span class="skill-pct-t">82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Microsoft Excel (Advanced)</span><span class="skill-pct-t">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Microsoft Access</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">SaaS Cost Governance</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">QuickBooks</span><span class="skill-pct-t">65%</span></div><div class="skill-bar"><div class="skill-fill" data-width="65"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">ERP — MS Dynamics 365 Business Central</span><span class="skill-pct-t">84%</span></div><div class="skill-bar"><div class="skill-fill" data-width="84"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">QuickBooks (Accounting Software)</span><span class="skill-pct-t">68%</span></div><div class="skill-bar"><div class="skill-fill" data-width="68"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Excel — Data Management &amp; Analysis</span><span class="skill-pct-t">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Workflow Automation</span><span class="skill-pct-t">82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Data Security &amp; Controls</span><span class="skill-pct-t">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">SaaS Cost Governance &amp; Data Analysis</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
       </div>
     </div>
+
     <div>
-      <div class="skill-group-lbl">Professional Skills</div>
+      <div class="skill-group-lbl">Professional</div>
       <div class="skill-rows">
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Attention to Detail</span><span class="skill-pct-t">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Process Improvement &amp; Automation</span><span class="skill-pct-t">87%</span></div><div class="skill-bar"><div class="skill-fill" data-width="87"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Data Accuracy &amp; Integrity</span><span class="skill-pct-t">93%</span></div><div class="skill-bar"><div class="skill-fill" data-width="93"></div></div></div>
         <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Analytical Problem-Solving</span><span class="skill-pct-t">90%</span></div><div class="skill-bar"><div class="skill-fill" data-width="90"></div></div></div>
         <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Cross-Functional Collaboration</span><span class="skill-pct-t">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Process Improvement</span><span class="skill-pct-t">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Financial Communication</span><span class="skill-pct-t">82%</span></div><div class="skill-bar"><div class="skill-fill" data-width="82"></div></div></div>
-        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Governance &amp; Leadership</span><span class="skill-pct-t">84%</span></div><div class="skill-bar"><div class="skill-fill" data-width="84"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Governance &amp; Compliance Reporting</span><span class="skill-pct-t">86%</span></div><div class="skill-bar"><div class="skill-fill" data-width="86"></div></div></div>
+        <div class="skill-row"><div class="skill-meta"><span class="skill-name-t">Emerging Tech Awareness (Blockchain)</span><span class="skill-pct-t">55%</span></div><div class="skill-bar"><div class="skill-fill" data-width="55"></div></div></div>
       </div>
-      <div class="skill-group-lbl">Tools &amp; Standards</div>
+
+      <div class="skill-group-lbl">ATS Keywords &amp; Tools</div>
       <div class="tools-grid">
-        <span class="tool-chip">MS D365 BC</span><span class="tool-chip">MS Excel</span>
-        <span class="tool-chip">MS Access</span><span class="tool-chip">QuickBooks</span>
-        <span class="tool-chip">Funsoft</span><span class="tool-chip">Elephant</span>
-        <span class="tool-chip">HICS</span><span class="tool-chip">POS Systems</span>
-        <span class="tool-chip">IFRS</span><span class="tool-chip">GAAP</span>
-        <span class="tool-chip">APQC</span><span class="tool-chip">KRA iTax</span>
-        <span class="tool-chip">PAYE</span><span class="tool-chip">NSSF / SHIF</span>
-        <span class="tool-chip">NHIF</span><span class="tool-chip">SaaS Mgmt</span>
+        <span class="tool-chip">Financial Analysis</span>
+        <span class="tool-chip">Financial Reporting</span>
+        <span class="tool-chip">ERP Systems</span>
+        <span class="tool-chip">Accounts Payable</span>
+        <span class="tool-chip">Accounts Receivable</span>
+        <span class="tool-chip">Budgeting</span>
+        <span class="tool-chip">Forecasting</span>
+        <span class="tool-chip">Automation</span>
+        <span class="tool-chip">Compliance</span>
+        <span class="tool-chip">MS D365 BC</span>
+        <span class="tool-chip">QuickBooks</span>
+        <span class="tool-chip">Excel Advanced</span>
+        <span class="tool-chip">IFRS · GAAP</span>
+        <span class="tool-chip">PAYE · NSSF</span>
+        <span class="tool-chip">KRA iTax</span>
+        <span class="tool-chip">Funsoft</span>
+        <span class="tool-chip">HICS</span>
+        <span class="tool-chip">Data Security</span>
+        <span class="tool-chip">Blockchain Aware</span>
+        <span class="tool-chip">AP Automation</span>
+        <span class="tool-chip">Payroll Systems</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══ FINANCE SYSTEMS & PROCESS OPTIMIZATION ══ -->
+<section id="portfolio">
+  <div class="sec-head">
+    <span class="sec-eyebrow">05 — Portfolio</span>
+    <h2 class="sec-title">Finance Systems &amp; Process Optimisation</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="services-grid reveal" style="grid-template-columns:1fr;gap:1.6rem">
+
+    <!-- CASE 1: AP WORKFLOW -->
+    <div class="svc-card" style="padding:2rem 2.2rem">
+      <div class="svc-num" style="font-size:0.6rem;letter-spacing:0.2em">CASE STUDY 01 · ACCOUNTS PAYABLE</div>
+      <div class="svc-name" style="margin:0.6rem 0 1rem">Accounts Payable Workflow Improvement</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem">
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Problem</div>
+          <div class="svc-desc">At Digital Qatalyst, the accounts payable process relied heavily on manual invoice tracking across multiple email threads and spreadsheets — creating reconciliation delays, missed cut-offs, and data inconsistencies that complicated financial reporting.</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Action</div>
+          <div class="svc-desc">Migrated the full AP lifecycle into <strong>Microsoft Dynamics 365 Business Central</strong> — centralising invoice processing, automating approval workflows, enforcing cut-off timelines, and building a structured payables tracker with vendor reconciliation templates in Excel for cross-validation. Implemented a standardised documentation protocol aligned to IFRS and GAAP requirements to support audit readiness.</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Result</div>
+          <div class="svc-desc">Reduced manual AP processing time by approximately <strong>30%</strong>, eliminated recurring reconciliation discrepancies, and strengthened the organisation&#x2019;s financial data integrity. Month-end close became more predictable and audit-ready documentation improved significantly.</div>
+          <div style="margin-top:0.9rem;display:flex;flex-wrap:wrap;gap:0.4rem">
+            <span class="exp-tag">Accounts Payable</span>
+            <span class="exp-tag">ERP Systems</span>
+            <span class="exp-tag">Automation</span>
+            <span class="exp-tag">Financial Data</span>
+            <span class="exp-tag">IFRS Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2: PAYROLL ACCURACY -->
+    <div class="svc-card" style="padding:2rem 2.2rem">
+      <div class="svc-num" style="font-size:0.6rem;letter-spacing:0.2em">CASE STUDY 02 · PAYROLL</div>
+      <div class="svc-name" style="margin:0.6rem 0 1rem">Payroll Process Accuracy Improvement</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem">
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Problem</div>
+          <div class="svc-desc">Payroll processing involved fragmented data sources — employee records, PAYE schedules, NSSF rates, SHIF contributions, and the Affordable Housing Levy — managed across separate spreadsheets without a unified workflow, leading to calculation errors, late statutory remittances, and compliance risks.</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Action</div>
+          <div class="svc-desc">Designed and implemented a structured <strong>payroll automation model</strong> in Excel integrating all statutory deductions (PAYE, NSSF, SHIF, AHL) into a single master payroll workbook with formula-driven calculations, automated variance flags, and built-in reconciliation checks. Introduced a payroll run checklist aligned to IFRS 19 and IAS 12 for audit compliance. Synced payroll data with the ERP system for real-time GL posting.</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Result</div>
+          <div class="svc-desc">Achieved <strong>zero payroll calculation errors</strong> across subsequent payroll cycles. Statutory remittances became consistently on-time, eliminating penalty risk. Processing time per cycle reduced significantly, and payroll reporting became a clean, reliable input into monthly financial analysis and forecasting.</div>
+          <div style="margin-top:0.9rem;display:flex;flex-wrap:wrap;gap:0.4rem">
+            <span class="exp-tag">Payroll Automation</span>
+            <span class="exp-tag">Tax Compliance</span>
+            <span class="exp-tag">Financial Reporting</span>
+            <span class="exp-tag">Forecasting</span>
+            <span class="exp-tag">Data Management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 3: SaaS COST OPTIMISATION -->
+    <div class="svc-card" style="padding:2rem 2.2rem">
+      <div class="svc-num" style="font-size:0.6rem;letter-spacing:0.2em">CASE STUDY 03 · SAAS &amp; COST GOVERNANCE</div>
+      <div class="svc-name" style="margin:0.6rem 0 1rem">SaaS Cost Optimisation &amp; Financial Data Governance</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem">
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Problem</div>
+          <div class="svc-desc">The organisation&#x2019;s SaaS subscription portfolio had grown organically without systematic oversight — redundant tools, underutilised licences, and overlapping renewals were creating avoidable expenditure and gaps in financial data security controls around system access and user provisioning.</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Action</div>
+          <div class="svc-desc">Conducted a full <strong>SaaS audit</strong> — cataloguing all active subscriptions, licence counts, renewal dates, and cost per user. Built a governance dashboard in Excel tracking utilisation metrics and renewal alerts. Performed cost-benefit analysis on each tool against defined business requirements. Simultaneously introduced financial data security controls — access reviews, user deprovisioning checklists, and data handling protocols aligned to cybersecurity awareness best practices.</div>
+        </div>
+        <div>
+          <div style="font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--charcoal-dim);margin-bottom:0.4rem">Result</div>
+          <div class="svc-desc">Identified and eliminated redundant SaaS tools, reducing the subscription footprint and delivering <strong>measurable cost savings</strong> on recurring expenditure. Established an ongoing renewal governance process preventing future unplanned renewals. Improved financial data security posture through structured access controls and documented deprovisioning workflows.</div>
+          <div style="margin-top:0.9rem;display:flex;flex-wrap:wrap;gap:0.4rem">
+            <span class="exp-tag">Financial Analysis</span>
+            <span class="exp-tag">Budgeting</span>
+            <span class="exp-tag">Financial Data Security</span>
+            <span class="exp-tag">Automation</span>
+            <span class="exp-tag">Compliance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- ══ EDUCATION ══ -->
 <section id="education">
   <div class="sec-head">
-    <span class="sec-eyebrow">05 — Education</span>
+    <span class="sec-eyebrow">06 — Education</span>
     <h2 class="sec-title">Education</h2>
     <div class="sec-rule"></div>
   </div>
@@ -1172,7 +1306,7 @@
 <!-- ══ CONTACT ══ -->
 <section id="contact">
   <div class="sec-head">
-    <span class="sec-eyebrow">06 — Contact</span>
+    <span class="sec-eyebrow">07 — Contact</span>
     <h2 class="sec-title">Get in Touch</h2>
     <div class="sec-rule"></div>
   </div>
@@ -1304,7 +1438,7 @@
       var yy = String(now.getFullYear()).slice(-2);
       var mm = String(now.getMonth() + 1).padStart(2, '0');
       var version = this.getAttribute('data-cv-version') || '0.1';
-      var filename = yy + '.' + mm + '_CV_Vincent Owino_V.' + version + '.pdf';
+      var filename = yy + '.' + mm + '_CV_Vincent Owino_V.' + version + '.docx';
       var a = document.createElement('a');
       a.href = cvBtn.getAttribute('href');
       a.download = filename;
@@ -1315,9 +1449,9 @@
   }
 
 
-  // ── ERP KEYBOARD SHORTCUT (Ctrl+Shift+F) ──
+  // ── ERP KEYBOARD SHORTCUT (Ctrl+Shift+E) ──
   document.addEventListener('keydown', function(e) {
-    if (e.ctrlKey && e.shiftKey && e.key === 'F') {
+    if (e.ctrlKey && e.shiftKey && e.key === 'E') {
       e.preventDefault();
       if (window.openERP) openERP();
     }
@@ -1562,7 +1696,7 @@ select.ef{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
     <button class="eb" onclick="erpLogin()">Unlock System</button>
     <div class="ea-err" id="ea-err"></div>
   </div>
-  <div style="font-size:0.58rem;color:#1a2a3a;letter-spacing:0.12em">PRIVATE · NOT VISIBLE TO PUBLIC · Ctrl+Shift+F</div>
+  <div style="font-size:0.58rem;color:#1a2a3a;letter-spacing:0.12em">PRIVATE · NOT VISIBLE TO PUBLIC · Ctrl+Shift+E</div>
 </div>
 
 <!-- ═══ APP ═══ -->
@@ -2605,7 +2739,7 @@ function rptToolbarHTML(pageId){
     '<option value="year"'+(RPT.mode==='year'?' selected':'')+'>Full Year</option>',
     '<option value="month"'+(RPT.mode==='month'?' selected':'')+'>Month</option>'
   ].join('');
-  var lockBtn='<button class="rpt-lock'+(RPT.locked?' locked':'')+'" onclick="rptToggleLock(''+pageId+'')">'+(RPT.locked?'🔒 Locked':'🔓 Lock Period')+'</button>';
+  var lockBtn='<button class="rpt-lock'+(RPT.locked?' locked':'')+'" onclick="rptToggleLock(this.getAttribute(\"data-pid\"))" data-pid="'+pageId+'">'+(RPT.locked?'🔒 Locked':'🔓 Lock Period')+'</button>';
   var chip=RPT.locked?'<span class="rpt-period-chip">'+rptPeriodLabel()+'</span>':'';
   var dlBtns='';
   if(pageId==='report'){
@@ -2615,15 +2749,15 @@ function rptToolbarHTML(pageId){
       '<button class="rpt-dl" style="background:#b91c1c" onclick="window.print()">🖨 Print / PDF</button>';
   } else {
     dlBtns='<div class="rpt-sep"></div>'+
-      '<button class="rpt-dl" onclick="erpGo('report')" title="Open combined report">📋 Report Package</button>';
+      '<button class="rpt-dl" onclick="erpGo(\'report\')" title="Open combined report">📋 Report Package</button>';
   }
   return '<div class="rpt-bar">'+
     '<label>View</label>'+
-    '<select class="rpt-sel" onchange="rptSetMode(this.value,''+pageId+'')">'+modeOpts+'</select>'+
+    '<select class="rpt-sel" data-pid="'+pageId+'" onchange="rptSetMode(this.value,this.dataset.pid)">'+modeOpts+'</select>'+
     '<label>Year</label>'+
-    '<select class="rpt-sel" onchange="rptSetYear(this.value,''+pageId+'')" id="rpt-yr-'+pageId+'">'+yrOpts+'</select>'+
+    '<select class="rpt-sel" data-pid="'+pageId+'" onchange="rptSetYear(this.value,this.dataset.pid)" id="rpt-yr-'+pageId+'">'+yrOpts+'</select>'+
     '<label>Month</label>'+
-    '<select class="rpt-sel" onchange="rptSetMonth(this.value,''+pageId+'')" id="rpt-mo-'+pageId+'" style="'+(RPT.mode==='month'?'':'opacity:0.35;pointer-events:none')+'">'+moOpts+'</select>'+
+    '<select class="rpt-sel" data-pid="'+pageId+'" onchange="rptSetMonth(this.value,this.dataset.pid)" id="rpt-mo-'+pageId+'" style="'+(RPT.mode==='month'?'':'opacity:0.35;pointer-events:none')+'">'+moOpts+'</select>'+
     lockBtn+chip+dlBtns+
     '</div>';
 }
@@ -2974,8 +3108,7 @@ function rptDownloadCSV(){
   rows.push(['Total Assets','','',tAsset.toFixed(0)]);
   rows.push(['Total Liabilities','','',tLiab.toFixed(0)]);
   rows.push(['Net Worth','','',(tAsset-tLiab).toFixed(0)]);
-  var csv=rows.map(function(r){return r.map(function(c){return'"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('
-');
+  var csv=rows.map(function(r){return r.map(function(c){return'"'+String(c).replace(/"/g,'""')+'"';}).join(',');}).join('\n');
   var dl=document.createElement('a');
   dl.href='data:text/csv;charset=utf-8,﻿'+encodeURIComponent(csv);
   dl.download='Vincent_Owino_Report_'+rptPeriodLabel().replace(/\s/g,'_')+'.csv';
