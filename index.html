@@ -115,6 +115,65 @@
       --rule-mid:     1px solid #c8d2e0;
     }
 
+    /* ══ DARK MODE THEME ══ */
+    [data-theme="dark"] {
+      --white:        #0d1117;
+      --off-white:    #111827;
+      --light-grey:   #1f2937;
+      --mid-grey:     #374151;
+      --charcoal:     #f0f4ff;
+      --charcoal-mid: #c9d4e8;
+      --charcoal-dim: #8b95a8;
+      --text-light:   #6b7280;
+      --blue-pale:    rgba(3,70,148,0.18);
+      --blue-dim:     rgba(3,70,148,0.12);
+      --blue-border:  rgba(3,70,148,0.35);
+      --green-pale:   rgba(0,122,61,0.18);
+      --green-dim:    rgba(0,122,61,0.12);
+      --green-border: rgba(0,122,61,0.35);
+      --rule:         1px solid rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] .nav-bar {
+      background: #0d1117;
+      border-bottom-color: rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] .svc-card { background: #111827; }
+    [data-theme="dark"] .svc-card:hover { background: #1a2535; }
+    [data-theme="dark"] .edu-card { background: #111827; border-color: rgba(255,255,255,0.07); }
+    [data-theme="dark"] .exp-item::before { background: #0d1117; }
+    [data-theme="dark"] .profile-card { background: #111827; border-color: rgba(255,255,255,0.07); }
+    [data-theme="dark"] .profile-card-header { background: #0d1117; border-color: rgba(255,255,255,0.07); }
+    [data-theme="dark"] .tool-chip {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.1);
+      color: var(--charcoal-dim);
+    }
+    [data-theme="dark"] .footer-bar {
+      background: #0d1117;
+      border-top-color: rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] .mobile-menu {
+      background: #0d1117;
+      border-color: rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] input, [data-theme="dark"] textarea, [data-theme="dark"] select {
+      background: #1f2937 !important;
+      border-color: rgba(255,255,255,0.12) !important;
+      color: #f0f4ff !important;
+    }
+
+    /* ── Theme toggle button ── */
+    .theme-toggle {
+      background: none; border: 1px solid var(--mid-grey);
+      color: var(--charcoal-dim); cursor: pointer;
+      font-size: 0.7rem; padding: 0.28rem 0.65rem;
+      border-radius: 20px; display: flex; align-items: center; gap: 0.35rem;
+      transition: all 0.2s; white-space: nowrap; font-family: 'Lato', sans-serif;
+      font-weight: 700; letter-spacing: 0.06em;
+    }
+    .theme-toggle:hover { border-color: var(--blue); color: var(--blue); }
+    .theme-toggle .tt-icon { font-size: 0.85rem; line-height: 1; }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -825,6 +884,7 @@
     <a href="#" onclick="showTab('hero');closeMobileMenu();return false;" class="nav-brand" style="display:flex;align-items:center;text-decoration:none;cursor:pointer" title="Home" aria-label="Go to home"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1MiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIj4KICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjI2IiByPSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDM0Njk0IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDxjaXJjbGUgY3g9IjI2IiBjeT0iMjYiIHI9IjE4IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMC43IiBvcGFjaXR5PSIwLjI1Ii8+CiAgPGxpbmUgeDE9IjI2IiB5MT0iMiIgIHgyPSIyNiIgeTI9IjgiICBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjI2IiB5MT0iNDQiIHgyPSIyNiIgeTI9IjUwIiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjIiICB5MT0iMjYiIHgyPSI4IiAgeTI9IjI2IiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMjYiIHgyPSI1MCIgeTI9IjI2IiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHRleHQgeD0iMjYiIHk9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzAzNDY5NCIgZG9taW5hbnQtYmFzZWxpbmU9ImNlbnRyYWwiIGR5PSItMTQiPk48L3RleHQ+CiAgPHBvbHlnb24gcG9pbnRzPSIyNiwyNiAxOSw0MCAyNiwzNSAzMyw0MCIgZmlsbD0iIzAzNDY5NCIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjYsMjYgMzMsMTIgMjYsMTcgMTksMTIiIGZpbGw9IiMwMDdhM2QiLz4KICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjI2IiByPSI0IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMDM0Njk0IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxjaXJjbGUgY3g9IjI2IiBjeT0iMjYiIHI9IjIiIGZpbGw9IiNiODk3M2EiLz4KPC9zdmc+" width="38" height="38" style="display:inline-block;vertical-align:middle;margin-right:10px;flex-shrink:0" alt="VO"><span>Vincent <span style="color:var(--green)">Owino</span></span></a>
     <div class="nav-tagline">Finance & Accounting Professional</div>
     <div class="nav-badge">Available for Hire</div>
+    <button class="theme-toggle" id="portfolio-theme-toggle" onclick="togglePortfolioTheme()" title="Toggle light/dark mode" aria-label="Toggle theme"><span class="tt-icon">☀</span><span class="tt-label">Light</span></button>
     <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </button>
@@ -836,7 +896,7 @@
       <a href="#" onclick="showTab('services');return false;" class="nav-tab" data-tab="services">Services</a>
       <a href="#" onclick="showTab('experience');return false;" class="nav-tab" data-tab="experience">Experience</a>
       <a href="#" onclick="showTab('skills');return false;" class="nav-tab" data-tab="skills">Skills</a>
-      <a href="#" onclick="showTab('portfolio');return false;" class="nav-tab" data-tab="portfolio">Portfolio</a>
+      <a href="#" onclick="showTab('portfolio');return false;" class="nav-tab" data-tab="portfolio">Projects</a>
       <a href="#" onclick="showTab('education');return false;" class="nav-tab" data-tab="education">Education</a>
       <a href="#" onclick="showTab('contact');return false;" class="nav-tab" data-tab="contact">Contact</a>
     </div>
@@ -847,7 +907,7 @@
     <a href="#" class="nav-tab" data-tab="services" onclick="showTab('services');closeMobileMenu();return false;">Services</a>
     <a href="#" class="nav-tab" data-tab="experience" onclick="showTab('experience');closeMobileMenu();return false;">Experience</a>
     <a href="#" class="nav-tab" data-tab="skills" onclick="showTab('skills');closeMobileMenu();return false;">Skills</a>
-    <a href="#" class="nav-tab" data-tab="portfolio" onclick="showTab('portfolio');closeMobileMenu();return false;">Portfolio</a>
+    <a href="#" class="nav-tab" data-tab="portfolio" onclick="showTab('portfolio');closeMobileMenu();return false;">Projects</a>
     <a href="#" class="nav-tab" data-tab="education" onclick="showTab('education');closeMobileMenu();return false;">Education</a>
     <a href="#" class="nav-tab" data-tab="contact" onclick="showTab('contact');closeMobileMenu();return false;">Contact</a>
   </div>
@@ -1192,8 +1252,8 @@
 <!-- ══ FINANCE SYSTEMS & PROCESS OPTIMIZATION ══ -->
 <section id="portfolio">
   <div class="sec-head">
-    <span class="sec-eyebrow">05 — Portfolio</span>
-    <h2 class="sec-title">Finance Systems &amp; Process Optimisation</h2>
+    <span class="sec-eyebrow">05 — Projects</span>
+    <h2 class="sec-title">Projects &amp; Process Optimisation</h2>
     <div class="sec-rule"></div>
   </div>
   <div class="services-grid reveal" style="grid-template-columns:1fr;gap:1.6rem">
@@ -1491,6 +1551,33 @@
     }
   });
 
+  // ── PORTFOLIO THEME TOGGLE ──
+  function togglePortfolioTheme() {
+    var html = document.documentElement;
+    var btn  = document.getElementById('portfolio-theme-toggle');
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      html.removeAttribute('data-theme');
+      localStorage.setItem('portfolio-theme', 'light');
+      if (btn) { btn.innerHTML = '<span class="tt-icon">☀</span><span class="tt-label">Light</span>'; }
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      localStorage.setItem('portfolio-theme', 'dark');
+      if (btn) { btn.innerHTML = '<span class="tt-icon">🌙</span><span class="tt-label">Dark</span>'; }
+    }
+  }
+  // Restore saved portfolio theme on load
+  (function() {
+    var saved = localStorage.getItem('portfolio-theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('portfolio-theme-toggle');
+        if (btn) btn.innerHTML = '<span class="tt-icon">🌙</span><span class="tt-label">Dark</span>';
+      });
+    }
+  })();
+
   // ── TICKER ──
   var tdata = [
     { sym:'ACCOUNTS PAYABLE', val:'OPTIMISED', chg:'+IFRS' },
@@ -1553,6 +1640,33 @@
   --e-radius:6px;
   --e-radius-lg:10px;
 }
+
+/* ── ERP LIGHT THEME ── */
+#erp-root[data-erp-theme="light"]{
+  --e-bg0:#f0f4f8;
+  --e-bg1:#ffffff;
+  --e-bg2:#f7f9fc;
+  --e-bg3:#edf1f7;
+  --e-bg4:#e2e8f0;
+  --e-border:rgba(0,0,0,0.08);
+  --e-border-hi:rgba(0,0,0,0.15);
+  --e-text1:#1a2030;
+  --e-text2:#374155;
+  --e-text3:#6b7890;
+  --e-text4:#9aaabb;
+  --e-blue-lo:rgba(37,99,235,0.08);
+  --e-blue-mid:rgba(37,99,235,0.15);
+  --e-green-lo:rgba(16,185,129,0.08);
+  --e-red-lo:rgba(239,68,68,0.08);
+  --e-gold-lo:rgba(212,168,67,0.08);
+}
+#erp-root[data-erp-theme="light"] .ea-card{box-shadow:0 4px 24px rgba(0,0,0,0.08)}
+#erp-root[data-erp-theme="light"] .esb{border-right-color:rgba(0,0,0,0.08)}
+#erp-root[data-erp-theme="light"] .esb-item.active{background:rgba(37,99,235,0.1)}
+#erp-root[data-erp-theme="light"] .epage{box-shadow:none}
+#erp-root[data-erp-theme="light"] .et thead tr{background:var(--e-bg3)}
+#erp-root[data-erp-theme="light"] .ei{background:#fff;border-color:rgba(0,0,0,0.15);color:#1a2030}
+#erp-root[data-erp-theme="light"] #erp-auth{background:radial-gradient(ellipse at 50% 0%,rgba(37,99,235,0.06) 0%,transparent 70%)}
 
 #erp-root{position:fixed;inset:0;z-index:9999;font-family:var(--e-sans);background:var(--e-bg0);color:var(--e-text1);overflow:hidden;font-size:14px;-webkit-font-smoothing:antialiased}
 
@@ -1739,6 +1853,7 @@ select.ef{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns=
     <div class="etb-brand" style="display:flex;align-items:center"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAzNiIgd2lkdGg9IjM2IiBoZWlnaHQ9IjM2Ij4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjE4IiByPSIxOCIgZmlsbD0iIzAzNDY5NCIvPgogIDxjaXJjbGUgY3g9IjE4IiBjeT0iMTgiIHI9IjE1IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxsaW5lIHgxPSIxOCIgeTE9IjMiICB4Mj0iMTgiIHkyPSI3IiAgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIxOCIgeTE9IjI5IiB4Mj0iMTgiIHkyPSIzMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIzIiAgeTE9IjE4IiB4Mj0iNyIgIHkyPSIxOCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSIyOSIgeTE9IjE4IiB4Mj0iMzMiIHkyPSIxOCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwb2x5Z29uIHBvaW50cz0iMTgsMTggMTMsMjcgMTgsMjMgMjMsMjciIGZpbGw9IndoaXRlIi8+CiAgPHBvbHlnb24gcG9pbnRzPSIxOCwxOCAyMyw5IDE4LDEzIDEzLDkiIGZpbGw9IiMwMGQ5NmIiLz4KICA8Y2lyY2xlIGN4PSIxOCIgY3k9IjE4IiByPSIzIiBmaWxsPSIjYjg5NzNhIi8+Cjwvc3ZnPg==" width="28" height="28" style="display:inline-block;vertical-align:middle;margin-right:8px;flex-shrink:0" alt="VO"><span>V<span style="color:#007a3d">O</span> Finance ERP <span style="font-size:0.55rem;color:var(--e-text3,#4a5568);font-weight:500;margin-left:0.6rem;letter-spacing:0.06em">IFRS v2.0</span></span></div>
     <div class="etb-r">
       <div class="eclock" id="erp-clock"></div>
+      <button class="elock erp-theme-toggle" id="erp-theme-toggle" onclick="toggleErpTheme()" title="Toggle ERP theme" style="margin-right:0.3rem">☀ Light</button>
       <button class="elock" onclick="erpLock()">⬡ Lock</button>
     </div>
   </div>
@@ -3513,6 +3628,32 @@ document.querySelectorAll('#erp-root input[type="date"]').forEach(function(d){d.
 document.addEventListener('keydown',function(e){
   if(e.key==='Enter'){var auth=document.getElementById('erp-auth');if(auth&&auth.style.display!=='none')erpLogin()}
 });
+
+// ═══ ERP THEME TOGGLE ═══
+function toggleErpTheme(){
+  var root=document.getElementById('erp-root');
+  var btn=document.getElementById('erp-theme-toggle');
+  var isLight=root.getAttribute('data-erp-theme')==='light';
+  if(isLight){
+    root.removeAttribute('data-erp-theme');
+    localStorage.setItem('erp-theme','dark');
+    if(btn)btn.textContent='☀ Light';
+  }else{
+    root.setAttribute('data-erp-theme','light');
+    localStorage.setItem('erp-theme','light');
+    if(btn)btn.textContent='🌙 Dark';
+  }
+}
+// Restore ERP theme on load
+(function(){
+  var saved=localStorage.getItem('erp-theme');
+  if(saved==='light'){
+    var root=document.getElementById('erp-root');
+    if(root){root.setAttribute('data-erp-theme','light');}
+    var btn=document.getElementById('erp-theme-toggle');
+    if(btn)btn.textContent='🌙 Dark';
+  }
+})();
 
 // ═══ EXPOSE OPEN/CLOSE ═══
 window.openERP=function(){localStorage.removeItem('erp_auth_v1');localStorage.removeItem('erp_auth');document.getElementById('erp-root').style.display='block';erpCheckFirstTime();};
