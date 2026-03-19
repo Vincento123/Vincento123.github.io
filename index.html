@@ -202,6 +202,152 @@
     [data-theme="dark"] .theme-toggle:hover { border-color: var(--blue); color: #93c5fd; background: rgba(37,99,235,0.12); }
     @media(max-width:700px) { .theme-toggle .tt-label { display:none; } .theme-toggle { padding: 0.3rem 0.5rem; margin-left:0.5rem; } }
 
+    /* ══ SOCIAL ICONS ══ */
+    .social-row {
+      display: flex; align-items: center; gap: 0.9rem;
+      padding: 1.1rem 1.5rem;
+      background: var(--white);
+      border-bottom: var(--rule);
+    }
+    .social-row:last-child { border-bottom: none; }
+    .cr-label-social {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.55rem; font-weight: 900;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--blue); width: 65px; flex-shrink: 0;
+    }
+    .social-icons { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .si {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid var(--mid-grey);
+      color: var(--charcoal-mid);
+      text-decoration: none;
+      transition: all 0.2s;
+      background: var(--white);
+    }
+    .si svg { width: 16px; height: 16px; fill: currentColor; }
+    .si:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .si.linkedin:hover  { background: #0077b5; border-color: #0077b5; color: #fff; }
+    .si.github:hover    { background: #24292e; border-color: #24292e; color: #fff; }
+    .si.twitter:hover   { background: #000000; border-color: #000000; color: #fff; }
+    .si.facebook:hover  { background: #1877f2; border-color: #1877f2; color: #fff; }
+    .si.whatsapp:hover  { background: #25d366; border-color: #25d366; color: #fff; }
+    .si.email:hover     { background: var(--blue); border-color: var(--blue); color: #fff; }
+    /* Footer social row */
+    .footer-social { display: flex; gap: 0.55rem; align-items: center; }
+    .footer-social .si {
+      width: 30px; height: 30px; border-radius: 6px;
+      border-color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.55);
+      background: transparent;
+    }
+    .footer-social .si svg { width: 14px; height: 14px; }
+    .footer-social .si:hover { border-color: rgba(255,255,255,0.5); color: #fff; background: rgba(255,255,255,0.08); transform: translateY(-1px); }
+    /* Hero social strip */
+    .hero-social { display: flex; gap: 0.55rem; margin-top: 1.5rem; }
+    .hero-social .si { width: 36px; height: 36px; border-radius: 8px; }
+    .hero-social .si svg { width: 16px; height: 16px; }
+    [data-theme="dark"] .si { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.1); color: #8b95a8; }
+    [data-theme="dark"] .social-row { background: #111827; }
+    /* ══ CONTACT ME DIRECT ══ */
+    .cm-section {
+      background: var(--off-white);
+      border-top: 1px solid var(--light-grey);
+      border-bottom: 1px solid var(--light-grey);
+      padding: 2.8rem 0;
+    }
+    .cm-intro {
+      font-size: 0.92rem; font-weight: 300;
+      color: var(--charcoal-mid); line-height: 1.8;
+      max-width: 520px; margin-bottom: 2.2rem;
+    }
+    .cm-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .cm-card {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.3rem;
+      background: var(--white);
+      border: 1px solid var(--light-grey);
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      position: relative; overflow: hidden;
+      cursor: pointer;
+    }
+    .cm-card::before {
+      content: ''; position: absolute;
+      left: 0; top: 0; bottom: 0; width: 4px;
+      border-radius: 12px 0 0 12px;
+      background: var(--cm-accent, var(--blue));
+      transition: width 0.18s;
+    }
+    .cm-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); border-color: var(--cm-accent, var(--blue)); }
+    .cm-card:hover::before { width: 6px; }
+    .cm-icon-wrap {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--cm-pale, var(--blue-pale));
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.18s;
+    }
+    .cm-card:hover .cm-icon-wrap { background: var(--cm-accent, var(--blue)); }
+    .cm-icon-wrap svg { width: 20px; height: 20px; fill: var(--cm-accent, var(--blue)); transition: fill 0.18s; }
+    .cm-card:hover .cm-icon-wrap svg { fill: #fff; }
+    .cm-text { flex: 1; min-width: 0; }
+    .cm-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--charcoal); letter-spacing: 0.01em;
+      display: block; margin-bottom: 0.2rem;
+    }
+    .cm-cta {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.62rem; font-weight: 400;
+      color: var(--charcoal-dim); display: block;
+    }
+    .cm-arrow {
+      font-size: 1rem; color: var(--cm-accent, var(--blue));
+      opacity: 0; transform: translateX(-4px);
+      transition: opacity 0.18s, transform 0.18s;
+      flex-shrink: 0;
+    }
+    .cm-card:hover .cm-arrow { opacity: 1; transform: translateX(0); }
+    /* Platform accent colours */
+    .cm-wa   { --cm-accent:#25d366; --cm-pale:rgba(37,211,102,0.08); }
+    .cm-fb   { --cm-accent:#0084ff; --cm-pale:rgba(0,132,255,0.08); }
+    .cm-ig   { --cm-accent:#e1306c; --cm-pale:rgba(225,48,108,0.08); }
+    .cm-mail { --cm-accent:var(--blue); --cm-pale:var(--blue-pale); }
+    /* Copy email row */
+    .cm-email-row { display: flex; gap: 0.6rem; align-items: stretch; }
+    .cm-email-row .cm-card { flex: 1; }
+    .cm-copy-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 46px; flex-shrink: 0;
+      background: var(--white); border: 1px solid var(--light-grey);
+      border-radius: 12px; cursor: pointer; transition: all 0.18s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05); color: var(--charcoal-dim);
+    }
+    .cm-copy-btn svg { width: 17px; height: 17px; fill: currentColor; }
+    .cm-copy-btn:hover { background: var(--blue-pale); border-color: var(--blue); color: var(--blue); }
+    .cm-copy-btn.copied { background: var(--green-pale); border-color: var(--green); color: var(--green); }
+    .cm-fallback {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.58rem; color: var(--text-light);
+      margin-top: 0.5rem; display: block;
+    }
+    /* Dark mode */
+    [data-theme="dark"] .cm-section { background: #0d1117; border-color: rgba(255,255,255,0.06); }
+    [data-theme="dark"] .cm-card { background: #111827; border-color: rgba(255,255,255,0.07); }
+    [data-theme="dark"] .cm-label { color: #c9d4e8; }
+    [data-theme="dark"] .cm-copy-btn { background: #111827; border-color: rgba(255,255,255,0.07); }
+    @media(max-width:640px) {
+      .cm-grid { grid-template-columns: 1fr; }
+      .cm-email-row { flex-direction: row; }
+    }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -965,6 +1111,13 @@
       <a href="#" class="btn-outline nav-tab" data-tab="experience">View Experience</a>
       <a href="data:application/vnd.openxmlformats-officedocument.wordprocessingml.document;base64,UEsDBBQAAAAIAJM1c1xcqX5ekQEAALUHAAATAAAAW0NvbnRlbnRfVHlwZXNdLnhtbLVVy07DMBD8lShX1LhwQAi15cDjCBzgA1x7kxpir2VvCvw96/QhBZpSoLllPTM7Y+9KmVy92zpbQogG3TQ/LcZ5Bk6hNq6a5s9Pd6OL/Go2efrwEDOmujjNF0T+UoioFmBlLNCDY6TEYCVxGSrhpXqVFYiz8fhcKHQEjkaUeuSzyQ2Usqkpu16dp9bT3NjE967Ks9t3Pl7FSbXYq3jx0JW0B7/W/CSZW99RpHq/ojJlR5Hq/Yq4rE74HTsqPutVSe9royQxUSyd/jKH0XoGRYC65cSF8fGbAaPxIIevwlT/MRmWpVGgUTWWJQXOyyYyG/QdN+mYoCZqn+2BNzQYDf/xecOgfUAFMfJy27rYIlYat3qZRxnoXlruLRJdbCnr6w6SI9JHDXF3gBX2L/vNIigMMGJjD4HMDj8O+MhoFIl4zAurJhLaw6xb6jHNIW2TBn2QPbcedNKusXMI/L172Ft40BAlIjmkvo3bwsPuPBDxV9/Wr9FBIyi0CeiJsEEHHgU3kvMa+kaxhjchRPsfnn0CUEsDBBQAAAAIAJM1c1wr1wHiEgEAADIDAAASAAAAd29yZC9mb250VGFibGUueG1sndHdboMgFAfwVyHcV9SspjG1vVmW7H57AIqopByOATrbtx9+zqQ3dVdI8P/L+Tie76DJj7ROoSloEsWUSCOwVKYu6PfXx+5Az6djl1dovCPhZ+NyEAVtvG9zxpxoJHAXYStNeKzQAvfhamsG3F5v7U4gtNyri9LKP1gaxxmdGPuKglWlhHxHcQNp/JBnVuogonGNat2sda9oHdqytSikc6FB0KMHXJmFSd6eIFDCosPKR6GZqaKBCvEkHr5A/wH7bUD6BGRC3rcZh8lgIbl2VLnNyRZHlSvnf8WsAFf6stmkpPNcWZ/lnjfcNWtRbitqv3AP6GcEIv+sDVp+0UEKWydhcWSAyTi5/iDjMsjcAmWnX1BLAwQUAAAACACTNXNcAlXdoJIBAABiBQAAEQAAAHdvcmQvc2V0dGluZ3MueG1spZTbToQwEIZfhfR+t7BRY4hoPMTDhfFCfYDaFmi2nTZtAX17B1gWD4nZda860P7f/J2BObt4NzpppQ/KQkGyZUoSCdwKBVVBXl9uF6fk4vysy4OMEd+FBM9DyDvHC1LH6HJKA6+lYWFpFPc22DIuuTXUlqXiknbWC7pKs3SInLdchoCgawYtC2SDM79p1knAzdJ6wyI++ooa5teNWyDdsajelFbxA9npyYSxBWk85BvEYmuol+Sjoc0yKfwueUfJjeWNkRCHjNRLjR4shFq5+Rr/peFmPUHavy7RGk22LciODuvBjWcdLjNwF/tiFBk9Ov+bmKU7dKRHbBW7WPiec3JimII58b9K86W42fF+gNVPgKsOa86dt42baeow2gOstyyQe7E2Tf56tXCYmeeaOfwDDc8fKrCevWl0hC1LsOpJ/1mTfuIIFZxmH1eMryusBYhBRvst2Uq4BPEkxL1kAodX0uUt0wUpmQ6SDGfGKTFHz+MAm05mxwTDxu9R114AzKDXbxPo0YohJZ1z0nlenn8CUEsDBBQAAAAIAJM1c1xQzIPm5wIAANoNAAAPAAAAd29yZC9zdHlsZXMueG1svVZtb5swEP4riO8thJC0jUqrLl3UStMWda322TEmWPULs03T7tfPBkNeACVLWPMl3J39+HnuDnzXt++UOG9ISMxZ5A7OfddBDPIYs2XkvjzPzi7d25vr1USqD4Kko1czOaEwclOlsonnSZgiCuQ5zxDTwYQLCpQ2xdKjQLzm2RnkNAMKLzDB6sMLfH/sWhhxCApPEgzRPYc5RUwV+z2BiEbkTKY4kxXa6hC0FRdxJjhEUmqFlJR4FGBWwwzCBhDFUHDJE3WuxVhGBZTePvCLJ0rWAKN/AwhqAAonj0vGBVgQFLmaiaPBXJP+mMN7lICcKGlMMRfWtFbxN+NMSWc1ARJiHLlTQPBCYFd7oNwyEZDqTmKw5UzvmNzY5RlIyAkXOvYGSOSGxa8MyD+VNwgqz1Ru+zzLzNvlm9VWuWpHXNFqGkp9ZDoLGRBgKUCWGo5F6DGO3GesCCoywwBF1bmlt6CzABLFP1gV+W56gJQhht5Vm//3rGgUbyOla5mjcVNm6duQWdA7VMIDAuYtGzRU2IAz6FPJViWDrxfhl9FuJYctlRzuVvIYiUGnxOCTJQYtVQz6qOKwU+Lwv0kczML7i8uGxLBFYtiDxLBTYtinRFwYeCqbH6B1TU+UMuqUMvqEhjyR/LiT/PgTWu1Y8j+V4GzZoG7dPfJelFhF/xxL9huWal5HdjmbqLMO7+O+5thNA6YaDioktguuY4Jg9tqseB1pO91epjVFMxeUC3M8F5gLPYhVa6+ubISlOEa/UsReNFZnI/ij8XBqL6a8cppRqrx39ye8XemMc8W4Qk8oQULPn82rPbErHFEv6Uu6RBQ/4DhGbE8m9Jis7ghe1qfJXJdBQoEzdcq7Ual/1l3eLVyZ6L5mMz1R+Tdhpzrtp+chs1NRBqD53uhJM9GV1F1h5OijkblqauMpN1MsyBW3ybHbG7NV4LdcWX4f/VRL381qtcAxK5x1dg5up65E99Zsx6WnepI3fwFQSwMEFAAAAAgAkzVzXNsaRk/OEgAACa4AABEAAAB3b3JkL2RvY3VtZW50LnhtbO1dW3MbOa5+3n/BctXWSWolX2THzvhMsisrdqJNHGssJ3v2keqmJJa6yV6SLVtT++MPQPaFuiS+aSLHw0mNJfUFZBMgiA8A0b/+/SZNyJQpzaV4s7W3vbtFmIhkzMXozdaXq7Pm662/v/31+jiWUZ4yYQhcL/TxdRa92Robkx3v7OhozFKqt1MeKanl0GxHMt2RwyGP2M61VPFOa3dv137LlIyY1kC8Q8WU6q2CXLpMTWZMwMmhVCk18FONdlKqJnnWBOoZNXzAE25mQHv3sCQj32zlShwXJJpVh/CWY9eh4qO8Q92lXXfLu2IEbIs7iiXQByn0mGf1YzyUGpwcl0Sm33uIaZpsVSzYO3gcD94peg0fNcG7dD92N6WJ6/n3Ke7t3oEjSKK64y5dmG+z7ElKuagbftDQeIO79+p+BFqLBLLR45jzXsk8q6nxx1HriklFS7B70SqY7D+aflxn+mOaVTMwurkbsULukN7BTjSmyrCbmsbevYm82vll5/UyodYDCMEDtvaWSe3fm9ThDvZqidAdZXmBEPRqidIdhXqR0oqHO3wYpdYypaOHUdpfpvT6YZSWxAkUyeQBpHg9x2i6H9+bwtFOKmOW7NfKcO8wYnecHuVce11M1p2ofh6kw+/Yn5LOYUWH+/15WGc8Ajo28fheVFqlbt7Be6mhY6rHPsX7qTOYryW5WYpjlEbH3ZGQig4SoAQrBwHlT3B13ULDZyDjGX5m9k9P4YfOaARMI3CWwcIEt4HZdH1Mh4aBQXFofyQc9WzrYHdr5+2vO9Wt7k/x/UwKo/FGHXFQ8B2a8IHieHek534yqk1bczp3cNwW2rtrx/bW/e1o+8nhqilN3mwNaaKZu4J39IqjkUykKo/vtfGfO6F/L4+6J8EjNYXq6YonsuahHR549kwxzdSUbb39ykWEtuNFnlJyAfIu8R7j7nSjszjE2Ums3PAbI9OyPVw9EmYHCDsMXT3ZPzo8wAP69zdbr8uxLm7+Pp9eb5JPK3gwWMmZh/LQDcwCD1sHyzx0x27l4RkXFLhI2oImM21uZeDy2B/6gw92hTf6R4fPa/QP7H9Lo79iBrXuNoP+1np1QI5eHZFfdndJ66A1N/x/+HjNPduJ/W+Nz0YI+S/8v/BI41nGFIjHhKhjXLxUNz6y/ePaSDUDCd/60U/uz6l8QSWtbzgk6sep05gSFOY/RoBsElzJFudcNUR/HhF4/acQgZL7e6397RE343ywzZeWzOfO/R/5SGvX158pV3LAG+QjEzP6x1g71Zr5TWundfhNe+dHr7hrsUvXbdP0Li/OTvv97sXn9ifS/3J+3r789wMMG3+Q9/6Mdk1rBQdaD7EqyTVoO0LJCQUkh+3KITnJYR4wrUk7TrkA1a+s45W8aEeRzIVBXlxk9pC9u3v1kgwVzKJzqpmQ5Ivg1r9tZuQFoMmDl9ukn7GIw8BppgkXxHUCDhTd4LrhHbtkmVTYSoMULWrSozOEi9CEoCOGflzv5CWLGJ/a86l3/iSPR8zRoSImZyA6ETAWDmyTnpKAUTliJOjP6WWP9GE0WIrdi5IcvfHkvAS15N1MUIC4muwfvqqHpwN3K+gvEv8t59HkRMoJPIkb0niK4xx7VE5vIpYQBNReN0lEM2o96xzGBkm1e791yJmiKQPYPCETIa8TBk+yDaptRoBPnE3trWVf2TFRLM7tHAHCOQ5rj9TeP2J4yshgRvZ3/0rMWMl8NCbA1TwyOdxIsJlhIq8JT+Gmgvb/Fi3h/b8zJUlGZ0omCfQ3iXLniidMKamg1/iE8AFnq6tmUcKQCDwQSzjIEbVygx0VMYXn7lPaJ+wmYyLm2I+qZzGH6ZnhfI5JwmFZBmkdQbeUFdxt0pEwD4FXwiQzImFJpgZGzkjSPbvs2wbft+H5MWiRcCvr2sBRqmLtWAOPLqErXWGQZoIE4UjiRr8Ww3fIqD6LcoWSnCkaGeiN3g5ry9NcW/ofu58+9R+5mvzy0w/rSlfSIxYMT+nX8wNUzo81Hn/WhfYBa9zKhe2WpdBb6rxlrkHOgRHj5inwrZNIDVS+UsW99R871aF6jC1J6BkoTFTsDatLG1aRhgm15glVGho4m64krDthLt02ZOf975tgDd+Ca8wZY4vm14t2YZi99M/B5AJyMHlygb8b5EO3A/Lfu+jXVOftsoYzYN5XhkmYJ2ueJz1nwNp5UppoYarccblevUz0Cuu8V2GDxrIZ3PiWDdxYWiXaAJTAks8zXMwa5IreAJXK7H7Ra//7tEE+9/tnMFs+dOHvx8s24XAZTL6+oSZHr6J3S6PsGenWUCRMrPVPrCFyX4oCvFoRACCl8UiYYrdOMTSdAAvC6F2NuZg4s6uaMzC8MO/SZl8mU3vqXzB5AK7aof7K1MDOtTTNBZAo5hGet4gaYOw7ZiiHJa0Dty00Yqej45aCq9zNHQTfTVi5IuNY2oEpTgdSFeevEP37WgBm3oSNZRIzNWeHxjQzzhUBU/3UjG3j/0TL8k7TMMDejcDef11cfiSn/9c7veyefu6crotNpyf4r2RTa4FNICe6+CwpKD4aG7w+kxq1bqtkTnntCtbu+qw9+OlZu25F/b0MgJ9fLx8d4r+1RrX++6NjWj/f4vWOj7gBvf4bLCVBqIJQrUWovhN8/YNH69au/eXJ8q7k1g8Q4j7LSGu39Yo0wTqFg48GVUfLazU8C9i3cJANzZutfWe1jakY2Y0tuNT/0AX9p5tDzR+tZZ6kyfMd98Xxk53JT0SCyDkfYTA0JmbMyDBPbBw44UNmo7GEC0CXt7tSFcsS6geTNTRBYz1mzLh4LqbHEbg4mlgNYcPdOYAJ2zYXU8nBaKUZenBoEVaNctOUwyFhApRJZPm5DeAzzjFEfmvQ2o8iw/UKHVLKhZN9h5QNHUP3EYgz3SAx3DNl9sLIDxpTdFs18aFm2Gi5087SuD28GzRj0Iyb1IxetktQjvdQjnasNGlf1qqLi0V92KhVij0fyRS/ZHTmMm7oiHKhDZG5sVkl7iqr8TTeq53Tb1EToQID3VYk6UA/YlBOAwPPq6wDzuavaOdHJzQC9QaKjkQYmbWZOVOui+23lpSXPqRKB15QXE9O5oLisuGGpaATaTtrAZbboLdu01vvmOYjzIXDrEGwYFSVY4dh6IGUE5vBaIPbYOExNAFxjJeDbza5cAgzP7aLxweZW2Z8YtOZn9VXZMnh/m840owV2FCCTMvEkWFCR86mAwMqaVoz7f0nomciWqFPt0nbJSzG98kidNmDzuwT2iYp7u2CHSiFa09XsUPFUm4MduwOiXlBAQYFuDE3/lzWV1B7t6m9nrWWQAlcMzZJCrMHs9ng+5L542dtV4qKVhluDJSjy1dH5TWqMsIHNmuuOdVNGhlEoGDtWSAIigVUmZdB7PLc/fxiQJccTEWEk4Xdho2zG4CmBhQmmHcRxxB7M6WTYJ09RRELysm6huez2IpsK0A41jkTTLS76KqOFDhW1kazbjc7qKgThjLh0vmbiLO2FnZ3DJiIxlhmySqlQc4TwH/edgcSAwYcSKri2sqr4CtomoRrZ0Q5g0ywa8zpSRjoxAJ1MoWWHPQtAq42oT02hM4sZyfjlYBCZbJNTn1XW7lfo9iK4ayywrOGvjtgbG5LObhNKLYz0NXaR7e40SOowicnwUEV4ihUSfSL28WCBrzduQbQEz1jHij0fFY28gAoMoY+oI3FjfWmNSo4KAcJHzn06dSWVRqlPkNyON/1CoBpr7Z6sUGGjMXO+VZYZrZdKmx0wSpIaAsvcIYfQtySxQXkDLrpyclW0E04CvfarBj01W366tSFIbXbjUvt7g+MERYJ8GXsst4aW20hdeppLmSInn0jI8uU2oc1LJL3ipAmRgHSQkvaJebbIcmiH4SJKVdS2FjpI/XSt1MrQ4roT60XcPMeZ+qZTfiQxbcJrfiViUQCNmV6DH85089swIJUhdzQkBu6FJ1ggzI3tEwTDSBoc5PobbMMlKM7EWOhuQYjjKmV5W6MokLTyIVtp5zaHcsuVALQm2HEhM3Ii/Nmj2n60iW3qHg+o6XINiljLJ6NaiO27cv5ZBbfxgXbY4i5K65yi8xNnXnI0iyRtgkCJm5w+21eqipHcEw5MJuJuCmHzZjOXJ7RQiolygIMZYye6DLK1ljALFWBoChhVMBfifWdbKxMSJILdpMl1NbxKYNyenXYrMp4WiXjTmaDa2bD8lPs8nYZvlgrUYHgjFk00d9MSWs4KMsH+TyXh5XbwsJv4BXgaxlNSMF8pOcKO7kNrRi5WF+iW8DCzxQL++XqpqBLNKoqKsIWtwBjHi9c53QiYzZi5NRtv+eaPbMhC3IV4HGAx0uLSqYQEx8APP4n2LgBHm/cEHUbORDGzJpGWgCztGuwsh79zEAEHAl3CdRl/JkZU+AfALmDXGlWnLG5x5i0olmVcDMfwfEqqGIW9oSxrNyShqVG0apFNDwoNtgF/LJhsZGCA2gBbvl7d1YBzgFNCqw6lEkir+GWPCOAiRELxzkDoFsUDi73/fiOE3TbCLjBySZi2kti6/cqm72wUI7O2/ZjsxwKYYTnTlhUAXEvM8ViqGgWpGmz0nTJ4nJfhj/JPWjr9ECzVAvalhFcIQIAkhVzWzY8jbJYJdqgP80VOh5TQ7BpPuQRtY6Yom5zvAisS2EpkgMBiTMMarOhK30dpGjTUtRDr6rNoiwy22sG6jxNqSprgs/VyVbMsnNp3+B8/lq9edATozIr/dGrUXCiPFcnilsQMeP3RVfEOegkmyVsDI3GKEMvnywqCLD3Kaq51YP0Qab40gks/gnSNiNXDKMJheq6ZEOm8M0KH6TOsFrVMxvNIHKbFLnganmirpZzUAet3dY+aZJ2PrJfg336RDIRljwsc5kHtY+lcK2QqcyjMVMYMrYbmOSEYH2hqhgGYJ4Y4XgJjS16ZqLebKnYKE+oWgxLA36iZAxmX3MqkzxlJMsHCY+aGtAyUFtjymyQnTVhmwFPMKd63luSATtdrDhiPDM2ORpQyrdcMlwgkinLDtQFWqosFksHIfCqAi2lQ2dlkRXFpkzkLBRSeSqCc0INqI64rJlTKKDPH7pnXt2HKKE8rTKPrA8GX9lQuFkarmyE7zBzSQVF/Qj/3VD5IOW2GDrqFuSa0z9uC2aRz4CqqCg38Z+cK+cjDnKyWTm5cK/+isuXdridYAnLxgheaf3aIjx5DarI7a+NFzxt/rvfsvKtcJEtALDgTsMFDKzHasWqK6oXG225jJu1byaoko2LSJ2zZB1sljk2S42g5TKt37lXFOMqhAavRuPkOylMHrdXlPdw8gKrTS0kweEWHG7fqM0b4bscYHF5zwRDr8eLr2DagjXMVPC1BcfH4yXs/BqWB/o7vjkENJ5NjntmQxbkKjjUgkNtaRAKZ1oo+b7xCYRwBd+JzcDelGpERVG2B1b7utZPwwMc0r5BG4ytqnbsSNHUQle7gcd5wzDHiCI+xT0ZCGZmMgfses2SZMCqQLB715RB9Ko5pq4A7P38/sJuc09mrjq2yqSXmu+/cNl7ezIW0yACQLTFScaaxuwmeNo2ndlUFV9BN4gvXv+jv7ejBqurV7WkUpYOQOTGPPMQjy3HEkth6xSXjjqUKRBGzCaYT5mrfS5JUpdOHuYCmgL47e80cz0onDylQ8/z3mG+Q+T2mgCZsHfsyUiYX6ei1lbIRTq/+6KQMU8q7LZAGzZAvzC6WLydhAtKcS66gNT9zWKuno+noRSbcnYd3sy+Loi77lfUnb770mlfdS8+r4tBwW+xeb/FCY3GDBuQw/olIv4WLLBPmsR7e/yFK8H6onsV3BoBfq7BrUEB1UjyRXBrK5vZMxuwIFWbkKrgyrg7y36gK+O9onFuo324GSvAgc2G1QCcgdlfmOvHK4oJN7yFv+G9poh0sfCee/VHGXV1iLJ7Vb+9wsXiF/ZUBBC48S0vCZsi7AfGAujH0ojHtiZ+oyiIX4tB38BUtfx2WUDlm8jpTfnCc4SRVjZsrXFfWCpbcoWoBIT3RBFe5/TyqnvWdSivHybqRidqp9d2ERnyAr42P74EHNYVmMw5UrgRlfRg/ubW78uUsdvI7CTzk6m6QhtucsMQ3nXcZbD49my2Jak3iWg8XzTWhdY+vgxqerPct28p6dQJboDB7bbnuOKvq/+0Im2lsZzme76Q5bTKneztL8O3puRK4deFl9dj7W1GqCGLLyAP8rJh3+4tL4S1Thzr0vVLMvmZcjFLpbA+H+uwryTAz6xD7q/mNGZuF2v3qI+9v4b1ae+X3UM7nvD98PX+a/wuFWYMw6oDwqooN+7xstE5xZEwMoNrD5yfzrr76p/OGKh/O7kof40ZjZ0g2WaGUhrv5yg3Rf5V0dznPL2aZcz+imX0XvG4kL8eN9HYyZsb5fLRdrAL8cx+KStHv/1/UEsDBBQAAAAIAJM1c1zP4efCwgEAAJwGAAASAAAAd29yZC9mb290bm90ZXMueG1s1ZTBbuMgEIZfxeKeYEftamXF6WGrrnqrmt0HoATHqMAgwPbm7XdsE5ztVlHanHoxxsz/zT+MYX33R6usE85LMBUpljnJhOGwk2Zfkd+/Hhbfyd1m3Zc1QDAQhM9QYHzZW16RJgRbUup5IzTzSy25Aw91WHLQFOpackF7cDu6yot8fLMOuPAe6T+Y6ZgnEaf/p4EVBhdrcJoFnLo91cy9tnaBdMuCfJFKhgOy829HDFSkdaaMiEUyNEjKyVAcjgp3Sd5Jcg+81cKEMSN1QqEHML6Rdi7jszRcbI6Q7lwRnVYktaC4ua4H9471OMzAS+zvJpFWk/PzxCK/oCMDIikusfBvzqMTzaSZE39qa042t7j9GGD1FmD31zXnp4PWzjR5He3RvCaWER9ixSafluavM7NtmMUTqHn5uDfg2ItCR9iyDHc9G35rcnrlZH0ZDhYjvLDMsQCO4Ce5q8iiGAPt+Hhyw+At45gBA1gdBJ7ufAhWcqh5dZMmz+2QkrUBCN2saZJPj/i+DQc1ZO+YqshDdPMsauHwihRRGIPreTl+T7hkOy3Q0TOdVe+Wy8EEadrxltm+LT3/CpW/W8G5XTiZ+M1fUEsDBBQAAAAIAJM1c1y9w/5RtwEAALUIAAARAAAAd29yZC9jb21tZW50cy54bWyl1N1ugjAYBuBbMZxrAZU5otvJsmXH2y6ga6ttRn/SVtG7X5kW2LoYqEdq6Pfw9pWyfjzyanIg2jApNkk2S5MJEUhiJnab5OP9ebpKHh/WdYkk50RYM3HrhSnRcZNQa1UJgEGUcGhmnCEtjdzamVsL5HbLEAFYw9pRIE+zBUAUakuOSWtko5EluAerEMojoCwFeRZS89FUAZpUAbSIglyqQFrGSf9sroiT8lC6i5PmobSKk4LHiaMAkooId3ErNYfW/dQ7wKH+2qupgxW07JNVzJ6cmRaegUx8RSRyU63A53i0cAe4xKSaY6/ITbLXorzMT9v5Jnp5nr98+Ak9ZP/nkSeJ9s1x/tk50KRyXUhhKFOmrTNWcxepRw7XNnHglV9Xq2zgcamlxk1f6c83pSUixrgOn85VduCQ+Jf+eXVOfl3M0gH/SEO0E0Mi/L6nT8LdU9jdOKqaXrnZwBeIB/IAKBAZ+ML3xupiANSd0MZhA4+Gd4rWYbjnxIXpAQZbTEcpue8VNLPQQgoN7YtkXKhly514ryO1u+0gvGi5V53GbtNeu9daLcZtMC3+tq7MbWHeKFQkAQ/fUEsDBBQAAAAIAJM1c1zfQVC3YQIAAFMMAAASAAAAd29yZC9udW1iZXJpbmcueG1szZfbjtowEIZfJfI9OAlHRcuu2q62oupJKn0Akxiw8CGynbA8Qy9619722fokHefEodIKglbKDcaemX8+H8aGu4dnwb2casOUnKGg7yOPylglTK5n6PviqTdFD/d3u0hmYkk1jHoQIE20S+MZ2libRhibeEMFMX3BYq2MWtl+rARWqxWLKd4pneDQD/ziW6pVTI0BnXdE5sSgSk78r6ZSKsG4UloQC129xoLobZb2QD0lli0ZZ3YP2v64llEzlGkZVRK9BsiFRCVQ1dQR+pK8ZcijijNBpS0yYk05MChpNiw9TKOtGhg3tUj+0iRywVGzBcHwtj141GQHzUHwEvykDBK8JH9ZMfAv2BEn0URcgnCasyYRhMlD4lZLc7S4weg6gfBcIF3ftjnvtcrSgxq7TW0ut42WpFdpVZt8PDVzG8y3DUmhAkUczddSabLkQARb5sGqe+5YI3flkKWxmsT2cya8k948gZsKOedIU2OJdoPl7fRmZal+qynZzpBfqIiMW/aR5pQv9ikFoZxwoN8vNUs+ORt3NoSdL885ODBoXHSRwEKJQp3n1KV0PkW+WiYo4+ByfBLN4DLjnNpGcUGfG9Pf3z+b8Q9xPcrpqnJPv2rXMJmAzQ3P0CR0JNGGyHVxJw/GvvPFlTMutM7hg9eB/3EtfDActqAPX4X+159r6cNg3IJ+0JGDE06nLeiHHTk5ANuCftSRkzMctKnacUdOzshvU7WTrtBP2lTttCP04+FlVYtPXsSKyis+y+fx7AWdJ2eTAJUv8LsfXkF69OY1Uz6yHaLwSVjRly45Pvp/cP8PUEsDBBQAAAAIAJM1c1wfo5KW5gAAAM4CAAALAAAAX3JlbHMvLnJlbHOtks9KAzEQh18lzL0721ZEpGkvUuhNpD5ASGZ3g80fJlOtb28oilbq2kOPmfzmyzdDFqtD2KlX4uJT1DBtWlAUbXI+9hqet+vJHayWiyfaGamJMvhcVG2JRcMgku8Rix0omNKkTLHedImDkXrkHrOxL6YnnLXtLfJPBpwy1cZp4I2bgtq+Z7qEnbrOW3pIdh8oypknfiUq2XBPouEtsUP3WW4qFvC8zexym78nxUBinBGDNjFNMtduFk/lW6i6PNZyOSbGhObXXA8dhKIjN65kch4zurmmkd0XSeGfFR0zX0p48jGXH1BLAwQUAAAACACTNXNc4CNQ64kAAADVAAAAEAAAAGRvY1Byb3BzL2FwcC54bWydzsEKwjAQBNBfKbm3iR5EStNeimcP1XtJNm3A7IZkLfXvjQh+gMdhhsd0wx4e1QYpe0ItDo0SFaAh63HR4jZd6rMY+u6aKEJiD7kqe8xarMyxlTKbFcKcm1JjaRylMHOJaZHknDcwknkGQJZHpU4Sdga0YOv4A8VXbDf+F7VkPv/yfXrF4sn+DVBLAwQUAAAACACTNXNcOqM2z4gAAADTAAAAEwAAAGRvY1Byb3BzL2N1c3RvbS54bWydzsEKwjAQBNBfCbm3iR5EStNeimcP1XtJN23AZEN2W/TvjQh+gMdhhse0/TM8xA6ZPEYjD7WWAqLF2cfFyNt4qc6y79prxgSZPZAo+0hGrsypUYrsCmGiutSxNA5zmLjEvCh0zlsY0G4BIquj1idlN2IMVfpx8us1O/9Lzmg/7+g+vlLxVPcGUEsDBBQAAAAIAJM1c1xbQfmwbAEAAOkCAAARAAAAZG9jUHJvcHMvY29yZS54bWyVkl1PgzAUhv9Kwz0UmBIlrGbO7EozE+dHvGva49ZIS9Mex/bvLThwi7vxjvI+5+FwTqubna7JFpxXjZlGWZJGBIxopDLrafS8WsRX0Q2rhC1F4+DRNRYcKvAklBlfCjuNNoi2pNSLDWjuk0CYEH40TnMMR7emlotPvgaap2lBNSCXHDnthLEdjdFBKcWotF+u7gVSUKhBg0FPsySjvyyC0/5sQZ8ckVrh3sJZdAhHeufVCLZtm7STHg39Z/Tt4f6p/9VYGY/cCIhYJUWJCmtgLyq8MEiWX5qTZatMQ2KyUKbjyMzweu+RzF8qOlZ0tcIBx8adqe7BIe5QCV44ZTGsi81WT/EyPGrlQQ7WY6DbW809PoR9fiiQt3v2bGLDNciK/s063MFWdXeBZT0xHqvDrH+aCZ8LMyp/Jjokr5P53WoRsTzNizidxNn1Ki3KvCgv0iTPLt+79k4cv1J9aOLf1uLIOkhY3/npfWXfUEsDBBQAAAAIAJM1c1zSd/y3bQAAAHsAAAAcAAAAd29yZC9fcmVscy9jb21tZW50cy54bWwucmVsc02MQQ4CIQxFr0K6d4oujDHDzG4OYPQADVYgDoVQYjy+LF3+vPf+vH7zbj7cNBVxcJwsGBZfnkmCg8d9O1xgXeYb79SHoTFVNSMRdRB7r1dE9ZEz6VQqyyCv0jL1MVvASv5NgfFk7Rnb/wfg8gNQSwMEFAAAAAgAkzVzXNJ3/LdtAAAAewAAAB0AAAB3b3JkL19yZWxzL2Zvb3Rub3Rlcy54bWwucmVsc02MQQ4CIQxFr0K6d4oujDHDzG4OYPQADVYgDoVQYjy+LF3+vPf+vH7zbj7cNBVxcJwsGBZfnkmCg8d9O1xgXeYb79SHoTFVNSMRdRB7r1dE9ZEz6VQqyyCv0jL1MVvASv5NgfFk7Rnb/wfg8gNQSwMEFAAAAAgAkzVzXNJ3/LdtAAAAewAAAB0AAAB3b3JkL19yZWxzL2ZvbnRUYWJsZS54bWwucmVsc02MQQ4CIQxFr0K6d4oujDHDzG4OYPQADVYgDoVQYjy+LF3+vPf+vH7zbj7cNBVxcJwsGBZfnkmCg8d9O1xgXeYb79SHoTFVNSMRdRB7r1dE9ZEz6VQqyyCv0jL1MVvASv5NgfFk7Rnb/wfg8gNQSwMEFAAAAAgAkzVzXGQcKBc0AQAA+AQAABwAAAB3b3JkL19yZWxzL2RvY3VtZW50LnhtbC5yZWxztZTPbsIwDMZfpcp9DZSNIURhh20Sh10m9gAhdduIJq4Sl8Hbz2j8KRJUO3RHf7Y//2JLmS12toq24INBl4phPBAROI2ZcUUqvlbvDxOxmM8+oVLEFaE0dYi4xYVUlET1VMqgS7AqxFiD40yO3iri0BeyVnqjCpDJYDCWvu0hrj2jZZYKv8yGIlrta/iLN+a50fCKurHg6MYIGWhfQWBH5QugVPzGMfsIeXt80ud419g1eN7jheAsdUGM+oTIEckhtddwlrogHns9BBDxo9unOCpdCE99Imi0h1QL4aR0IYz7PYWjlVpX0D7FUeqCeO4TomQnXxm3uUBYZSrCKX4bh1vjNHdiY9VLcUjEvKZT6QdmTPG2I/BO3cWd/DPuwTaw7wl1mIziwlDZrGOD91Hl1Rc2/wFQSwECFAMUAAAACACTNXNcXKl+XpEBAAC1BwAAEwAAAAAAAAAAAAAApIEAAAAAW0NvbnRlbnRfVHlwZXNdLnhtbFBLAQIUAxQAAAAIAJM1c1wr1wHiEgEAADIDAAASAAAAAAAAAAAAAACkgcIBAAB3b3JkL2ZvbnRUYWJsZS54bWxQSwECFAMUAAAACACTNXNcAlXdoJIBAABiBQAAEQAAAAAAAAAAAAAApIEEAwAAd29yZC9zZXR0aW5ncy54bWxQSwECFAMUAAAACACTNXNcUMyD5ucCAADaDQAADwAAAAAAAAAAAAAApIHFBAAAd29yZC9zdHlsZXMueG1sUEsBAhQDFAAAAAgAkzVzXNsaRk/OEgAACa4AABEAAAAAAAAAAAAAAKSB2QcAAHdvcmQvZG9jdW1lbnQueG1sUEsBAhQDFAAAAAgAkzVzXM/h58LCAQAAnAYAABIAAAAAAAAAAAAAAKSB1hoAAHdvcmQvZm9vdG5vdGVzLnhtbFBLAQIUAxQAAAAIAJM1c1y9w/5RtwEAALUIAAARAAAAAAAAAAAAAACkgcgcAAB3b3JkL2NvbW1lbnRzLnhtbFBLAQIUAxQAAAAIAJM1c1zfQVC3YQIAAFMMAAASAAAAAAAAAAAAAACkga4eAAB3b3JkL251bWJlcmluZy54bWxQSwECFAMUAAAACACTNXNcH6OSluYAAADOAgAACwAAAAAAAAAAAAAApIE/IQAAX3JlbHMvLnJlbHNQSwECFAMUAAAACACTNXNc4CNQ64kAAADVAAAAEAAAAAAAAAAAAAAApIFOIgAAZG9jUHJvcHMvYXBwLnhtbFBLAQIUAxQAAAAIAJM1c1w6ozbPiAAAANMAAAATAAAAAAAAAAAAAACkgQUjAABkb2NQcm9wcy9jdXN0b20ueG1sUEsBAhQDFAAAAAgAkzVzXFtB+bBsAQAA6QIAABEAAAAAAAAAAAAAAKSBviMAAGRvY1Byb3BzL2NvcmUueG1sUEsBAhQDFAAAAAgAkzVzXNJ3/LdtAAAAewAAABwAAAAAAAAAAAAAAKSBWSUAAHdvcmQvX3JlbHMvY29tbWVudHMueG1sLnJlbHNQSwECFAMUAAAACACTNXNc0nf8t20AAAB7AAAAHQAAAAAAAAAAAAAApIEAJgAAd29yZC9fcmVscy9mb290bm90ZXMueG1sLnJlbHNQSwECFAMUAAAACACTNXNc0nf8t20AAAB7AAAAHQAAAAAAAAAAAAAApIGoJgAAd29yZC9fcmVscy9mb250VGFibGUueG1sLnJlbHNQSwECFAMUAAAACACTNXNcZBwoFzQBAAD4BAAAHAAAAAAAAAAAAAAApIFQJwAAd29yZC9fcmVscy9kb2N1bWVudC54bWwucmVsc1BLBQYAAAAAEAAQABwEAAC+KAAAAAA=" id="cv-download-btn" data-cv-version="0.2" download="CV_Vincent_Owino.docx" class="btn-download">↓ Download CV</a>
     </div>
+    <div class="hero-social">
+          <a class="si linkedin" href="https://www.linkedin.com/in/vincent-ouma-owino" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="si github" href="https://github.com/Vincento123" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+          <a class="si twitter" href="https://twitter.com/vincento_owino" target="_blank" rel="noopener" title="X / Twitter" aria-label="X / Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.735-8.835L1.254 2.25H8.08l4.261 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a class="si whatsapp" href="https://wa.me/254757900242" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+          <a class="si facebook" href="https://www.facebook.com/vincent.owino" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.994 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
   </div>
 
   <div class="profile-card reveal">
@@ -1432,6 +1585,77 @@
     <h2 class="sec-title">Get in Touch</h2>
     <div class="sec-rule"></div>
   </div>
+
+  <!-- ══ CONTACT ME DIRECT ══ -->
+  <div class="cm-section">
+    <div class="sec-inner" style="max-width:900px;margin:0 auto;padding:0 5vw">
+      <div style="margin-bottom:1.8rem">
+        <span class="sec-eyebrow" style="display:block;margin-bottom:0.6rem">Quick Connect</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--charcoal);margin-bottom:0.6rem">Contact Me</h3>
+        <p class="cm-intro">Reach out directly via your preferred platform. I typically respond quickly.</p>
+      </div>
+
+      <div class="cm-grid">
+
+        <!-- WhatsApp -->
+        <a class="cm-card cm-wa" href="https://wa.me/254757900242?text=Hi%20Vincent%2C%20I%20would%20like%20to%20connect"
+           target="_blank" rel="noopener" data-platform="whatsapp"
+           aria-label="Chat on WhatsApp">
+          <div class="cm-icon-wrap"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></div>
+          <div class="cm-text">
+            <span class="cm-label">Chat on WhatsApp</span>
+            <span class="cm-cta">Opens WhatsApp · Instant reply</span>
+          </div>
+          <span class="cm-arrow">→</span>
+        </a>
+
+        <!-- Facebook Messenger -->
+        <a class="cm-card cm-fb" href="https://m.me/vinbrandy.ouma"
+           target="_blank" rel="noopener" data-platform="messenger"
+           aria-label="Message on Facebook Messenger">
+          <div class="cm-icon-wrap"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.975 12-11.111C24 4.975 18.627 0 12 0zm1.193 14.963l-3.056-3.259-5.963 3.259L10.986 8.6l3.13 3.259L20.013 8.6l-6.82 6.363z"/></svg></div>
+          <div class="cm-text">
+            <span class="cm-label">Message on Messenger</span>
+            <span class="cm-cta">Facebook Messenger · Quick chat</span>
+          </div>
+          <span class="cm-arrow">→</span>
+        </a>
+
+        <!-- Instagram -->
+        <a class="cm-card cm-ig" href="https://instagram.com/old_empath"
+           target="_blank" rel="noopener" data-platform="instagram"
+           aria-label="DM on Instagram">
+          <div class="cm-icon-wrap"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></div>
+          <div class="cm-text">
+            <span class="cm-label">DM on Instagram</span>
+            <span class="cm-cta">@old_empath · Direct message</span>
+          </div>
+          <span class="cm-arrow">→</span>
+        </a>
+
+      </div><!-- /cm-grid -->
+
+      <!-- Email row with copy button -->
+      <div class="cm-email-row" style="margin-top:1rem">
+        <a class="cm-card cm-mail" href="mailto:owinovincentouma@gmail.com?subject=Business%20Inquiry&body=Hi%20Vincent%2C%20I%20would%20like%20to%20discuss%20a%20potential%20engagement"
+           data-platform="email" aria-label="Send an email">
+          <div class="cm-icon-wrap"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div class="cm-text">
+            <span class="cm-label">Send an Email</span>
+            <span class="cm-cta">owinovincentouma@gmail.com · Business enquiries</span>
+          </div>
+          <span class="cm-arrow">→</span>
+        </a>
+        <button class="cm-copy-btn" id="cm-copy-btn"
+                onclick="cmCopyEmail(this)" title="Copy email address" aria-label="Copy email address">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+        </button>
+      </div>
+      <span class="cm-fallback">No app? Copy the email address using the button → or use the contact form below.</span>
+
+    </div>
+  </div><!-- /cm-section -->
+
   <div class="contact-layout reveal">
     <div class="contact-body">
       <p>I am actively open to new opportunities in finance and accounting — whether a
@@ -1499,6 +1723,17 @@
         <span class="cr-label">Status</span>
         <span class="cr-val open">Open to Opportunities</span>
       </div>
+      <div class="social-row">
+        <span class="cr-label-social">Connect</span>
+        <div class="social-icons">
+          <a class="si linkedin" href="https://www.linkedin.com/in/vincent-ouma-owino" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="si github" href="https://github.com/Vincento123" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+          <a class="si twitter" href="https://twitter.com/vincento_owino" target="_blank" rel="noopener" title="X / Twitter" aria-label="X / Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.735-8.835L1.254 2.25H8.08l4.261 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a class="si whatsapp" href="https://wa.me/254757900242" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+          <a class="si facebook" href="https://www.facebook.com/vincent.owino" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.994 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a class="si email" href="#" onclick="window.location.href='mai'+'lto:'+_e;return false;" title="Email" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1507,6 +1742,13 @@
 <footer>
   <div class="footer-brand" style="display:flex;align-items:center"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1MiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIj4KICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjI2IiByPSIyNiIgZmlsbD0iIzAzNDY5NCIvPgogIDxjaXJjbGUgY3g9IjI2IiBjeT0iMjYiIHI9IjIyIiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjI2IiByPSIxNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIwLjYiIG9wYWNpdHk9IjAuMiIvPgogIDxsaW5lIHgxPSIyNiIgeTE9IjQiICB4Mj0iMjYiIHkyPSI5IiAgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8bGluZSB4MT0iMjYiIHkxPSI0MyIgeDI9IjI2IiB5Mj0iNDgiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjQiICB5MT0iMjYiIHgyPSI5IiAgeTI9IjI2IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxsaW5lIHgxPSI0MyIgeTE9IjI2IiB4Mj0iNDgiIHkyPSIyNiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8dGV4dCB4PSIyNiIgeT0iMjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI1IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSJ3aGl0ZSIgZG9taW5hbnQtYmFzZWxpbmU9ImNlbnRyYWwiIGR5PSItMTMiPk48L3RleHQ+CiAgPHBvbHlnb24gcG9pbnRzPSIyNiwyNiAxOSwzOCAyNiwzNCAzMywzOCIgZmlsbD0id2hpdGUiLz4KICA8cG9seWdvbiBwb2ludHM9IjI2LDI2IDMzLDE0IDI2LDE4IDE5LDE0IiBmaWxsPSIjMDBkOTZiIi8+CiAgPGNpcmNsZSBjeD0iMjYiIGN5PSIyNiIgcj0iNCIgZmlsbD0iIzAzNDY5NCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjI2IiByPSIyIiBmaWxsPSIjYjg5NzNhIi8+Cjwvc3ZnPg==" width="32" height="32" style="display:inline-block;vertical-align:middle;margin-right:9px;flex-shrink:0" alt="VO"><span>Vincent Owino</span></div>
   <div class="footer-copy" style="cursor:default">© 2026 · Finance Analyst · Nairobi, Kenya &nbsp;<span id="erp-trigger" onclick="openERP()" style="opacity:0.08;cursor:pointer;font-size:0.75rem;user-select:none;transition:opacity 0.3s" onmouseover="this.style.opacity='0.4'" onmouseout="this.style.opacity='0.08'">⬡</span></div>
+  <div class="footer-social">
+          <a class="si linkedin" href="https://www.linkedin.com/in/vincent-ouma-owino" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          <a class="si github" href="https://github.com/Vincento123" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+          <a class="si twitter" href="https://twitter.com/vincento_owino" target="_blank" rel="noopener" title="X / Twitter" aria-label="X / Twitter"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.735-8.835L1.254 2.25H8.08l4.261 5.638L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a class="si whatsapp" href="https://wa.me/254757900242" target="_blank" rel="noopener" title="WhatsApp" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+          <a class="si facebook" href="https://www.facebook.com/vincent.owino" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.994 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
   <div class="footer-links">
     <a href="#" onclick="showTab('about');return false;" class="nav-tab" data-tab="about">Profile</a>
     <a href="#" onclick="showTab('services');return false;" class="nav-tab" data-tab="services">Services</a>
@@ -1605,6 +1847,40 @@
       });
     }
   })();
+
+  // ── COPY EMAIL ──
+  function cmCopyEmail(btn) {
+    var email = 'owinovincentouma@gmail.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function() {
+        cmCopyFeedback(btn);
+      }).catch(function() {
+        cmCopyFallback(email, btn);
+      });
+    } else {
+      cmCopyFallback(email, btn);
+    }
+  }
+  function cmCopyFallback(text, btn) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cmCopyFeedback(btn); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+  function cmCopyFeedback(btn) {
+    var orig = btn.innerHTML;
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" style="width:17px;height:17px"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+    btn.title = 'Copied!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = orig;
+      btn.title = 'Copy email address';
+    }, 2200);
+  }
 
   // ── TICKER ──
   var tdata = [
@@ -3658,18 +3934,44 @@ document.addEventListener('keydown',function(e){
 });
 
 // ═══ ERP THEME TOGGLE ═══
+// ── ERP Theme vars ──
+var ERP_LIGHT={
+  '--e-bg0':'#f0f4f8','--e-bg1':'#ffffff','--e-bg2':'#f7f9fc',
+  '--e-bg3':'#edf1f7','--e-bg4':'#e2e8f0',
+  '--e-border':'rgba(0,0,0,0.09)','--e-border-hi':'rgba(0,0,0,0.16)',
+  '--e-text1':'#1a2030','--e-text2':'#374155',
+  '--e-text3':'#6b7890','--e-text4':'#9aaabb',
+  '--e-blue-lo':'rgba(37,99,235,0.08)','--e-blue-mid':'rgba(37,99,235,0.15)',
+  '--e-green-lo':'rgba(16,185,129,0.08)',
+  '--e-red-lo':'rgba(239,68,68,0.08)','--e-gold-lo':'rgba(212,168,67,0.08)'
+};
+var ERP_DARK={
+  '--e-bg0':'#05080f','--e-bg1':'#090e1a','--e-bg2':'#0d1424',
+  '--e-bg3':'#111c30','--e-bg4':'#162238',
+  '--e-border':'rgba(255,255,255,0.07)','--e-border-hi':'rgba(255,255,255,0.13)',
+  '--e-text1':'#f0f4ff','--e-text2':'#8b95a8',
+  '--e-text3':'#4a5568','--e-text4':'#2d3748',
+  '--e-blue-lo':'rgba(37,99,235,0.12)','--e-blue-mid':'rgba(37,99,235,0.22)',
+  '--e-green-lo':'rgba(16,185,129,0.12)',
+  '--e-red-lo':'rgba(239,68,68,0.12)','--e-gold-lo':'rgba(212,168,67,0.12)'
+};
+function applyErpTheme(vars,root){
+  for(var k in vars) root.style.setProperty(k,vars[k]);
+}
 function toggleErpTheme(){
   var root=document.getElementById('erp-root');
   var btn=document.getElementById('erp-theme-toggle');
   var isLight=root.getAttribute('data-erp-theme')==='light';
   if(isLight){
     root.removeAttribute('data-erp-theme');
+    applyErpTheme(ERP_DARK,root);
     localStorage.setItem('erp-theme','dark');
-    if(btn)btn.textContent='☀ Light';
+    if(btn)btn.textContent='\u2600 Light';
   }else{
     root.setAttribute('data-erp-theme','light');
+    applyErpTheme(ERP_LIGHT,root);
     localStorage.setItem('erp-theme','light');
-    if(btn)btn.textContent='🌙 Dark';
+    if(btn)btn.textContent='\uD83C\uDF19 Dark';
   }
 }
 // Restore ERP theme on load
@@ -3677,9 +3979,9 @@ function toggleErpTheme(){
   var saved=localStorage.getItem('erp-theme');
   if(saved==='light'){
     var root=document.getElementById('erp-root');
-    if(root){root.setAttribute('data-erp-theme','light');}
+    if(root){root.setAttribute('data-erp-theme','light');applyErpTheme(ERP_LIGHT,root);}
     var btn=document.getElementById('erp-theme-toggle');
-    if(btn)btn.textContent='🌙 Dark';
+    if(btn)btn.textContent='\uD83C\uDF19 Dark';
   }
 })();
 
