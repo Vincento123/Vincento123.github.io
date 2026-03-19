@@ -133,9 +133,26 @@
       --green-border: rgba(0,122,61,0.35);
       --rule:         1px solid rgba(255,255,255,0.07);
     }
-    [data-theme="dark"] .nav-bar {
+    [data-theme="dark"] nav {
       background: #0d1117;
+      border-color: rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] .nav-row1 {
       border-bottom-color: rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] .nav-row2 {
+      border-bottom-color: rgba(255,255,255,0.07);
+    }
+    [data-theme="dark"] .nav-links a {
+      color: var(--charcoal-mid);
+    }
+    [data-theme="dark"] .nav-links a.active,
+    [data-theme="dark"] .nav-links a:hover {
+      color: var(--blue);
+    }
+    [data-theme="dark"] .ticker-wrap {
+      background: #0a0f1a;
+      border-bottom-color: rgba(255,255,255,0.06);
     }
     [data-theme="dark"] .svc-card { background: #111827; }
     [data-theme="dark"] .svc-card:hover { background: #1a2535; }
@@ -164,15 +181,26 @@
 
     /* ── Theme toggle button ── */
     .theme-toggle {
-      background: none; border: 1px solid var(--mid-grey);
-      color: var(--charcoal-dim); cursor: pointer;
-      font-size: 0.7rem; padding: 0.28rem 0.65rem;
-      border-radius: 20px; display: flex; align-items: center; gap: 0.35rem;
-      transition: all 0.2s; white-space: nowrap; font-family: 'Lato', sans-serif;
+      background: none;
+      border: 1px solid var(--mid-grey);
+      color: var(--charcoal-dim);
+      cursor: pointer;
+      font-size: 0.62rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 20px;
+      display: flex; align-items: center; gap: 0.35rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+      font-family: 'Lato', sans-serif;
       font-weight: 700; letter-spacing: 0.06em;
+      margin-left: 0.8rem;
+      flex-shrink: 0;
     }
-    .theme-toggle:hover { border-color: var(--blue); color: var(--blue); }
-    .theme-toggle .tt-icon { font-size: 0.85rem; line-height: 1; }
+    .theme-toggle:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-dim); }
+    .theme-toggle .tt-icon { font-size: 0.9rem; line-height: 1; }
+    [data-theme="dark"] .theme-toggle { border-color: rgba(255,255,255,0.15); color: #8b95a8; }
+    [data-theme="dark"] .theme-toggle:hover { border-color: var(--blue); color: #93c5fd; background: rgba(37,99,235,0.12); }
+    @media(max-width:700px) { .theme-toggle .tt-label { display:none; } .theme-toggle { padding: 0.3rem 0.5rem; margin-left:0.5rem; } }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -277,7 +305,6 @@
     .nav-links a:hover { color: var(--blue); }
     .nav-links a.active { color: var(--blue); border-bottom-color: var(--green); }
     .nav-badge {
-      margin-left: auto;
       display: flex; align-items: center; gap: 0.4rem;
       font-family: 'Lato', sans-serif;
       font-size: 0.55rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -883,6 +910,7 @@
   <div class="nav-row1">
     <a href="#" onclick="showTab('hero');closeMobileMenu();return false;" class="nav-brand" style="display:flex;align-items:center;text-decoration:none;cursor:pointer" title="Home" aria-label="Go to home"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1MiIgd2lkdGg9IjUyIiBoZWlnaHQ9IjUyIj4KICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjI2IiByPSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDM0Njk0IiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDxjaXJjbGUgY3g9IjI2IiBjeT0iMjYiIHI9IjE4IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMC43IiBvcGFjaXR5PSIwLjI1Ii8+CiAgPGxpbmUgeDE9IjI2IiB5MT0iMiIgIHgyPSIyNiIgeTI9IjgiICBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjI2IiB5MT0iNDQiIHgyPSIyNiIgeTI9IjUwIiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjIiICB5MT0iMjYiIHgyPSI4IiAgeTI9IjI2IiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPGxpbmUgeDE9IjQ0IiB5MT0iMjYiIHgyPSI1MCIgeTI9IjI2IiBzdHJva2U9IiMwMzQ2OTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHRleHQgeD0iMjYiIHk9IjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNiIgZm9udC13ZWlnaHQ9IjcwMCIgZmlsbD0iIzAzNDY5NCIgZG9taW5hbnQtYmFzZWxpbmU9ImNlbnRyYWwiIGR5PSItMTQiPk48L3RleHQ+CiAgPHBvbHlnb24gcG9pbnRzPSIyNiwyNiAxOSw0MCAyNiwzNSAzMyw0MCIgZmlsbD0iIzAzNDY5NCIvPgogIDxwb2x5Z29uIHBvaW50cz0iMjYsMjYgMzMsMTIgMjYsMTcgMTksMTIiIGZpbGw9IiMwMDdhM2QiLz4KICA8Y2lyY2xlIGN4PSIyNiIgY3k9IjI2IiByPSI0IiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMDM0Njk0IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDxjaXJjbGUgY3g9IjI2IiBjeT0iMjYiIHI9IjIiIGZpbGw9IiNiODk3M2EiLz4KPC9zdmc+" width="38" height="38" style="display:inline-block;vertical-align:middle;margin-right:10px;flex-shrink:0" alt="VO"><span>Vincent <span style="color:var(--green)">Owino</span></span></a>
     <div class="nav-tagline">Finance & Accounting Professional</div>
+    <div style="flex:1"></div>
     <div class="nav-badge">Available for Hire</div>
     <button class="theme-toggle" id="portfolio-theme-toggle" onclick="togglePortfolioTheme()" title="Toggle light/dark mode" aria-label="Toggle theme"><span class="tt-icon">☀</span><span class="tt-label">Light</span></button>
     <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
